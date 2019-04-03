@@ -161,7 +161,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n\nvar header = __webpack_require__(/*! ./scripts/header */ \"./scripts/header.js\")();\n\nvar main = __webpack_require__(/*! ./scripts/main */ \"./scripts/main.js\")();\n\nvar footer = __webpack_require__(/*! ./scripts/footer */ \"./scripts/footer.js\")();\n\n$('body').prepend(header, main, footer); //document.body.appendChild('<a>TEST</a>');\n//document.body.appendChild(footer);\n\n//# sourceURL=webpack:///./index.js?");
+eval("var $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n\nvar header = __webpack_require__(/*! ./scripts/header */ \"./scripts/header.js\");\n\nvar main = __webpack_require__(/*! ./scripts/main */ \"./scripts/main.js\");\n\nvar footer = __webpack_require__(/*! ./scripts/footer */ \"./scripts/footer.js\");\n\n$('body').prepend(header, main, footer); //document.body.appendChild('<a>TEST</a>');\n//document.body.appendChild(footer);\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ }),
 
