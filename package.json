@@ -1,0 +1,31 @@
+{
+  "name": "cherpakovphilipp_toysshop",
+  "version": "1.0.0",
+  "description": "Toys Shop Appl",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CherpakovPhilipp/CherpakovPhilipp_toysShop.git"
+  },
+  "author": "Philipp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CherpakovPhilipp/CherpakovPhilipp_toysShop/issues"
+  },
+  "homepage": "https://github.com/CherpakovPhilipp/CherpakovPhilipp_toysShop#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "babel-loader": "^8.0.5",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
