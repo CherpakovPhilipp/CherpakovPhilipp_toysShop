@@ -205,7 +205,7 @@ eval("var builder = __webpack_require__(/*! ./elementBuilder */ \"./scripts/elem
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var builder = __webpack_require__(/*! ./elementBuilder */ \"./scripts/elementBuilder.js\");\n\nvar content = \"<h1>Here will be main content</h1>\\n                 <img src=\\\"https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg\\\" alt=\\\"content image\\\"/>\";\nmodule.exports = builder('main', content, 'main_block');\n\n//# sourceURL=webpack:///./scripts/main.js?");
+eval("var builder = __webpack_require__(/*! ./elementBuilder */ \"./scripts/elementBuilder.js\");\n\nvar content = \"<h1>Here will be main content</h1>\\n                 <img src=\\\"https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg\\\" alt=\\\"content image\\\"/>\\n                 <span>\".concat(new Date(), \"</span>\");\nmodule.exports = builder('main', content, 'main_block');\n\n//# sourceURL=webpack:///./scripts/main.js?");
 
 /***/ })
 
