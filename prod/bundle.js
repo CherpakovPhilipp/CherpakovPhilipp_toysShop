@@ -161,7 +161,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n\nvar header = __webpack_require__(/*! ./scripts/header */ \"./scripts/header.js\")();\n\nvar footer = __webpack_require__(/*! ./scripts/footer */ \"./scripts/footer.js\")();\n\n$('body').append(header, footer); // document.body.appendChild(header);\n// document.body.appendChild(footer);\n\n//# sourceURL=webpack:///./index.js?");
+eval("var $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n\nvar header = __webpack_require__(/*! ./scripts/header */ \"./scripts/header.js\")();\n\nvar main = __webpack_require__(/*! ./scripts/main */ \"./scripts/main.js\")();\n\nvar footer = __webpack_require__(/*! ./scripts/footer */ \"./scripts/footer.js\")();\n\n$('body').prepend(header, main, footer); //document.body.appendChild('<a>TEST</a>');\n//document.body.appendChild(footer);\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ }),
 
@@ -170,9 +170,9 @@ eval("var $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jq
   !*** ./scripts/elementBuilder.js ***!
   \***********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function () {\n  var tag = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'div';\n  var content = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';\n  var className = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'box';\n  var element = document.createElement(tag);\n  element.className = className;\n  element.innerHTML = content;\n  return element;\n};\n\n//# sourceURL=webpack:///./scripts/elementBuilder.js?");
+eval("var $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n\nmodule.exports = function () {\n  var tag = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'div';\n  var content = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';\n  var className = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'box';\n  var element = $(\"<\".concat(tag, \"/>\"));\n  element.addClass(\"\".concat(className));\n  element.html(\"\".concat(content));\n  return element;\n};\n\n//# sourceURL=webpack:///./scripts/elementBuilder.js?");
 
 /***/ }),
 
@@ -195,6 +195,17 @@ eval("var builder = __webpack_require__(/*! ./elementBuilder */ \"./scripts/elem
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("var builder = __webpack_require__(/*! ./elementBuilder */ \"./scripts/elementBuilder.js\");\n\nvar content = '<a href=\"/\">Logo</a>';\nmodule.exports = builder('header', content, 'header');\n\n//# sourceURL=webpack:///./scripts/header.js?");
+
+/***/ }),
+
+/***/ "./scripts/main.js":
+/*!*************************!*\
+  !*** ./scripts/main.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var builder = __webpack_require__(/*! ./elementBuilder */ \"./scripts/elementBuilder.js\");\n\nvar content = \"<h1>Here will be main content</h1>\\n                 <img src=\\\"https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg\\\" alt=\\\"content image\\\"/>\";\nmodule.exports = builder('main', content, 'main_block');\n\n//# sourceURL=webpack:///./scripts/main.js?");
 
 /***/ })
 
