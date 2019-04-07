@@ -225,8 +225,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "footer", function() { return footer; });
 /* harmony import */ var _elementBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./elementBuilder */ "./scripts/elementBuilder.js");
-/* harmony import */ var _styles_footer_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../styles/footer.css */ "./styles/footer.css");
-/* harmony import */ var _styles_footer_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_footer_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _styles_footer_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../styles/footer.scss */ "./styles/footer.scss");
+/* harmony import */ var _styles_footer_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_footer_scss__WEBPACK_IMPORTED_MODULE_1__);
 
 
 var content = '<p>Easycode 2019 (c)</p>';
@@ -246,8 +246,8 @@ var footer = Object(_elementBuilder__WEBPACK_IMPORTED_MODULE_0__["default"])('fo
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "header", function() { return header; });
 /* harmony import */ var _elementBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./elementBuilder */ "./scripts/elementBuilder.js");
-/* harmony import */ var _styles_header_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../styles/header.css */ "./styles/header.css");
-/* harmony import */ var _styles_header_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_header_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _styles_header_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../styles/header.scss */ "./styles/header.scss");
+/* harmony import */ var _styles_header_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_header_scss__WEBPACK_IMPORTED_MODULE_1__);
 
 
 var content = '<a href="/">Logo</a>';
@@ -267,6 +267,9 @@ var header = Object(_elementBuilder__WEBPACK_IMPORTED_MODULE_0__["default"])('he
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "main", function() { return main; });
 /* harmony import */ var _elementBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./elementBuilder */ "./scripts/elementBuilder.js");
+/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../styles/main.scss */ "./styles/main.scss");
+/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_main_scss__WEBPACK_IMPORTED_MODULE_1__);
+
 
 var content = "<h1>Here will be main content</h1>\n                 <img src=\"https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg\" alt=\"content image\"/>\n                 <span>".concat(new Date(), "</span>");
 var main = Object(_elementBuilder__WEBPACK_IMPORTED_MODULE_0__["default"])('main', content, 'main_block');
@@ -274,10 +277,10 @@ var main = Object(_elementBuilder__WEBPACK_IMPORTED_MODULE_0__["default"])('main
 
 /***/ }),
 
-/***/ "./styles/footer.css":
-/*!***************************!*\
-  !*** ./styles/footer.css ***!
-  \***************************/
+/***/ "./styles/footer.scss":
+/*!****************************!*\
+  !*** ./styles/footer.scss ***!
+  \****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -285,10 +288,21 @@ var main = Object(_elementBuilder__WEBPACK_IMPORTED_MODULE_0__["default"])('main
 
 /***/ }),
 
-/***/ "./styles/header.css":
-/*!***************************!*\
-  !*** ./styles/header.css ***!
-  \***************************/
+/***/ "./styles/header.scss":
+/*!****************************!*\
+  !*** ./styles/header.scss ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./styles/main.scss":
+/*!**************************!*\
+  !*** ./styles/main.scss ***!
+  \**************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

@@ -17,7 +17,7 @@ module.exports = {
 
   module: {
     rules: [
-      {  test: /\.js$/,
+      { test: /\.js$/,
         exclude: /node_modules/,
         use: {
             loader: 'babel-loader',
@@ -26,11 +26,11 @@ module.exports = {
             }
         } 
       },
-      {  test: /\.s?css$/,
+      { test: /\.s?css$/,
         use: [
-          /*'style-loader',*/ // здесь важен порядок, снизу вверх идут подключения
+          //{loader: 'style-loader',options: {singleton: true}}, // здесь важен порядок, снизу вверх идут подключения
           CssPlugin.loader,
-          'css-loader',
+          "css-loader",
           'sass-loader'
         ] 
       }
@@ -43,7 +43,8 @@ module.exports = {
       template: './index.html',
       version: package.version
     }),
-    new CssPlugin({filename: 'main.css'})
+    //new CssPlugin({filename: 'main-[hash].css'}),
+    new CssPlugin({filename: `main-${Date.now()}.css`}),
   ],
 
   optimization: {
