@@ -1,7 +1,7 @@
 import builder from './elementBuilder';
-const content = '<a href="/">Logo</a>';
-import './header.css';
+import './../styles/header.css';
 
+const content = '<a href="/">Logo</a>';
 const header = builder('header', content, 'header');
 
 export {header};

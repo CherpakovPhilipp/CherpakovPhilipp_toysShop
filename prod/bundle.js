@@ -174,17 +174,19 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.scss */ "./app.scss");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _scripts_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scripts/header */ "./scripts/header.js");
-/* harmony import */ var _scripts_main__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scripts/main */ "./scripts/main.js");
-var $ = __webpack_require__(/*! jquery */ "../node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "../node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.scss */ "./app.scss");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _scripts_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scripts/header */ "./scripts/header.js");
+/* harmony import */ var _scripts_main__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scripts/main */ "./scripts/main.js");
+/* harmony import */ var _scripts_footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scripts/footer */ "./scripts/footer.js");
 
 
 
 
 
-$('body').prepend(_scripts_header__WEBPACK_IMPORTED_MODULE_1__["header"], _scripts_main__WEBPACK_IMPORTED_MODULE_2__["main"], _scripts_main__WEBPACK_IMPORTED_MODULE_2__["footer"]);
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').prepend(_scripts_header__WEBPACK_IMPORTED_MODULE_2__["header"], _scripts_main__WEBPACK_IMPORTED_MODULE_3__["main"], _scripts_footer__WEBPACK_IMPORTED_MODULE_4__["footer"]);
 
 /***/ }),
 
@@ -212,14 +214,24 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./scripts/header.css":
-/*!****************************!*\
-  !*** ./scripts/header.css ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./scripts/footer.js":
+/*!***************************!*\
+  !*** ./scripts/footer.js ***!
+  \***************************/
+/*! exports provided: footer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// extracted by mini-css-extract-plugin
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "footer", function() { return footer; });
+/* harmony import */ var _elementBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./elementBuilder */ "./scripts/elementBuilder.js");
+/* harmony import */ var _styles_footer_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../styles/footer.css */ "./styles/footer.css");
+/* harmony import */ var _styles_footer_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_footer_css__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var content = '<p>Easycode 2019 (c)</p>';
+var footer = Object(_elementBuilder__WEBPACK_IMPORTED_MODULE_0__["default"])('footer', content, 'footer');
+
 
 /***/ }),
 
@@ -234,11 +246,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "header", function() { return header; });
 /* harmony import */ var _elementBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./elementBuilder */ "./scripts/elementBuilder.js");
-/* harmony import */ var _header_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header.css */ "./scripts/header.css");
-/* harmony import */ var _header_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_header_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _styles_header_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../styles/header.css */ "./styles/header.css");
+/* harmony import */ var _styles_header_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_header_css__WEBPACK_IMPORTED_MODULE_1__);
+
 
 var content = '<a href="/">Logo</a>';
-
 var header = Object(_elementBuilder__WEBPACK_IMPORTED_MODULE_0__["default"])('header', content, 'header');
 
 
@@ -259,6 +271,28 @@ __webpack_require__.r(__webpack_exports__);
 var content = "<h1>Here will be main content</h1>\n                 <img src=\"https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg\" alt=\"content image\"/>\n                 <span>".concat(new Date(), "</span>");
 var main = Object(_elementBuilder__WEBPACK_IMPORTED_MODULE_0__["default"])('main', content, 'main_block');
 
+
+/***/ }),
+
+/***/ "./styles/footer.css":
+/*!***************************!*\
+  !*** ./styles/footer.css ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./styles/header.css":
+/*!***************************!*\
+  !*** ./styles/header.css ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ })
 
