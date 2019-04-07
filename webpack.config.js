@@ -1,6 +1,9 @@
 const path = require('path');
 const HTMLPlugin = require('html-webpack-plugin');
+const CssPlugin = require('mini-css-extract-plugin');
+
 const package  = require('./package.json');
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
   entry: './index.js',
@@ -22,6 +25,14 @@ module.exports = {
                 presets: ['@babel/preset-env']
             }
         } 
+      },
+      {  test: /\.s?css$/,
+        use: [
+          /*'style-loader',*/ // здесь важен порядок, снизу вверх идут подключения
+          CssPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ] 
       }
     ]
   },
@@ -32,6 +43,7 @@ module.exports = {
       template: './index.html',
       version: package.version
     }),
+    new CssPlugin({filename: 'main.css'})
   ],
 
   optimization: {
@@ -39,4 +51,7 @@ module.exports = {
       chunks: 'all'
     },
   },
+
+  devtool: isProduction ? undefined : 'source-map', // для того, чтоб можно было продебажить код в бандле
+                                                    // без этой надстройки, по ум. все засовуется в eval
 };

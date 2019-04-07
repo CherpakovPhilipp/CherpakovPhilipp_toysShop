@@ -154,14 +154,37 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./index.js":
+/***/ "./app.scss":
 /*!******************!*\
-  !*** ./index.js ***!
+  !*** ./app.scss ***!
   \******************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n\nvar header = __webpack_require__(/*! ./scripts/header */ \"./scripts/header.js\");\n\nvar main = __webpack_require__(/*! ./scripts/main */ \"./scripts/main.js\");\n\nvar footer = __webpack_require__(/*! ./scripts/footer */ \"./scripts/footer.js\");\n\n$('body').prepend(header, main, footer); //document.body.appendChild('<a>TEST</a>');\n//document.body.appendChild(footer);\n\n//# sourceURL=webpack:///./index.js?");
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./index.js":
+/*!******************!*\
+  !*** ./index.js ***!
+  \******************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.scss */ "./app.scss");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _scripts_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scripts/header */ "./scripts/header.js");
+/* harmony import */ var _scripts_main__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scripts/main */ "./scripts/main.js");
+var $ = __webpack_require__(/*! jquery */ "../node_modules/jquery/dist/jquery.js");
+
+
+
+
+
+$('body').prepend(_scripts_header__WEBPACK_IMPORTED_MODULE_1__["header"], _scripts_main__WEBPACK_IMPORTED_MODULE_2__["main"], _scripts_main__WEBPACK_IMPORTED_MODULE_2__["footer"]);
 
 /***/ }),
 
@@ -169,21 +192,34 @@ eval("var $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jq
 /*!***********************************!*\
   !*** ./scripts/elementBuilder.js ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("var $ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n\nmodule.exports = function () {\n  var tag = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'div';\n  var content = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';\n  var className = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'box';\n  var element = $(\"<\".concat(tag, \"/>\"));\n  element.addClass(\"\".concat(className));\n  element.html(\"\".concat(content));\n  return element;\n};\n\n//# sourceURL=webpack:///./scripts/elementBuilder.js?");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "../node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var tag = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'div';
+  var content = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var className = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'box';
+  var element = jquery__WEBPACK_IMPORTED_MODULE_0___default()("<".concat(tag, "/>"));
+  element.addClass(className);
+  element.html(content);
+  return element;
+});
 
 /***/ }),
 
-/***/ "./scripts/footer.js":
-/*!***************************!*\
-  !*** ./scripts/footer.js ***!
-  \***************************/
+/***/ "./scripts/header.css":
+/*!****************************!*\
+  !*** ./scripts/header.css ***!
+  \****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var builder = __webpack_require__(/*! ./elementBuilder */ \"./scripts/elementBuilder.js\");\n\nvar content = '<p>Easycode 2017 (c)</p>';\nmodule.exports = builder('footer', content, 'footer');\n\n//# sourceURL=webpack:///./scripts/footer.js?");
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -191,10 +227,20 @@ eval("var builder = __webpack_require__(/*! ./elementBuilder */ \"./scripts/elem
 /*!***************************!*\
   !*** ./scripts/header.js ***!
   \***************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: header */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("var builder = __webpack_require__(/*! ./elementBuilder */ \"./scripts/elementBuilder.js\");\n\nvar content = '<a href=\"/\">Logo</a>';\nmodule.exports = builder('header', content, 'header');\n\n//# sourceURL=webpack:///./scripts/header.js?");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "header", function() { return header; });
+/* harmony import */ var _elementBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./elementBuilder */ "./scripts/elementBuilder.js");
+/* harmony import */ var _header_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header.css */ "./scripts/header.css");
+/* harmony import */ var _header_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_header_css__WEBPACK_IMPORTED_MODULE_1__);
+
+var content = '<a href="/">Logo</a>';
+
+var header = Object(_elementBuilder__WEBPACK_IMPORTED_MODULE_0__["default"])('header', content, 'header');
+
 
 /***/ }),
 
@@ -202,11 +248,19 @@ eval("var builder = __webpack_require__(/*! ./elementBuilder */ \"./scripts/elem
 /*!*************************!*\
   !*** ./scripts/main.js ***!
   \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: main */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("var builder = __webpack_require__(/*! ./elementBuilder */ \"./scripts/elementBuilder.js\");\n\nvar content = \"<h1>Here will be main content</h1>\\n                 <img src=\\\"https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg\\\" alt=\\\"content image\\\"/>\\n                 <span>\".concat(new Date(), \"</span>\");\nmodule.exports = builder('main', content, 'main_block');\n\n//# sourceURL=webpack:///./scripts/main.js?");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "main", function() { return main; });
+/* harmony import */ var _elementBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./elementBuilder */ "./scripts/elementBuilder.js");
+
+var content = "<h1>Here will be main content</h1>\n                 <img src=\"https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg\" alt=\"content image\"/>\n                 <span>".concat(new Date(), "</span>");
+var main = Object(_elementBuilder__WEBPACK_IMPORTED_MODULE_0__["default"])('main', content, 'main_block');
+
 
 /***/ })
 
 /******/ });
+//# sourceMappingURL=bundle.js.map

@@ -1,4 +1,7 @@
-const builder = require('./elementBuilder');
+import builder from './elementBuilder';
 const content = '<a href="/">Logo</a>';
+import './header.css';
 
-module.exports = builder('header', content, 'header');
+const header = builder('header', content, 'header');
+
+export {header};

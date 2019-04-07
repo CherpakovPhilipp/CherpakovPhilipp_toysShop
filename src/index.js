@@ -1,7 +1,8 @@
 const $ = require('jquery');
+import './app.scss';
 
-const header = require('./scripts/header')();
-const main = require('./scripts/main')();
-const footer = require('./scripts/footer')();
+import {header} from './scripts/header';
+import {main} from './scripts/main';
+import {footer} from './scripts/main';
 
 $('body').prepend(header, main, footer);
