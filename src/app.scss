@@ -12,10 +12,21 @@
 body{
   background: $body-bg;
 }
-h1{
-  color: grey;
-}
 
+
+/*----------     2     ----------*/
+.triangle_up{
+  @include triangle_dir(up, yellow, 20px);
+}
+.triangle_down{
+  @include triangle_dir(down, green, 20px);
+}
+.triangle_left{
+  @include triangle_dir(left, red, 20px);
+}
+.triangle_right{
+  @include triangle_dir(right, blue, 20px);
+}
 /*----------     3     ----------*/
 @for $i from 1 through 10 {
   .width#{$i} {width: $i * 10%;}
@@ -24,4 +35,6 @@ h1{
 @for $i from 1 through 20 {
   li:nth-child(#{$i}) { background: rgb( random(255), random(255), random(255) ); }
 }
+
+
 

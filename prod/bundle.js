@@ -270,11 +270,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../styles/main.scss */ "./styles/main.scss");
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_main_scss__WEBPACK_IMPORTED_MODULE_1__);
 
- // const content = `<h1>Here will be main content</h1>
-//                  <img src="https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg" alt="content image"/>
-//                  <span>${new Date()}</span>`;
 
-var content = "<h1>Here will be main content</h1>\n                 <span>".concat(new Date(), "</span>");
+var content = "<h1>Here will be main content</h1>\n                 <img src=\"https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg\" alt=\"content image\"/>\n                 <span>".concat(new Date(), "</span>");
 var main = Object(_elementBuilder__WEBPACK_IMPORTED_MODULE_0__["default"])('main', content, 'main_block');
 
 
