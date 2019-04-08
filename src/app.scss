@@ -1,4 +1,6 @@
 @import "./styles/variables.scss";
+@import "./styles/functions.scss";
+@import "./styles/mixins.scss";
 
 *{
   padding: 0;
@@ -13,3 +15,13 @@ body{
 h1{
   color: grey;
 }
+
+/*----------     3     ----------*/
+@for $i from 1 through 10 {
+  .width#{$i} {width: $i * 10%;}
+}
+/*----------     4     ----------*/
+@for $i from 1 through 20 {
+  li:nth-child(#{$i}) { background: rgb( random(255), random(255), random(255) ); }
+}
+

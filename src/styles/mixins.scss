@@ -1,0 +1,7 @@
+@mixin round($angle: 10px) {
+  border-radius: round($angle);
+}
+
+@mixin triangle() {
+  
+}
