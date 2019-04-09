@@ -17,7 +17,8 @@ module.exports = {
 
   module: {
     rules: [
-      { test: /\.js$/,
+      { 
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
             loader: 'babel-loader',
@@ -26,11 +27,12 @@ module.exports = {
             }
         } 
       },
-      { test: /\.s?css$/,
+      { 
+        test: /\.s?css$/,
         use: [
           //{loader: 'style-loader',options: {singleton: true}}, // здесь важен порядок, снизу вверх идут подключения
           CssPlugin.loader,
-          "css-loader",
+          'css-loader',
           'sass-loader'
         ] 
       }
