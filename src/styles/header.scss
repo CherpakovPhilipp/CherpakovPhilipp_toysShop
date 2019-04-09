@@ -1,0 +1,12 @@
+@import './variables.scss';
+
+header{
+  display: block;
+  padding: 20px 15px; 
+  background: $header-bg;
+
+  a{color: blue;
+  
+    &:hover{color: green;}
+  }
+}

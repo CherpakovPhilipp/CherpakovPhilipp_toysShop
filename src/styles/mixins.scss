@@ -1,0 +1,41 @@
+@mixin round($angle: 10px) {
+  border-radius: round($angle);
+}
+
+@mixin triangle ($color, $size) {
+  border-radius: $size;
+  position: relative;
+
+  &:after {
+    content: ''; 
+    position: absolute; 
+    left: 0; 
+    bottom: 0;
+    border: $size solid transparent; 
+    border-bottom: $size solid $color; 
+  }
+}
+
+@mixin triangle_dir ($direction, $color, $size) {
+  $bord_dir: bottom;
+
+  @if $direction == down {
+    $bord_dir: top;
+  } @else if $direction == left {
+    $bord_dir: right;
+  } @else if $direction == right {
+    $bord_dir: left;
+  }
+  
+  border-radius: $size;
+  position: relative;
+
+  &:after {
+    content: ''; 
+    position: absolute; 
+    left: 0; 
+    bottom: 0;
+    border: $size solid transparent; 
+    border-#{$bord_dir}: $size solid $color; 
+  }
+}
