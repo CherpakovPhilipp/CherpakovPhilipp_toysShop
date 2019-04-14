@@ -23,7 +23,7 @@ const plugins = [
 
 if (isStylesExternal) {
   plugins.push(new CssPlugin({filename: `main-${Date.now()}.css`}),)
-}
+};
 
 module.exports = {
   entry: './index.js',

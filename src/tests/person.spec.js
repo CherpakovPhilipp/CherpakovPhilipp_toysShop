@@ -2,49 +2,53 @@ import chai from 'chai';
 import {Person} from './Person';
 import faker from 'faker';
 
-// const {assert, expect} = chai;
-// chai.should();
+const {assert, expect} = chai;
+chai.should();
 
+describe('Person', () => {
+  let person;
+  const name = faker.name.firstName;
 
-// describe('Persone class', () => {
-//   let person;
+  beforeEach(() => {
+    person = new Person(name);
+  });
 
-//   beforeEach(() => {
-//     person = new Person();
-//   });
+  it('should create instanse with field name', () => {
+    person.name.should.equal(name);
+  });
 
-//   it('should create instanse with field name', () => {
-//     person.name.should.be.equal('John');
-//   });
+  it('should create instanse with field date', () => {
+    person.creation.should.not.be.equal(undefined);
+  });
 
-//   it('should create instanse with date', () => {
-//     person.creation.should.instanceOf(Date);
-//   });
+  it('field date should be instance of Date', () => {
+    person.creation.should.be.instanceof(Date);
+  });
 
-//   it('should create instanse with field name', () => {
-//     const testName = faker.name.firstName;
-//     const person = new Person(testName);
+  it('setName(name) should set name', () => {
+    const newName = faker.name.firstName;
 
-//     person.name.should.equal(testName);
-//   });
+    person.setName(newName);
+    person.name.should.equal(newName);
+  });
 
-//   it('should return name of getName()', () => {
-//     person.getName().should.equal(person.name);
-//   });
+  it('getName() should return name', () => {
+    person.getName().should.equal(person.name);
+  });
 
-//   it('should set name', () => {
-//     person.setName(name);
-//     person.name.should.equal(name);
-//   });
+  it('getCreation should return day time', () => {
+    let dayObj = {
+      3: 'night child',
+      23: 'night child',
+      7: 'morning child',
+      12: 'day child',
+      20: 'evening child'
+    };
 
-//   it('should return ""night child: on getCreation() if 3 hours', () => {
-//     person.creation.setHours(3);
-//     person.getCreation().should.equal('night child');
-//   });
+    for (let key in dayObj) {
+      person.creation.setHours(key);
 
-
-
-  
-
-
-// });
+      expect(person.getCreation()).equal(dayObj[key]);
+    };
+  })
+});

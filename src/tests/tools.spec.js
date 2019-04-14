@@ -1,26 +1,29 @@
 import chai from 'chai';
-import {sum} from './tools';
+import {sum, foo} from './tools';
+
+//const assert = require('assert');
 
 const {assert, expect} = chai;
 chai.should();
 
+describe('sum()', () => {
+  it('sum(2, 3) should return 5', () => {
+    assert.equal(sum(2, 3), 5);
+  });
 
-// describe('sum()', () => {
-//   it('sum(2, 3) should return 5', () => {
-//     assert.equal(sum(2, 3), 5);
-//   });
+  it('sum(2, 3) should return 5', () => {
+    sum(2, 3).should.not.instanceOf(Object);
+  });
 
-//   it('test array', () => {
-//     expect([1,2,3][2] == 3).to.be.true;
-//   });
+  it('should return Number', () => {
+    assert.typeOf(sum(5,5), 'Number');
+  });
 
-//   it('checking should', () => {
-//     sum(3,7).should.equal(10);
-//   });
-// });
 
-// describe('foo()', () => {
-//   it('checking foo', () => {
-//     foo().should.equal(undefined);
-//   });
-// })
+});
+
+describe ('foo()', () => {
+  it ('should return "undefined"', () => {
+    assert.equal(foo(5, 10), undefined);
+  });
+})

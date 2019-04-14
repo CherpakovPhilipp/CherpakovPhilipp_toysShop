@@ -65,17 +65,18 @@ module.exports = function(config) {
 
     plugins: [
       'karma-mocha',
-      'karma-phantomjs-launcher',
-      'karma-chrome-launcher',
+      'karma-phantomjs-launcher', // выводит результаты тестов в терминальном браузере
+      'karma-chrome-launcher', // выводит результаты тестов в хроме
       'karma-webpack',
-      'karma-mocha-reporter'
+      'karma-mocha-reporter' // приводит результаты тестов к читаемому виду
     ],
      
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: false, // true — запускает тест один раз
+                      // false — перезапускает при каждом изменении файла
 
     // Concurrency level
     // how many browser should be started simultaneous
