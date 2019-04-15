@@ -7,6 +7,8 @@ module.exports = {
         path: path.resolve(__dirname, 'prod')
     },
 
+    mode: 'development',
+
     module: {
         rules: [
             {
