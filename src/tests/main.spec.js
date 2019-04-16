@@ -59,12 +59,16 @@ describe('getAdultUsers()', () => {
 });
 
 describe('getRandomUsers()', () => {
-  const random = sinon.stub(Math, 'random');
-  const round = sinon.stub(Math, 'round');
+  let random, round;
   const usersTest = [1,2,3,4,5,6];
-  random.returns(0.7); 
-  round.returns(3);
   
+  beforeEach(() => {
+    random = sinon.stub(Math, 'random');
+    round = sinon.stub(Math, 'round');
+    random.returns(0.7); 
+    round.returns(3);
+  });
+
   afterEach(() => {
     Math.random.restore();
     Math.round.restore();
@@ -76,10 +80,10 @@ describe('getRandomUsers()', () => {
 
   it('should return sliced array if numb > 0.5', () => {
     assert.includeDeepMembers(getRandomUsers(usersTest), usersTest.slice(0, round));
-    random.returns(0.3);
   });
   
   it('should return sliced array if numb <= 0.5', () => {
+    random.returns(0.3);
     assert.includeDeepMembers(getRandomUsers(usersTest), usersTest.slice(round(), usersTest.length));
   });
 });
