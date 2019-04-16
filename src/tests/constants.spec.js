@@ -19,10 +19,6 @@ describe('days', () => {
 });
 
 describe('defaultProduct', () => {
-  it('should be an Apple', () => {
-    assert.equal(defaultProduct, 'Apple');
-  });
-
   it('should be a string', () => {
     expect(defaultProduct).to.be.a('string');
   });
