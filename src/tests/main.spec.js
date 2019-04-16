@@ -2,9 +2,9 @@ import chai from 'chai';
 import sinon from 'sinon';
 import faker from 'faker';
 import { days, defaultProduct, money, users } from './constants';
-import {showMessage, getDay, getAdultUsers, getRandomUsers, Product} from './main';
+import { showMessage, getDay, getAdultUsers, getRandomUsers, Product } from './main';
 
-const {assert, expect} = chai;
+const { assert, expect } = chai;
 chai.should();
 
 describe('showMessage()', () => {
@@ -15,17 +15,17 @@ describe('showMessage()', () => {
   });
 
   it('alert should be invoked', () => {
-    const spy = sinon.spy(window, 'alert');
+    const stub = sinon.stub(window, 'alert');
     showMessage()
 
-    expect(spy.called).true;
+    expect(stub.called).true;
   });
 
   it('alert should be invoked with argument', () => {
-    const spy = sinon.spy(window, 'alert');
+    const stub = sinon.stub(window, 'alert');
     showMessage(fakeText);
 
-    expect(spy.calledWith(fakeText)).true;
+    expect(stub.calledWith(fakeText)).true;
   });
 });
 
@@ -64,33 +64,33 @@ describe('getRandomUsers()', () => {
   const usersTest = [1,2,3,4,5,6];
   random.returns(0.7); 
   round.returns(3);
-
   
+  afterEach(() => {
+    Math.random.restore();
+    Math.round.restore();
+  });
+
   it('should return false if users not set', () => {
     getRandomUsers().should.equal(false);
   });
 
   it('should return sliced array if numb > 0.5', () => {
     assert.includeDeepMembers(getRandomUsers(usersTest), usersTest.slice(0, round));
+    random.returns(0.3);
   });
-
-  random.returns(0.3);
   
   it('should return sliced array if numb <= 0.5', () => {
     assert.includeDeepMembers(getRandomUsers(usersTest), usersTest.slice(round(), usersTest.length));
   });
-
-  Math.random.restore();
-  Math.round.restore();
 });
 
 describe('Product', () => {
   let product;
-  let titleTest;
-  let priceTest;
+  let titleTest = faker.lorem.word;;
+  let priceTest = faker.random.number;;
 
   beforeEach(() => {
-    product = new Product(titleTest, priceTest);
+    product = new Product();
   });
 
   it('set constructor with default title', () => {
@@ -102,12 +102,10 @@ describe('Product', () => {
   });
 
   it('set constructor with entered title', () => {
-    titleTest = faker.lorem.word;
     assert.equal(product.title, defaultProduct);
   });
 
   it('set constructor with entered price', () => {
-    priceTest = faker.random.number;
     assert.equal(product.price, 10);
   });
 
@@ -122,6 +120,11 @@ describe('Product', () => {
   it('setPrice(value) sets price to  value, if value > 10', () => {
     product.setPrice(15);
     expect(product.price).equal(15);
+  });
+
+  it('setPrice(value): price shouldn\'t change if value less than 10', () => {
+    product.setPrice(5);
+    expect(product.price).not.equal(5);
   });
 });
 

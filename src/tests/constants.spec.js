@@ -1,7 +1,7 @@
 import chai from 'chai';
-import {days, defaultProduct, money, users} from './constants';
+import { days, defaultProduct, money, users } from './constants';
 
-const {assert, expect} = chai;
+const { assert, expect } = chai;
 chai.should();
 
 describe('days', () => {
