@@ -1,7 +1,6 @@
-@import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
  
-.header{
+header{
   @include components_common;
 
   justify-content: flex-end;
