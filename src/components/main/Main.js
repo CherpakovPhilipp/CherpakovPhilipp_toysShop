@@ -1,5 +1,5 @@
 import React from 'react';
-
+ 
 import { Aside } from '../aside/Aside';
 import { Content } from '../content/Content';
 
