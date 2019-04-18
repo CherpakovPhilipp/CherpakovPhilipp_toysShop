@@ -7,14 +7,11 @@ import { Footer } from './components/footer/Footer';
 
 import './styles/general.scss';
 
-import { createDeflate } from 'zlib';
-
-
 const rootComp = (
     <>
-        <Header/>
-        <Main/>
-        <Footer/>
+        <Header />
+        <Main />
+        <Footer />
     </>
 );
 

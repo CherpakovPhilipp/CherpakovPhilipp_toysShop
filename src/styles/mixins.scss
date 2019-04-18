@@ -1,5 +1,7 @@
+@import './variables.scss';
+
 @mixin components_common {
   display: flex;
   padding: 25px;
   background: $random_bg;
-}
+} 
