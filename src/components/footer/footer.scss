@@ -1,6 +1,6 @@
 @import '../../styles/mixins.scss';
  
-footer{
+.footer{
   @include components_common;
 
   flex: 0 0 auto;

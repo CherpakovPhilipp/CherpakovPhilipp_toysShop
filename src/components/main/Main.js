@@ -6,7 +6,7 @@ import { Content } from '../content/Content';
 import './main.scss';
 
 export const Main  = () => (
-  <main>
+  <main className="main">
     <Aside />
     <Content />
   </main>

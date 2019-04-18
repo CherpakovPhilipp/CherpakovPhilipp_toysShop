@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iliatcymbal/test_markeet.git"
+    "url": "git+https://github.com/CherpakovPhilipp/CherpakovPhilipp_toysShop.git"
   },
   "author": "CherpakovPhilipp",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/iliatcymbal/test_markeet/issues"
+    "url": "https://github.com/CherpakovPhilipp/CherpakovPhilipp_toysShop/issues"
   },
-  "homepage": "https://github.com/iliatcymbal/test_markeet#readme",
+  "homepage": "https://github.com/CherpakovPhilipp/CherpakovPhilipp_toysShop#readme",
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
