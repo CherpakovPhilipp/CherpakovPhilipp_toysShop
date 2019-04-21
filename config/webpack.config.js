@@ -15,7 +15,11 @@ const plugins = [
         version: package.version
     }),
 
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+
+    new webpack.ProvidePlugin({  // этот плагин подключает нужные модули глобально 
+        React: 'react'
+    })
 ];
 
 if (isStylesExternal) {
@@ -32,6 +36,15 @@ module.exports = {
 
     module: {
         rules: [
+            {
+                enforce: 'pre', // запускается самый первый
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+                options: {
+                    emitWarning: true, // с этой надстройкой проект делает перебилд, если есть ошибки eslint 
+                } 
+            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
