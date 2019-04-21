@@ -17,7 +17,7 @@ const plugins = [
 
     new webpack.HotModuleReplacementPlugin(),
 
-    new webpack.ProvidePlugin({  // этот плагин подключает нужные модули глобально 
+    new webpack.ProvidePlugin({  // этот плагин подключает нужные модули глобально
         React: 'react'
     })
 ];
@@ -40,10 +40,10 @@ module.exports = {
                 enforce: 'pre', // запускается самый первый
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'eslint-loader',
+                loader: 'eslint-loader', // линтер срабатывает автоматически после каждого обновления кода
                 options: {
-                    emitWarning: true, // с этой надстройкой проект делает перебилд, если есть ошибки eslint 
-                } 
+                    emitWarning: true, // с этой надстройкой проект делает ребилд, даже если есть ошибки eslint
+                }
             },
             {
                 test: /\.js$/,
