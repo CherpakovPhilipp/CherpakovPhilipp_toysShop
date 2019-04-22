@@ -1,7 +1,9 @@
 @import '../../styles/mixins.scss';
- 
+
 .content{
   @include components_common;
 
   flex:3;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
