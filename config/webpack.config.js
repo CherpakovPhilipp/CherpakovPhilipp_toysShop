@@ -11,7 +11,7 @@ const isStylesExternal = args.env && args.env.styles;
 const plugins = [
     new HTMLPlugin({
         title: package.name,
-        template: './index.html',
+        template: '../src/index.html',
         version: package.version
     }),
 
