@@ -1,11 +1,13 @@
 import './navigation.scss';
 
-export const Navigation = () => (
+export const Navigation = ({ list = [] }) => (
   <nav className="nav">
     <ul>
-      <li><a href="/">One</a></li>
-      <li><a href="/">Two</a></li>
-      <li><a href="/">Three</a></li>
+      {list.map(item => (
+        <li key={item}>
+          <a href={`/${item}`}>{item}</a>
+        </li>
+      ))}
     </ul>
   </nav>
 );

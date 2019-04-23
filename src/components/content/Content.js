@@ -1,67 +1,39 @@
 import './content.scss';
 
-const Error = props => (<mark style={{ color: props.color }}>{props.text}</mark>);
+import { NumbersList } from '../numbersList';
+import { User, Users } from '../usersList';
 
-const menuItems = ['item1', 'item2', 'item3', 'item4', 'item5'];
 const users = [
-  { id: 1, name: 'Patrik', },
-  { id: 2, name: 'Teresa' },
-  { id: 3, name: 'Jhon' },
-  { id: 4, name: 'Alex' },
-  { id: 5, name: 'Max' },
-  { id: 6, name: 'Nick' },
-  { id: 7, name: 'Martha' },
-  { id: 8, name: 'Cristine' },
-  { id: 9, name: 'Cristopher' }
+  {
+    id: 1, firstName: 'Patrik', lastName: 'Simpson', age: 15
+  },
+  {
+    id: 2, firstName: 'Teresa', lastName: 'Stefenson', age: 19
+  },
+  {
+    id: 3, firstName: 'Jhon', lastName: 'Clinton', age: 26
+  },
+  {
+    id: 4, firstName: 'Alex', lastName: 'Geits', age: 19
+  },
+  {
+    id: 5, firstName: 'Max', lastName: 'Jobs', age: 33
+  },
+  {
+    id: 6, firstName: 'Nick', lastName: '', age: 55
+  },
+  {
+    id: 7, firstName: 'Martha', lastName: 'Uejn', age: 12
+  },
+  {
+    id: 8, firstName: 'Cristine', lastName: 'Pitt', age: 45
+  },
 ];
 
-const List = () => (
-  <ul>
-    {menuItems.map(item => <li key={+(new Date())}>{item}</li>)}
-  </ul>
-);
-
-const getNumbers = (from, to, isOdd) => {
-  const arr = [];
-
-  for (let i = +from; i <= +to; i++) {
-    arr.push(i);
-  }
-
-  return (
-    <ul>
-      {arr
-        .filter(item => ((isOdd) ? item % 2 : !(item % 2)))
-        .map(item => <li>{item}</li>)
-      }
-    </ul>
-  );
-};
-
-const ComponentName = props => getNumbers(props.from, props.to, props.odd);
-
-const Greeting = () => {
-  const dayTime = new Date().getHours();
-
-  if (dayTime >= 3 && dayTime <= 12) {
-    return (<span className="greeting">Good morning!</span>);
-  }; 
-  if (dayTime > 12 && dayTime < 18) {
-    return (<span className="greeting">Good afternoon!</span>);
-  } ;
-  if (dayTime >= 18 && dayTime <= 22) {
-    return (<span className="greeting">Good evening!</span>);
-  }
-  
-  return (<span className="greeting">Good night!</span>);
-};
-
 export const Content = () => (
-  <>
-    <div className="content">Content</div>
-    <Error text="Here is an error" />
-    <List />
-    <ComponentName odd from="3" to="10" />
-    <Greeting />
-  </>
+  <div className="content">
+    <User firstName="Mark" lastName="Twen" age="14" className="user" />
+    <Users users={users} />
+    <NumbersList odd from="1" to="10" />
+  </div>
 );

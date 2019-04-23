@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Header } from './components/header';
-import { Main } from './components/main/Main';
-import { Footer } from './components/footer/Footer';
+import { Main } from './components/main';
+import { Footer } from './components/footer';
 
 import './styles/general.scss';
 
