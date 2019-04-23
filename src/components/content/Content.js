@@ -1,7 +1,7 @@
 import './content.scss';
 
 import { NumbersList } from '../numbersList';
-import { CmpntName, ListCmpntName } from '../usersList';
+import { User, Users } from '../usersList';
 
 const users = [
   {
@@ -32,8 +32,8 @@ const users = [
 
 export const Content = () => (
   <div className="content">
-    <CmpntName firstName="Mark" lastName="Twen" age="14" className="user" />
-    <ListCmpntName users={users} />
+    <User firstName="Mark" lastName="Twen" age="14" className="user" />
+    <Users users={users} />
     <NumbersList odd from="1" to="10" />
   </div>
 );

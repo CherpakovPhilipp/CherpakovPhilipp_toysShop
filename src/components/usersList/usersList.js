@@ -1,6 +1,6 @@
 import './usersList.scss';
 
-const CmpntName = ({ firstName = 'Philipp', lastName = 'Cherpakov', age = 26 }) => (
+const User = ({ firstName = 'Philipp', lastName = 'Cherpakov', age = 26 }) => (
   <div className="user">
     <div className="f_name">{firstName}</div>
     <div className="l_name">{lastName}</div>
@@ -8,11 +8,11 @@ const CmpntName = ({ firstName = 'Philipp', lastName = 'Cherpakov', age = 26 }) 
   </div>
 );
 
-const ListCmpntName = ({ users = [] }) => (
+const Users = ({ users = [] }) => (
   <div className="users">
     {
     users.map(item => (
-      <CmpntName
+      <User
         key={item.id}
         firstName={item.firstName}
         lastName={item.lastName}
@@ -23,4 +23,4 @@ const ListCmpntName = ({ users = [] }) => (
   </div>
 );
 
-export { CmpntName, ListCmpntName };
+export { User, Users };
