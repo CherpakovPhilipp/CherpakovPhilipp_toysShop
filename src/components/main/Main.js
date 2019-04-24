@@ -3,9 +3,16 @@ import { Content } from '../content';
 
 import './main.scss';
 
-export const Main = () => (
-  <main className="main">
-    <Aside />
-    <Content />
-  </main>
-);
+export class Main extends Component {
+  render() {
+    const { user } = this.props;
+
+    return (
+      <main className="main">
+        <Aside />
+        <Content />
+        <p>{user||'Hi'}</p>
+      </main>
+    );
+  }
+}

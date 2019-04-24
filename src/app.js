@@ -10,7 +10,7 @@ import './styles/general.scss';
 const App = () => (
   <>
     <Header />
-    <Main />
+    <Main user="Default User"/>
     <Footer />
   </>
 );
