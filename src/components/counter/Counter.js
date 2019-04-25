@@ -5,25 +5,25 @@ export class Counter extends Component {
     super(props);
     this.state = {
       counter: 0
-    }
-  };
+    };
+  }
 
   clickHandler() {
-    this.setState({counter: this.state.counter + 1}, () => {console.log(this.state.counter)});
-  };
+    this.setState({ counter: this.state.counter + 1 }, () => { console.log(this.state.counter); });
+  }
 
   render() {
-    return(
+    return (
       <div className="counter">
-        <button onClick={(ev) => this.clickHandler(ev)}>Click Me!</button>
+        <button onClick={ev => this.clickHandler(ev)}>Click Me!</button>
         <span>{this.state.counter}</span>
       </div>
-    )
+    );
   }
 }
 
 
-/*export class Counter extends Component {
+/* export class Counter extends Component {
   // constructor(props) {
   //   super(props);
   //   this.counter = 0;
@@ -58,4 +58,4 @@ export class Counter extends Component {
       </>
     );
   };
-}*/
+} */
