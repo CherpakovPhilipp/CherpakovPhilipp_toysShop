@@ -3,7 +3,16 @@
 .content{
   @include components_common;
 
+  display: block;
   flex:3;
   flex-wrap: wrap;
   align-items: flex-start;
+}
+.tab_panels p{
+  max-height: 0;
+  transition: max-height 1s;
+  overflow: hidden;
+}
+.tab_panels p.active{
+  max-height: 500px;
 }

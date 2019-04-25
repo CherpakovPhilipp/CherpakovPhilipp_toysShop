@@ -11,7 +11,6 @@ export class Main extends Component {
       <main className="main">
         <Aside />
         <Content />
-        <p>{user||'Hi'}</p>
       </main>
     );
   }
