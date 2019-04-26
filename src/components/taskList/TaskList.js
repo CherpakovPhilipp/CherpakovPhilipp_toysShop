@@ -1,23 +1,21 @@
 export class TaskList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tasks: 0,
-      done: 0,
-      inProgress: 0,
-      waiting: 0,
-    };
-  }
+  state = {
+    tasks: 0,
+    done: 0,
+    inProgress: 0,
+    waiting: 0,
+  };
 
   render() {
+    const { tasks, done, inProgress, waiting } = this.state;
     return (
       <>
-        <p>Hello, { this.props.userName }</p>
+        <h1>Hello, { this.props.userName }</h1>
         <br/>
-        <p>You have <b>{ this.state.tasks }</b> tasks</p>
-        <p>Done: <b>{ this.state.done }</b></p>
-        <p>In progress: <b>{ this.state.inProgress }</b></p>
-        <p>Waiting: <b>{ this.state.waiting }</b></p>
+        <p>You have <b>{ tasks }</b> tasks</p>
+        <p>Done: <b>{ done }</b></p>
+        <p>In progress: <b>{ inProgress }</b></p>
+        <p>Waiting: <b>{ waiting }</b></p>
         <br/>
         <a href="/Tasks">Go to the tasks list</a>
       </>
