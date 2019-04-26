@@ -1,0 +1,13 @@
+@import '../../styles/mixins.scss';
+
+.posts_list{
+  @include text_block;
+
+  list-style: initial;
+}
+
+.posts_list li{
+  list-style: initial;
+  list-style-position: inside;
+}
+

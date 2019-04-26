@@ -1,0 +1,19 @@
+@import '../../styles/mixins.scss';
+
+.users_list{
+  @include flex;
+
+  justify-content: flex-start;
+}
+.users_list li{
+  @include text_block;
+  
+  flex: 0 1 20%;
+  margin: 0 6.65% 15px 0;
+  min-height: 100px;
+}
+.users_list li:nth-child(4n){  
+  flex: 0 1 20%;
+  margin-right: 0;
+  min-height: 100px;
+}

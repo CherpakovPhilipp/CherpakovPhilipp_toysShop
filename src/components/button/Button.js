@@ -1,3 +1,5 @@
+import './button.scss';
+
 export class Button extends Component {
   state = {
     isActive: 'active'
@@ -10,10 +12,10 @@ export class Button extends Component {
 
   render() {
     return (
-      <>
+      <div className="buttons">
         <button type="button" onClick={ this.toggleActive }>Toggle Class</button>
         <span className={this.state.isActive} />
-      </>
+      </div>
     );
   }
 }

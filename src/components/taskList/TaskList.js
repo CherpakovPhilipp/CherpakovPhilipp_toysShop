@@ -1,3 +1,5 @@
+import './taskList.scss';
+
 export class TaskList extends Component {
   state = {
     tasks: 0,
@@ -9,7 +11,7 @@ export class TaskList extends Component {
   render() {
     const { tasks, done, inProgress, waiting } = this.state;
     return (
-      <>
+      <div className="task_list">
         <h1>Hello, { this.props.userName }</h1>
         <br/>
         <p>You have <b>{ tasks }</b> tasks</p>
@@ -18,7 +20,7 @@ export class TaskList extends Component {
         <p>Waiting: <b>{ waiting }</b></p>
         <br/>
         <a href="/Tasks">Go to the tasks list</a>
-      </>
+      </div>
     );
   }
 }

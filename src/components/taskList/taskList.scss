@@ -1,0 +1,8 @@
+@import '../../styles/mixins.scss';
+
+.task_list{
+  @include text_block;
+
+  display: inline-block;
+  margin-bottom: 30px;
+}

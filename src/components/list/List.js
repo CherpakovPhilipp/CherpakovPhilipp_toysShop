@@ -1,5 +1,7 @@
 import { Posts } from '../posts';
 
+import './list.scss';
+
 export class List extends Component {
   constructor(props) {
     super(props);
@@ -27,7 +29,7 @@ export class List extends Component {
         </li>
       ));
 
-    return this.props.numered ? <ol>{ items }</ol> : <ul>{ items }</ul>;
+    return this.props.numered ? <ol className="users_list">{ items }</ol> : <ul className="users_list">{ items }</ul>;
   }
 
   render() {

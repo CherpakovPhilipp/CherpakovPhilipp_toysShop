@@ -1,0 +1,21 @@
+@import '../../styles/mixins.scss';
+
+.toogle_panels button{
+  @include button;
+
+  margin-bottom: 20px;
+}
+.toogle_panels p{
+  @include text_block;
+  
+  max-height: 0;
+  padding: 0 15px;
+  overflow: hidden;
+  transition: all 1s;
+
+  &.active{
+    padding: 15px;
+    max-height: 500px;
+    margin-bottom: 30px;
+  }
+}

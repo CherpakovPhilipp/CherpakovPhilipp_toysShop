@@ -1,0 +1,7 @@
+@import '../../styles/mixins.scss';
+
+.buttons button{
+  @include button;
+
+  margin-bottom: 20px;
+}
