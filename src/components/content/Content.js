@@ -7,6 +7,15 @@ import { Button } from '../button';
 import { TogglePanels } from '../togglePanels';
 import { TaskList } from '../taskList';
 import { List } from '../list';
+import { Context } from '../../context.js';
+
+const Switcher = () => (
+  <Context.Consumer>
+    {
+      theme => <button onClick={theme.switch}>Switch theme</button>
+    }
+  </Context.Consumer>
+)
 
 export class Content extends Component {
   constructor(props) {
@@ -34,6 +43,7 @@ export class Content extends Component {
         <TogglePanels />
         <TaskList userName="Philipp" />
         <List list={this.state.users} field="name" numered />
+        <Switcher />
       </div>
     );
   }
