@@ -28,7 +28,7 @@ if (isStylesExternal) {
 }
 
 module.exports = {
-    entry: ["babel-polyfill", "../src/app.js"],
+    entry: ['babel-polyfill', '../src/app.js'],
     context: path.resolve(__dirname, '../src'),
     output: {
         filename: '[name].js'

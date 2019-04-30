@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'babel-polyfill';
 
 import { Header } from './components/header';
 import { Main } from './components/main';

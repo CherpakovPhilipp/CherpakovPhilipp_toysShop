@@ -10,33 +10,34 @@ class GoogleMap {
     this.checkPosition();
   }
 
-  checkPosition() {
+  async checkPosition() {
     if(this.position instanceof Function) {
-      this.position().then((pos) => {
-        this.position = pos;
-      })
+      this.position = await this.position();
     }
   }
-	
+
 	changePosition(position) {
 		this.map.panTo(position);
 		this.marker.setPosition(position);
 	}
-	
+
 	initMap = () => {
-    $.getScript('https://maps.googleapis.com/maps/api/js?key=' + this._googleMapKey + '', this._setMap);
+    if (!this.initialized) $.getScript('https://maps.googleapis.com/maps/api/js?key=' + this._googleMapKey + '', this.setMap)
+    else this.setMap();
+
+    this.initialized = true;
 	}
-	
-	_setMap = () => {
+
+	setMap = () => {
 		this.map = new google.maps.Map(document.querySelector(this.container), {
 			center: this.position,
 			zoom: this.zoom
 		});
-		
+
 		this.marker = new google.maps.Marker({
 			position: this.position,
 			map: this.map
-		});	
+		});
 	}
 }
 
@@ -61,7 +62,7 @@ const getLocation = async() => {
 
 const handleForm = (event) => {
   event.preventDefault();
-  
+
   if (map && map.position){
     map.changePosition({lat: +event.target.lat.value, lng: +event.target.lng.value});
   }
