@@ -7,12 +7,33 @@ class GoogleMap {
 	  this.position = position;
     this._googleMapKey = 'AIzaSyBApIxlKjCG4nPYE2GnZa6UltnP8JqMdgA';
     this.zoom = 15;
-    this.checkPosition();
+    this.setPosition();
   }
 
-  async checkPosition() {
-    if(this.position instanceof Function) {
-      this.position = await this.position();
+  async setPosition() {
+    if (!this.position) {
+      this.position = await this.getLocation();
+    } else {
+      this.position = position
+    }
+  }
+
+  async getLocation() {
+    if (navigator.geolocation) {
+      const res = new Promise ((res) => {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const obj =  {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+  
+          res(obj);
+        })
+      });
+  
+      return await res;
+    } else {
+      alert("Geolocation is not supported by this browser.");
     }
   }
 
@@ -41,36 +62,17 @@ class GoogleMap {
 	}
 }
 
-const getLocation = async() => {
-  if (navigator.geolocation) {
-    const res = new Promise ((res) => {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const obj =  {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-
-        res(obj);
-      })
-    });
-
-    return await res;
-  } else {
-    alert("Geolocation is not supported by this browser.");
-  }
-}
-
-const handleForm = (event) => {
-  event.preventDefault();
-
-  if (map && map.position){
-    map.changePosition({lat: +event.target.lat.value, lng: +event.target.lng.value});
-  }
-}
-
-const map = new GoogleMap('.map', getLocation);
+const map = new GoogleMap('.map');
 
 export const Location = () => {
+  const handleForm = (event) => {
+    event.preventDefault();
+  
+    if (map && map.position){
+      map.changePosition({lat: +event.target.lat.value, lng: +event.target.lng.value});
+    }
+  }
+  
   return (
     <div className="location">
       <button onClick={map.initMap}>Show my position</button>
