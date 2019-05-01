@@ -68,18 +68,18 @@ export const Location = () => {
   const handleForm = (event) => {
     event.preventDefault();
   
-    if (map && map.position){
-      map.changePosition({lat: +event.target.lat.value, lng: +event.target.lng.value});
+    if (map.map && map.position) {
+      map.changePosition({ lat: +event.target.lat.value, lng: +event.target.lng.value });
     }
   }
 
   return (
     <div className="location">
       <button onClick={map.initMap}>Show my position</button>
-      <form onSubmit={(event) => {handleForm(event)}}>
+      <form onSubmit={handleForm}>
         <button type="submit">Set new position</button>
-        <input placeHolder="latitude" id="lat" type="text"/>
-        <input placeHolder="longitude" id="lng" type="text"/>
+        <input placeholder="latitude" id="lat" type="text"/>
+        <input placeholder="longitude" id="lng" type="text"/>
       </form>
       <div className="map"></div>
     </div>
