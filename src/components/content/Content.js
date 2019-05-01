@@ -8,6 +8,7 @@ import { TogglePanels } from '../togglePanels';
 import { TaskList } from '../taskList';
 import { List } from '../list';
 import { Context } from '../../context.js';
+import { Clock } from '../Clock';
 
 const Switcher = () => (
   <Context.Consumer>
@@ -44,6 +45,7 @@ export class Content extends Component {
         <TaskList userName="Philipp" />
         <List list={this.state.users} field="name" numered />
         <Switcher />
+        <Clock />
       </div>
     );
   }
