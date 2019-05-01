@@ -72,14 +72,14 @@ export const Location = () => {
       map.changePosition({lat: +event.target.lat.value, lng: +event.target.lng.value});
     }
   }
-  
+
   return (
     <div className="location">
       <button onClick={map.initMap}>Show my position</button>
       <form onSubmit={(event) => {handleForm(event)}}>
         <button type="submit">Set new position</button>
-        <input id="lat" type="text"/>
-        <input id="lng" type="text"/>
+        <input placeHolder="latitude" id="lat" type="text"/>
+        <input placeHolder="longitude" id="lng" type="text"/>
       </form>
       <div className="map"></div>
     </div>
