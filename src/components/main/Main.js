@@ -5,8 +5,6 @@ import './main.scss';
 
 export class Main extends Component {
   render() {
-    const { user } = this.props;
-
     return (
       <main className="main">
         <Aside />

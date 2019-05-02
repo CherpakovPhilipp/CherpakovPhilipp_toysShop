@@ -1,8 +1,8 @@
 import './content.scss';
 
-import { NumbersList } from '../numbersList';
-import { User, Users } from '../usersList';
-import { Counter } from '../counter';
+// import { NumbersList } from '../numbersList';
+// import { User, Users } from '../usersList';
+// import { Counter } from '../counter';
 import { Button } from '../button';
 import { TogglePanels } from '../togglePanels';
 import { TaskList } from '../taskList';
@@ -16,10 +16,10 @@ import { Clock } from '../Clock';
 const Switcher = () => (
   <Context.Consumer>
     {
-      theme => <button onClick={theme.switch}>Switch theme</button>
+      theme => <button type="button" onClick={theme.switch}>Switch theme</button>
     }
   </Context.Consumer>
-)
+);
 
 
 export class Content extends Component {

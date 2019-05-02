@@ -16,24 +16,24 @@ class App extends Component {
   switchTheme = () => {
     this.setState({
       theme: this.state.theme === 'light' ? 'dark' : 'light'
-    })
+    });
   }
 
   render() {
     const theme = {
       value: this.state.theme,
       switch: this.switchTheme
-    }
+    };
 
     return (
       <Context.Provider value={theme}>
-        <Header theme={this.state.theme}/>
+        <Header theme={this.state.theme} />
         <Main user="Default User" />
         <Footer />
       </Context.Provider>
-    )
+    );
   }
-};
+}
 
 ReactDOM.render(<App />, document.getElementById('app'));
 

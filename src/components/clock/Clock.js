@@ -6,7 +6,7 @@ export class Clock extends Component {
     this.state = {
       date: null,
       time: null
-    }
+    };
   }
 
   getTime() {
@@ -14,7 +14,7 @@ export class Clock extends Component {
       this.setState({
         date: new Date().toLocaleDateString(),
         time: new Date().toLocaleTimeString()
-      })
+      });
     }, 1000);
   }
 
@@ -32,6 +32,6 @@ export class Clock extends Component {
         <time className="date">{this.state.date}</time>
         <time className="time">{this.state.time}</time>
       </div>
-    )
+    );
   }
 }
