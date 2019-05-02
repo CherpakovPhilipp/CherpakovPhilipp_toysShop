@@ -36,8 +36,8 @@
     "no-return-assign": 0,
     "object-curly-newline": "off",
     "react/destructuring-assignment": "off",
-    "no-mixed-spaces-and-tabs": "off",
-    "no-tabs": "off"
+    "no-mixed-spaces-and-tabs": 0,
+    "no-tabs": 0
   },
   "parser": "babel-eslint",
   "settings" : {
