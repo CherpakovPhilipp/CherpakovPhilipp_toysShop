@@ -54,7 +54,7 @@ export class Content extends Component {
         <Location />
 
         <Switcher />
-        {/* <Clock /> */}
+        <Clock />
 
       </div>
     );
