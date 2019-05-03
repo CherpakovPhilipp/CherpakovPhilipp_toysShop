@@ -11,7 +11,7 @@ import { List } from '../list';
 import { Location } from '../location';
 
 import { Context } from '../../context.js';
-import { Clock } from '../Clock';
+import { Clock } from '../clock';
 
 const Switcher = () => (
   <Context.Consumer>
