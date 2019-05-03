@@ -1,19 +1,18 @@
 import './clock.scss';
 
 export class Clock extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: null,
-      time: null
-    };
-  }
+  state = {
+    date: '',
+    time: ''
+  };
 
   getTime() {
     this.timeInterval = setInterval(() => {
+      const date = new Date();
+      
       this.setState({
-        date: new Date().toLocaleDateString(),
-        time: new Date().toLocaleTimeString()
+        date: date.toLocaleDateString(),
+        time: date.toLocaleTimeString()
       });
     }, 1000);
   }
@@ -27,10 +26,12 @@ export class Clock extends Component {
   }
 
   render() {
+    const { date, time } = this.state;
+
     return (
       <div className="clock">
-        <time className="date">{this.state.date}</time>
-        <time className="time">{this.state.time}</time>
+        <time className="date">{date}</time>
+        <time className="time">{time}</time>
       </div>
     );
   }
