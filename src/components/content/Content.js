@@ -11,7 +11,9 @@ import { List } from '../list';
 import { Location } from '../location';
 
 import { Context } from '../../context.js';
+
 import { Clock } from '../clock';
+
 
 const Switcher = () => (
   <Context.Consumer>
@@ -52,7 +54,7 @@ export class Content extends Component {
         <Location />
 
         <Switcher />
-        <Clock />
+        {/* <Clock /> */}
 
       </div>
     );
