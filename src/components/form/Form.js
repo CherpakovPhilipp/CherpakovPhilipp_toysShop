@@ -21,7 +21,7 @@ export class Form extends Component {
     const stateField = this.state[field.label];
 
     if (!field.reg.test(stateField.value)) {
-      this.setState({ [field.label]: { ...stateField, error: 'Don\'t match' }})
+      this.setState({ [field.label]: { ...stateField, error: `${field.label} don\'t match` }})
     }
   }
 
@@ -41,7 +41,7 @@ export class Form extends Component {
       <>
         <form action="">
           {
-            this.fields.map(({ label, secure}, index) => (
+            this.fields.map(({ label, secure }, index) => (
               <p key={label}>
                 <input
                   type={secure ? 'passwod' : 'text'}
@@ -52,7 +52,7 @@ export class Form extends Component {
                   onBlur={e => this.validateField(e, index)}
                   className={this.state.error ? 'error' : 'correct'}
                 />
-                {  this.state[label].error && <mark>{this.state[label].error}</mark> }
+                {this.state[label].error && <mark>{this.state[label].error}</mark>}
               </p>
             ))
           }
