@@ -13,6 +13,7 @@ import { Location } from '../location';
 import { Context } from '../../context.js';
 
 import { Clock } from '../clock';
+import { Form } from '../form';
 
 
 const Switcher = () => (
@@ -50,12 +51,10 @@ export class Content extends Component {
         <TogglePanels />
         <TaskList userName="Philipp" />
         <List list={this.state.users} field="name" numered />
-
         <Location />
-
         <Switcher />
         <Clock />
-
+        <Form />
       </div>
     );
   }
