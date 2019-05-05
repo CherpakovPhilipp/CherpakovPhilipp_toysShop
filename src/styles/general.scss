@@ -24,6 +24,6 @@ html, body {
   margin: 0 auto;
 }
 
-button{
+button, input[type=button], input[type=submit]{
   @include button;
 }

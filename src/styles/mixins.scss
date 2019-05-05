@@ -27,9 +27,19 @@
   border: none;
   border-radius: 5px;
   outline: none;
+  margin:20px 0;
 
   &:hover{
     color: green;
     background:#fff;
+  }
+
+  &[disabled]{
+    filter: opacity(50%);
+  }
+
+  &[disabled]:hover{
+    color: #fff;
+    background:green;
   }
 }

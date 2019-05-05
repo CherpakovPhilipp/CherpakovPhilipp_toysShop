@@ -9,7 +9,7 @@ export class Clock extends Component {
   getTime() {
     this.timeInterval = setInterval(() => {
       const date = new Date();
-      
+
       this.setState({
         date: date.toLocaleDateString(),
         time: date.toLocaleTimeString()

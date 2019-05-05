@@ -13,25 +13,31 @@ export class TaskList extends Component {
     return (
       <div className="task_list">
         <h1>
+
 Hello,
           { this.props.userName }
         </h1>
         <br />
         <p>
+
 You have
           <b>{ tasks }</b>
           {' '}
+
 tasks
         </p>
         <p>
+
 Done:
           <b>{ done }</b>
         </p>
         <p>
+
 In progress:
           <b>{ inProgress }</b>
         </p>
         <p>
+
 Waiting:
           <b>{ waiting }</b>
         </p>
