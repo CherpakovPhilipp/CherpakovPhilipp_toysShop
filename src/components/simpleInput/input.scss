@@ -1,0 +1,26 @@
+@import '../../styles/mixins.scss';
+
+.input-block{
+  @include text_block;
+
+  width: 300px;
+  padding: 15px;
+  margin-bottom: 25px;
+
+  input{
+    @include input-text;
+    border:1px solid green;
+  }
+  span{
+    margin:5px 0;
+  }
+  .output{
+    color:green;
+  }
+}
+.hide{
+  display: none;
+}
+.show{
+  display: block;
+}
