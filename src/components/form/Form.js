@@ -50,7 +50,7 @@ export class Form extends Component {
 
     return (
       <>
-        <form onSubmit={this.onSubmit}>
+        <form className="user-form" onSubmit={this.onSubmit}>
           {
             this.fields.map(({ label, secure }, index) => {
               if (this.isExcluded(label)) return;

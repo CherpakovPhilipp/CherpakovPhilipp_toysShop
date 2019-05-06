@@ -43,3 +43,11 @@
     background:green;
   }
 }
+
+@mixin input-text{
+  border-radius: 5px;
+  border: none;
+  outline:none;
+  min-width: 80px;
+  padding: 10px;
+}

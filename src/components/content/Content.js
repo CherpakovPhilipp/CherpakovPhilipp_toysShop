@@ -1,22 +1,16 @@
 import './content.scss';
 
-// import { NumbersList } from '../numbersList';
-// import { User, Users } from '../usersList';
-// import { Counter } from '../counter';
+import { Context } from '../../context.js';
+
 import { Button } from '../button';
 import { TogglePanels } from '../togglePanels';
 import { TaskList } from '../taskList';
 import { List } from '../list';
-
 import { Location } from '../location';
-
-import { Context } from '../../context.js';
-
 import { Clock } from '../clock';
 import { Form } from '../form';
-import { Input } from '../input';
+import { SimpleInput } from '../simpleInput';
 import { TodoList } from '../todoList';
-
 
 const Switcher = () => (
   <Context.Consumer>
@@ -25,7 +19,6 @@ const Switcher = () => (
     }
   </Context.Consumer>
 );
-
 
 export class Content extends Component {
   constructor(props) {
@@ -45,10 +38,6 @@ export class Content extends Component {
   render() {
     return (
       <div className="content">
-        {/* <User firstName="Mark" lastName="Twen" age="14" className="user" /> */}
-        {/* <Users users={users} /> */}
-        {/* <NumbersList odd from="1" to="10" /> */}
-        {/* <Counter /> */}
         <Button />
         <TogglePanels />
         <TaskList userName="Philipp" />
@@ -57,7 +46,7 @@ export class Content extends Component {
         <Switcher />
         <Clock />
         <Form exclude={[]} disabled={[]} />
-        <Input />
+        <SimpleInput callback={() => { console.log('Callback function was invoked!'); }} />
         <TodoList />
       </div>
     );
