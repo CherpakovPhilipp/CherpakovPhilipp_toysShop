@@ -1,0 +1,10 @@
+@import '../../styles/mixins.scss';
+
+.todos{
+  @include text_block;
+
+  li.finished{
+    text-decoration: line-through;
+    color:silver;
+  }
+}

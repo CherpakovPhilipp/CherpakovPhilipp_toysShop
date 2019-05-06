@@ -15,6 +15,7 @@ import { Context } from '../../context.js';
 import { Clock } from '../clock';
 import { Form } from '../form';
 import { Input } from '../input';
+import { TodoList } from '../todoList';
 
 
 const Switcher = () => (
@@ -57,6 +58,7 @@ export class Content extends Component {
         <Clock />
         <Form exclude={[]} disabled={[]} />
         <Input />
+        <TodoList />
       </div>
     );
   }
