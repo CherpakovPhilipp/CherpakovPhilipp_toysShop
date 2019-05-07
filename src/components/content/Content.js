@@ -46,7 +46,7 @@ export class Content extends Component {
         <Switcher />
         <Clock />
         <Form exclude={[]} disabled={[]} />
-        <SimpleInput callback={() => { console.log('Callback function was invoked!'); }} />
+        <SimpleInput showInputText={console.log} />
         <TodoList />
       </div>
     );

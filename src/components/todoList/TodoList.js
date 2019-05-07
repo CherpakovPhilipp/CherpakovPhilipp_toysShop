@@ -1,13 +1,12 @@
 import './todoList.scss';
 
 export class TodoList extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    todos: [],
+    inputVal: ''
+  };
 
-    this.state = {
-      todos: [],
-      inputVal: ''
-    };
+  componentDidMount() {
     this.getTodos();
   }
 
@@ -32,35 +31,32 @@ export class TodoList extends Component {
 
   render() {
     return (
-      <>
-        <ul className="todos">
-          <li>
-            <input
-              type="text"
-              onChange={this.setInputVal}
-              value={this.state.inputVal}
-              className="filter"
-            />
-          </li>
-          {this.state.todos
-            .filter(this.filterTodos)
-            .map(item => (
-              <li
-                key={item.id}
-                completed={item.completed}
-                className={item.completed ? 'finished' : 'unfinished'}
-              >
-                <span className="todo-title">{item.title}</span>
-                <div className="todo-controls">
-                  <input type="button" value="X" />
-                  <input type="button" value="V" />
-                  <input type="button" value="~" />
-                </div>
-              </li>
-            ))
-        }
-        </ul>
-      </>
+      <ul className="todos">
+        <li>
+          <input
+            type="text"
+            onChange={this.setInputVal}
+            value={this.state.inputVal}
+            className="filter"
+          />
+        </li>
+        {this.state.todos
+          .filter(this.filterTodos)
+          .map(item => (
+            <li
+              key={item.id}
+              className={item.completed ? 'finished' : 'unfinished'}
+            >
+              <span className="todo-title">{item.title}</span>
+              <div className="todo-controls">
+                <input type="button" value="X" />
+                <input type="button" value="V" />
+                <input type="button" value="~" />
+              </div>
+            </li>
+          ))
+      }
+      </ul>
     );
   }
 }

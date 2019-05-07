@@ -1,6 +1,6 @@
 import './aside.scss';
 
-import { Infobar } from '../infobar';
+import { Infobar } from '../infoBar';
 
 export const Aside = () => (
   <aside className="aside">
