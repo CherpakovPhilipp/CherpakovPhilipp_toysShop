@@ -13,11 +13,7 @@ class App extends Component {
     theme: 'light'
   }
 
-  switchTheme = () => {
-    this.setState({
-      theme: this.state.theme === 'light' ? 'dark' : 'light'
-    });
-  }
+  
 
   render() {
     const theme = {
@@ -27,7 +23,7 @@ class App extends Component {
 
     return (
       <Context.Provider value={theme}>
-        <Header theme={this.state.theme} />
+        <Header theme />
         <Main user="Default User" />
         <Footer />
       </Context.Provider>

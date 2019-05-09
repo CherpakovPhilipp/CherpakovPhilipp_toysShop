@@ -11,7 +11,8 @@ import { Clock } from '../clock';
 import { Form } from '../form';
 import { SimpleInput } from '../simpleInput';
 import { TodoList } from '../todoList';
-import { Tabs } from '../tabs';
+import { TabContent, Tabs } from '../tabs';
+
 
 const tabs = [
   {id: 0, title: 'Tab 1', content: 'Some text is here'},
@@ -55,7 +56,21 @@ export class Content extends Component {
         <Form exclude={[]} disabled={[]} />
         <SimpleInput showInputText={console.log} />
         <TodoList />
-        <Tabs list={tabs} />
+        <Tabs selectedIndex={0} list={tabs} />
+        <Tabs>
+          <TabContent title="Tab 1">
+            <h1>Tab header 1</h1>
+            <p>Tab text 1</p>
+          </TabContent>
+          <TabContent title="Tab 2">
+            <h1>Tab header 2</h1>
+            <p>Tab text 2</p>
+          </TabContent>
+          <TabContent title="Tab 3">
+            <h1>Tab header 3</h1>
+            <p>Tab text 3</p>
+          </TabContent>
+        </Tabs>
       </div>
     );
   }
