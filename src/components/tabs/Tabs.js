@@ -1,4 +1,4 @@
-import { TabNav } from './'; //Если не указано конкретное имя файла, поиск будет вестись внутри index.js
+import { TabContent , TabNav } from './'; //Если не указано конкретное имя файла, поиск будет вестись внутри index.js
 import PropTypes from 'prop-types';
 
 export class Tabs extends Component {
