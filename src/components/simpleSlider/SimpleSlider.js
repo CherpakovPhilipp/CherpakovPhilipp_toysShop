@@ -1,5 +1,7 @@
 import Slider from "react-slick";
 import images from '../gallery/assets/images';
+import "./simpleSlider.scss";
+
 
 export class SimpleSlider extends Component {
   render() {
