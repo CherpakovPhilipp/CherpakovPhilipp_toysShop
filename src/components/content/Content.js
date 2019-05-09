@@ -13,6 +13,7 @@ import { SimpleInput } from '../simpleInput';
 import { TodoList } from '../todoList';
 import { TabContent, Tabs } from '../tabs';
 import { Gallery } from '../gallery';
+import { SimpleSlider } from '../simpleSlider';
 
 
 const tabs = [
@@ -57,7 +58,7 @@ export class Content extends Component {
         <Form exclude={[]} disabled={[]} />
         <SimpleInput showInputText={console.log} />
         <TodoList />
-        <Tabs selectedIndex={1}>
+        <Tabs selectedIndex={2}>
           <TabContent title="Tab 1">
             <h1>Users</h1>
             <List list={this.state.users} field="name" numered />
@@ -67,8 +68,8 @@ export class Content extends Component {
             <Gallery />
           </TabContent>
           <TabContent title="Tab 3">
-            <h1>Tab header 3</h1>
-            <p>Tab text 3</p>
+            <h1>Slider</h1>
+            <SimpleSlider />
           </TabContent>
         </Tabs>
       </div>
