@@ -1,8 +1,6 @@
 @import '../../styles/mixins.scss';
 
 .todos{
-  @include text_block;
-
   .filter{
     @include input-text;
 

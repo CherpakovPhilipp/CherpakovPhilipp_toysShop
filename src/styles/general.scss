@@ -16,11 +16,18 @@
 html, body {
   height: 100%;
 }
+body{
+  font: 16px/20.8px Arial, "Helvetica Neue", Helvetica, sans-serif;
+  background: url(/images/main-bg.png);
+  background-size: 35%;
+}
 #app{
-  display: flex;
-  flex-direction:column;
-  max-width: 1100px;
   height: 100%;
+}
+
+.container{
+  width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
 }
 

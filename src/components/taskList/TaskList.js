@@ -1,49 +1,61 @@
 import './taskList.scss';
+import { tasks } from './tasks.js';
+import { TabContent, Tabs } from '../tabs';
 
 export class TaskList extends Component {
   state = {
-    tasks: 0,
-    done: 0,
-    inProgress: 0,
-    waiting: 0,
+    tasks: tasks
   };
 
+  componentDidMount() {
+    //this.getTasks();
+  }
+
+  getTasks= () => {
+    fetch('/db/tasks.json', { method: 'GET' })
+      .then((response) => {
+        if (response.status !== 200) throw new Error('Problems with fetch!');
+
+        return response.json();
+      })
+      .then((data) => {
+        this.tasks = data;
+        this.setState({ tasks: data });
+      });
+  }
+
   render() {
-    const { tasks, done, inProgress, waiting } = this.state;
+    const days = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
+
     return (
-      <div className="task_list">
-        <h1>
-
-Hello,
-          { this.props.userName }
-        </h1>
-        <br />
-        <p>
-
-You have
-          <b>{ tasks }</b>
-          {' '}
-
-tasks
-        </p>
-        <p>
-
-Done:
-          <b>{ done }</b>
-        </p>
-        <p>
-
-In progress:
-          <b>{ inProgress }</b>
-        </p>
-        <p>
-
-Waiting:
-          <b>{ waiting }</b>
-        </p>
-        <br />
-        <a href="/Tasks">Go to the tasks list</a>
-      </div>
-    );
+      <>
+        <Tabs selectedIndex={0}>
+          {this.state.tasks.map((day, index) => {
+            return (
+              <TabContent title={days[index]} key={index}>
+                <ul className="todos">
+                  {day.map(todo => {
+                    return (
+                      <li
+                        key={todo.id}
+                        className={todo.done ? 'finished' : 'unfinished'}
+                      >
+                        <span className="todo-title">{todo.title}</span>
+                        <div className="todo-controls">
+                          <input type="button" value="X" />
+                          <input type="button" value="V" />
+                          <input type="button" value="~" />
+                        </div>
+                      </li>
+                    )
+                  })}
+                </ul>
+                <input type="button" value="Добавить новый" />
+              </TabContent>
+            )
+          })}
+        </Tabs>
+      </>
+    )
   }
 }

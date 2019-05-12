@@ -6,10 +6,11 @@ import './main.scss';
 export class Main extends Component {
   render() {
     return (
-      <main className="main">
-        <Aside />
-        <Content />
-      </main>
+      <div className="container">
+        <main className="main">
+          <Content />
+        </main>
+      </div>
     );
   }
 }

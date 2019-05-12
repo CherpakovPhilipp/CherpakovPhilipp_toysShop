@@ -24,7 +24,7 @@ const plugins = [
     }),
 
     new copyPlugin([
-        { from: '*/**/*.jpg', to: 'images/[name].[ext]'}
+        { from: '*/**/*.png', to: 'images/[name].[ext]'}
     ])
 ];
 
@@ -62,6 +62,21 @@ module.exports = {
 
                     }
                 }
+            },
+            {
+              test: /\.json/,
+              use: [
+                {
+                  loader: 'json-loader'
+                },
+                {
+                  loader: 'file-loader',
+                  options: {
+                      name: '[name].[ext]',
+                      outputPath: 'db/'
+                  }
+                }
+              ]
             },
             {
                 test: /\.s?css$/,

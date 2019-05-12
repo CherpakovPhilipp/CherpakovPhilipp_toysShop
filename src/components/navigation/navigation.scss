@@ -2,9 +2,16 @@
   ul{
     display: flex;
     list-style: none;
-  
+    align-items: center;
+
     li {
       margin: 0 15px 0 0;
+
+      a{
+        font-weight: bold;
+        color:#fff;
+        text-transform: uppercase;
+      }
     }
-  }    
+  }
 }

@@ -3,11 +3,13 @@ import { Greeting } from '../greeting';
 
 import './header.scss';
 
-const menuItems = ['Home', 'Products', 'Contacts'];
+const menuItems = ['Home', 'Shop', 'Contacts'];
 
 export const Header = props => (
   <header className={`${props.theme} header`}>
-    <Greeting name="Philipp" />
+  <div className="container">
     <Navigation list={menuItems} />
+    </div>
   </header>
+
 );

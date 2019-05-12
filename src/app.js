@@ -3,17 +3,15 @@ import ReactDOM from 'react-dom';
 
 import { Header } from './components/header';
 import { Main } from './components/main';
-import { Footer } from './components/footer';
 import { Context } from './context.js';
 
+import './assets/images/main-bg.png';
 import './styles/general.scss';
 
 class App extends Component {
   state = {
     theme: 'light'
   }
-
-  
 
   render() {
     const theme = {
@@ -22,11 +20,10 @@ class App extends Component {
     };
 
     return (
-      <Context.Provider value={theme}>
-        <Header theme />
+      <>
+        <Header />
         <Main user="Default User" />
-        <Footer />
-      </Context.Provider>
+      </>
     );
   }
 }
