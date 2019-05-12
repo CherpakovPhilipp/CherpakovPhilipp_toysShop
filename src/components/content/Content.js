@@ -48,6 +48,7 @@ export class Content extends Component {
   render() {
     return (
       <div className="content">
+        <img src="/images/gallery-1.jpg" alt=""/>
         <Button />
         <TogglePanels />
         <TaskList userName="Philipp" />

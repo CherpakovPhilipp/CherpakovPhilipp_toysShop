@@ -3,6 +3,7 @@ const HTMLPlugin = require('html-webpack-plugin');
 const CssPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const args = require('yargs').argv;
+const copyPlugin = require('copy-webpack-plugin');
 
 const package = require('../package');
 const isProduction = process.env.NODE_ENV === 'production';
@@ -20,7 +21,11 @@ const plugins = [
     new webpack.ProvidePlugin({  // этот плагин подключает нужные модули (или любые переменные) глобально
         React: 'react',
         Component: ['react', 'Component']
-    })
+    }),
+
+    new copyPlugin([
+        { from: '*/**/*.jpg', to: 'images/[name].[ext]'}
+    ])
 ];
 
 if (isStylesExternal) {
