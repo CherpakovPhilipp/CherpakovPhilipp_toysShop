@@ -1,12 +1,5 @@
 import './content.scss';
 
-import { TaskList } from '../taskList';
-import { List } from '../list';
-import { TabContent, Tabs } from '../tabs';
-import { Gallery } from '../gallery';
-import { SimpleSlider } from '../simpleSlider';
-import { ProductInfo } from '../productInfo';
-
 export class Content extends Component {
   state = {
     users: [],
@@ -25,16 +18,6 @@ export class Content extends Component {
   render() {
     return (
       <div className="content">
-        <Tabs selectedIndex={1}>
-          <TabContent title="Users">
-            <List list={this.state.users} field="name" />
-          </TabContent>
-          <TabContent title="Gallery">
-            <SimpleSlider />
-          </TabContent>
-        </Tabs>
-        <TaskList />
-        <ProductInfo />
       </div>
     );
   }

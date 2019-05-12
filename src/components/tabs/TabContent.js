@@ -1,1 +1,0 @@
-export const TabContent = () => null;
