@@ -9,10 +9,12 @@ import { ProductInfo } from '../productInfo';
 export class Content extends Component {
   state = {
     users: [],
+    selectedIndex: 1
   };
 
   componentDidMount() {
     this.getUsers();
+    setTimeout(() => {console.log(this.state.selectedIndex);this.setState({ selectedIndex: 0 })}, 5000);
   }
 
   getUsers() {
@@ -24,7 +26,7 @@ export class Content extends Component {
   render() {
     return (
       <div className="content">
-        <Tabs selectedIndex={1}>
+        <Tabs selectedIndex={this.state.selectedIndex}>
           <TabContent title="Users">
             <List list={this.state.users} field="name" />
           </TabContent>

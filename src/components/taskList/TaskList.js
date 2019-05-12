@@ -3,9 +3,8 @@ import { tasks } from './tasks.js';
 import { TabContent, Tabs } from '../tabs';
 
 export class TaskList extends Component {
-  state = {
-    tasks: tasks
-  };
+  state = { tasks };
+  days = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
 
   componentDidMount() {
     //this.getTasks();
@@ -24,18 +23,21 @@ export class TaskList extends Component {
       });
   }
 
-  render() {
-    const days = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
+  getCurDay() {
+    const dayIndex = (new Date()).getDay();
+    if (dayIndex === 0) return 6;
 
+    return dayIndex - 1;
+  }
+
+  render() {
     return (
       <>
-        <Tabs selectedIndex={0}>
-          {this.state.tasks.map((day, index) => {
-            return (
-              <TabContent title={days[index]} key={index}>
+        <Tabs selectedIndex={this.getCurDay()}>
+          {this.state.tasks.map((day, index) => (
+              <TabContent title={this.days[index]} key={index}>
                 <ul className="todos">
-                  {day.map(todo => {
-                    return (
+                  {day.map(todo => (
                       <li
                         key={todo.id}
                         className={todo.done ? 'finished' : 'unfinished'}
@@ -48,12 +50,12 @@ export class TaskList extends Component {
                         </div>
                       </li>
                     )
-                  })}
+                  )}
                 </ul>
                 <input type="button" value="Добавить новый" />
               </TabContent>
             )
-          })}
+          )}
         </Tabs>
       </>
     )

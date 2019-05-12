@@ -3,7 +3,7 @@ import { TabContent , TabNav } from './'; //Если не указано кон�
 import PropTypes from 'prop-types';
 
 export class Tabs extends Component {
-  state={
+  state = {
     selectedIndex: this.props.selectedIndex ? this.props.selectedIndex : 0
   }
 
