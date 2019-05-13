@@ -1,0 +1,28 @@
+@import '../../styles/mixins.scss';
+
+.todos{
+  .filter{
+    @include input-text;
+
+    border: 1px solid green;
+  }
+
+  li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+
+    &:first-child{
+      border: none;
+    }
+    &.finished{
+      text-decoration: line-through;
+      color:silver;
+    }
+  }
+
+  input[type=button]{
+    margin: 0 0 0 10px;
+  }
+}

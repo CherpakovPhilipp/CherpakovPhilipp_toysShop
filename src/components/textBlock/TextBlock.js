@@ -31,14 +31,13 @@ export class TextBlock extends Component {
       )
     } else {
       fieldHTML = (
-        <textarea
-            name="text"
+        <input
+            type="text"
             value={this.state.inputText}
             onChange={this.changeField}
             onBlur={this.onBlur}
             autoFocus
-          >
-        </textarea>
+          />
       )
     }
 
