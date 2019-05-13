@@ -7,8 +7,10 @@ export class Tabs extends Component {
     selectedIndex: this.props.selectedIndex ? this.props.selectedIndex : 0
   }
 
-  getDerivedStateFromProps(nextProps) {
-    return { selectedIndex: nextProps.selectedIndex }; 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.selectedIndex !== this.props.selectedIndex) {
+      this.setState({ selectedIndex: this.props.selectedIndex });
+    }
   }
 
   changeTab = (selectedIndex) => {
