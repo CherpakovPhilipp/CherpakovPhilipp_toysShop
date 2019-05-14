@@ -1,9 +1,9 @@
 import { Navigation } from '../navigation';
-import { Greeting } from '../greeting';
+import { Greeting } from '../../pages/greeting';
 
 import './header.scss';
 
-const menuItems = ['Home', 'Shop', 'Contacts'];
+const menuItems = ['Home', 'Shop', 'product-info'];
 
 export const Header = props => (
   <header className={`${props.theme} header`}>

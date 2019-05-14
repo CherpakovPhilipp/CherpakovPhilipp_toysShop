@@ -130,6 +130,7 @@ module.exports = {
         contentBase: path.resolve(__dirname, '../dist'),
         publicPath: '/',
         port: 9000,
-        hot: true
+        hot: true,
+        historyApiFallback: true, //говорим девсерверу, что будем работать с браузерной маршрутеризацией
     }
 };

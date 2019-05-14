@@ -4,7 +4,7 @@ import { TaskList } from '../taskList';
 import { List } from '../list';
 import { TabContent, Tabs } from '../tabs';
 import { SimpleSlider } from '../simpleSlider';
-import { ProductInfo } from '../productInfo';
+//import { ProductInfo } from '../../pages/productInfo';
 
 export class Content extends Component {
   state = {
@@ -35,7 +35,7 @@ export class Content extends Component {
           </TabContent>
         </Tabs>
         <TaskList />
-        <ProductInfo />
+        {/* <ProductInfo /> */}
       </div>
     );
   }

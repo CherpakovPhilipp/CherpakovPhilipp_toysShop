@@ -3,14 +3,13 @@ import { Content } from '../content';
 
 import './main.scss';
 
-export class Main extends Component {
-  render() {
-    return (
-      <div className="container">
-        <main className="main">
-          <Content />
-        </main>
-      </div>
-    );
-  }
+export const Main = ({ children }) => {
+  return (
+    <div className="container">
+      <main className="main">
+        {children}
+        {/* <Content /> */}
+      </main>
+    </div>
+  );
 }

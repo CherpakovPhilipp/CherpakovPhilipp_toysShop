@@ -1,4 +1,4 @@
-import { TextBlock } from '../textBlock';
+import { TextBlock } from '../../components/textBlock';
 
 export class ProductInfo extends Component {
   render() {
