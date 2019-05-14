@@ -15,7 +15,7 @@ class App extends Component {
     user: null
   }
 
-  onLogin(user) {
+  onLogin = (user) => {
     this.setState({ user });
   }
 
