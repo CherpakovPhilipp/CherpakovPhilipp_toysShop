@@ -1,14 +1,28 @@
 import { Navigation } from '../navigation';
-import { Greeting } from '../../pages/greeting';
+import { Link } from 'react-router-dom';
 
 import './header.scss';
 
-const menuItems = ['Home', 'Shop', 'product-info'];
-
-export const Header = props => (
-  <header className={`${props.theme} header`}>
-  <div className="container">
-    <Navigation list={menuItems} />
+export const Header = ({ user, onLogout }) => (
+  <header className="header">
+    <div className="container">
+      <Navigation />
+      {
+        user ?
+        <div>
+          <mark>{user}</mark>
+          <button
+            onClick={onLogout}
+          >
+            Logout
+          </button>
+        </div> :
+        <Link
+          to="/login"
+        >
+          Log in
+        </Link>
+      }
     </div>
   </header>
 

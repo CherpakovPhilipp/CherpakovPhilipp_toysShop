@@ -5,7 +5,7 @@ import { Header } from './components/header';
 import { Main } from './components/main';
 import { Context } from './context.js';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Pages } from './pages';
+import { Pages, PagesAuth } from './pages';
 
 import './assets/images/main-bg.png';
 import './styles/general.scss';
@@ -16,7 +16,11 @@ class App extends Component {
   }
 
   onLogin = (user) => {
-    this.setState({ user });
+    this.setState({ user: user.email });
+  }
+
+  onLogout = () => {
+    this.setState({ user: null });
   }
 
   render() {
@@ -24,9 +28,13 @@ class App extends Component {
 
     return (
       <>
-        <Header />
-        <Main user="Default User">
-          <Pages onLogin={this.onLogin} user={user} />
+        <Header onLogout={this.onLogout} user={user} />
+        <Main>
+          {user ? 
+            <PagesAuth />
+          : 
+            <Pages onLogin={this.onLogin} user={user} />
+          }
         </Main>
       </>
     );

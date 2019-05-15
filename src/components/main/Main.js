@@ -1,6 +1,3 @@
-import { Aside } from '../aside';
-import { Content } from '../content';
-
 import './main.scss';
 
 export const Main = ({ children }) => {
@@ -8,7 +5,6 @@ export const Main = ({ children }) => {
     <div className="container">
       <main className="main">
         {children}
-        {/* <Content /> */}
       </main>
     </div>
   );

@@ -1,4 +1,11 @@
+@import '../../styles/mixins.scss';
+
 .main{
-  display: flex;
+  @include components_common;
+
+  position: relative;
+  flex-wrap: wrap;
+  align-items: flex-start;
   background: #fff;
 }
+

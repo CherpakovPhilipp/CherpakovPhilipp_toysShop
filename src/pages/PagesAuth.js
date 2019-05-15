@@ -2,10 +2,9 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { ProductInfo } from './productInfo';
 import { Greeting } from './form';
-import { Login } from './login';
 import { NotFound } from './notFound';
 
-export const Pages = ({ onLogin }) => {
+export const PagesAuth = () => {
   return (
     <Switch>
       <Route
@@ -18,10 +17,9 @@ export const Pages = ({ onLogin }) => {
         exact
         component={ProductInfo}
       />
-      <Route
-        path="/login"
-        exact
-        render={(props) =><Login onLogin={onLogin} { ...props } />}
+      <Redirect
+        from="/login"
+        to="/"
       />
       <Route
         render={({ location }) => <NotFound location={location} />}

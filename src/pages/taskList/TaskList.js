@@ -1,6 +1,6 @@
 import './taskList.scss';
 import { tasks } from './tasks.js';
-import { TabContent, Tabs } from '../tabs';
+import { TabContent, Tabs } from '../../components/tabs';
 
 export class TaskList extends Component {
   state = { tasks };

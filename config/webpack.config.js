@@ -11,8 +11,6 @@ const isStylesExternal = args.env && args.env.styles;
 
 const images = ['jpg', 'jpeg', 'png', 'gif', 'svg'];
 
-
-
 const plugins = [
     new HTMLPlugin({
         title: package.name,

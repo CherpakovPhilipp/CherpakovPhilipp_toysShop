@@ -16,10 +16,16 @@
 html, body {
   height: 100%;
 }
-body{
+html{
   font: 16px/20.8px Arial, "Helvetica Neue", Helvetica, sans-serif;
-  background: url(/images/main-bg.png);
+  color: #5f5e5e;
+}
+body{
+  /*background: url(/images/main-bg.png);*/
   background-size: 35%;
+}
+h1{
+  font-style: italic;
 }
 #app{
   height: 100%;

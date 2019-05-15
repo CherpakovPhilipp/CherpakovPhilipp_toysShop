@@ -1,12 +1,10 @@
-import './content.scss';
+import './galleryTabs.scss';
 
-import { TaskList } from '../taskList';
-import { List } from '../list';
-import { TabContent, Tabs } from '../tabs';
-import { SimpleSlider } from '../simpleSlider';
-//import { ProductInfo } from '../../pages/productInfo';
+import { List } from '../../list';
+import { TabContent, Tabs } from '../../components/tabs';
+import { SimpleSlider } from '../../simpleSlider';
 
-export class Content extends Component {
+export class GalleryTabs extends Component {
   state = {
     users: [],
     selectedIndex: 1
@@ -25,7 +23,7 @@ export class Content extends Component {
 
   render() {
     return (
-      <div className="content">
+      <div className="tabs">
         <Tabs selectedIndex={this.state.selectedIndex}>
           <TabContent title="Users">
             <List list={this.state.users} field="name" />
@@ -34,8 +32,6 @@ export class Content extends Component {
             <SimpleSlider />
           </TabContent>
         </Tabs>
-        <TaskList />
-        {/* <ProductInfo /> */}
       </div>
     );
   }
