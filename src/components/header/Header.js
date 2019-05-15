@@ -17,11 +17,19 @@ export const Header = ({ user, onLogout }) => (
             Logout
           </button>
         </div> :
-        <Link
-          to="/login"
-        >
-          Log in
-        </Link>
+        <>
+          <Link
+            to="/login"
+          >
+            Log in
+          </Link>
+          <span> / </span>
+          <Link
+            to="/registration"
+          >
+            Register
+          </Link>
+        </>
       }
     </div>
   </header>

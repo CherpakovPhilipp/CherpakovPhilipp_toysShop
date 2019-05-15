@@ -1,7 +1,6 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { ProductInfo } from './productInfo';
-import { Greeting } from './form';
 import { NotFound } from './notFound';
 
 export const PagesAuth = () => {

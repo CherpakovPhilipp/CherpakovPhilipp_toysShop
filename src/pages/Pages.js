@@ -1,9 +1,10 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { ProductInfo } from './productInfo';
-import { Greeting } from './form';
+import { Greeting } from './registration';
 import { Login } from './login';
 import { NotFound } from './notFound';
+import { Registration } from './registration';
 
 export const Pages = ({ onLogin }) => {
   return (
@@ -22,6 +23,11 @@ export const Pages = ({ onLogin }) => {
         path="/login"
         exact
         render={(props) =><Login onLogin={onLogin} { ...props } />}
+      />
+      <Route
+        path="/registration"
+        exact
+        component={(props) => <Registration exclude={[]} disabled={[]} { ...props } />}
       />
       <Route
         render={({ location }) => <NotFound location={location} />}
