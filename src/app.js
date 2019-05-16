@@ -3,24 +3,14 @@ import ReactDOM from 'react-dom';
 
 import { Header } from './components/header';
 import { Main } from './components/main';
-import { Context } from './context.js';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Pages, PagesAuth } from './pages';
 
-import './assets/images/main-bg.png';
 import './styles/general.scss';
 
 class App extends Component {
   state = {
     user: null
-  }
-
-  onLogin = (user) => {
-    this.setState({ user: user.email });
-  }
-
-  onLogout = () => {
-    this.setState({ user: null });
   }
 
   render() {
@@ -30,11 +20,6 @@ class App extends Component {
       <>
         <Header onLogout={this.onLogout} user={user} />
         <Main>
-          {user ? 
-            <PagesAuth user={user} />
-          : 
-            <Pages onLogin={this.onLogin} user={user} />
-          }
         </Main>
       </>
     );

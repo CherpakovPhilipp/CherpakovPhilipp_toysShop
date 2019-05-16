@@ -21,11 +21,13 @@ html{
   color: #5f5e5e;
 }
 body{
-  /*background: url(/images/main-bg.png);*/
+  background: url(/images/main-bg.png);
   background-size: 35%;
 }
 h1{
+  text-align: center;
   font-style: italic;
+  margin-bottom: 50px;
 }
 #app{
   height: 100%;
