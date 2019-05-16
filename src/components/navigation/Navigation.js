@@ -36,7 +36,7 @@ export const Navigation = ({ user, onLogout }) => {
   const userNavLinks = user ?
       <>
         <span>{user}</span>
-        <button onClick={onLogout}>Logout</button>
+        <Link to='/' onClick={onLogout}>Logout</Link>
       </>
     :
       <>
