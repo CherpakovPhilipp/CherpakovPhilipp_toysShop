@@ -23,7 +23,7 @@ export class Products extends Component {
   render() {
     return (
       <>
-        {this.state.products.map((day, index) => (
+        {this.state.products.map(day => (
           <>
             <ul className="todos">
               {day.map(todo => (
