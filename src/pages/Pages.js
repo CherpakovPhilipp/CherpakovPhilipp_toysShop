@@ -1,7 +1,7 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { ProductInfo } from './productInfo';
-import { Greeting } from './registration';
+import { Greeting } from './greeting';
 import { Login } from './login';
 import { NotFound } from './notFound';
 import { Registration } from './registration';

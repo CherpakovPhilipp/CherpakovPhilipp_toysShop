@@ -1,8 +1,6 @@
 @import '../../styles/mixins.scss';
 
 .main{
-  @include components_common;
-
   position: relative;
   flex-wrap: wrap;
   align-items: flex-start;

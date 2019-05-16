@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Header } from './components/header';
 import { Main } from './components/main';
 import { Context } from './context.js';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Pages, PagesAuth } from './pages';
 
 import './assets/images/main-bg.png';
@@ -31,7 +31,7 @@ class App extends Component {
         <Header onLogout={this.onLogout} user={user} />
         <Main>
           {user ? 
-            <PagesAuth />
+            <PagesAuth user={user} />
           : 
             <Pages onLogin={this.onLogin} user={user} />
           }

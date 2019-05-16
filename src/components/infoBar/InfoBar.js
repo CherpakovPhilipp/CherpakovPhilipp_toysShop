@@ -1,11 +1,11 @@
-export const Infobar = props => (
+import { Link } from 'react-router-dom';
+
+export const Infobar = ({ categories, products, published }) => (
   <div className="info-bar">
-    <h2>Hello, <b>{props.user}</b></h2>
-    <br />
-    <p>You have <b>{props.categories}</b> categories, (<b>{props.published}</b> published)
+    <p>You have <b>{categories}</b> categories, (<b>{published}</b> published)
     </p>
-    <p>You have <b>{props.products}</b> products</p>
+    <p>You have <b>{products}</b> products</p>
     <br />
-    <a href="/categories">Go to categories</a>
+    <Link to="/categories">Go to categories</Link>
   </div>
 );
