@@ -5,7 +5,7 @@ const products = ["Bicycle", "Car", "Super-hero", "Doll", "Teddy", "Lego", "Pist
 
 export class Products extends Component {
   state = {
-    products: products,
+    products,
     inputVal: ''
   };
 
@@ -30,7 +30,7 @@ export class Products extends Component {
     this.setState({ inputVal: target.value });
   }
 
-  filterProducts = product => product.includes(this.state.inputVal)
+  filterProducts = product => product.toLocaleLowerCase().includes(this.state.inputVal.toLocaleLowerCase())
 
   render() {
     const { products, inputVal } = this.state;

@@ -12,26 +12,9 @@ const links = [
 ];
 
 export const Navigation = ({ user, onLogout }) => {
-  const mainNavLinks = user ?
-    links.filter(item => {
-      if (item.auth === true || item.auth === undefined) {
-        return (
-          <li key={item.label}>
-            <NavLink to={`/${item.path}`}>{item.label}</NavLink>
-          </li>
-        )
-      }
-    })
-  :
-    links.filter(item => {
-      if (item.auth === false || item.auth === undefined) {
-        return (
-          <li key={item.label}>
-            <NavLink to={`/${item.path}`}>{item.label}</NavLink>
-          </li>
-        )
-      }
-    })
+  let mainNavLinks = links.filter(item => {
+    return user ? item.auth === true : item.auth === false || item.auth === undefined;
+  });  
 
   const userNavLinks = user ?
       <>

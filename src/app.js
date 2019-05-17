@@ -29,11 +29,7 @@ class App extends Component {
       <>
         <Header onLogout={this.onLogout} user={user} />
         <Main>
-          {user ?
-            <PagesAuth user={user} />
-          :
-            <Pages onLogin={this.onLogin} user={user} />
-          }
+          <Pages onLogin={this.onLogin} user={user} />
         </Main>
       </>
     );
