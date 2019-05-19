@@ -1,6 +1,7 @@
 import './greeting.scss';
 
 import { Infobar } from '../../components/infoBar';
+import { useState, useEffect } from 'react';
 
 const time = new Date().getHours();
 let dayTime;
@@ -11,6 +12,18 @@ else if (time >= 18 && time <= 22) dayTime = 'evening';
 else dayTime = 'night';
 
 export const Greeting = ({ user }) => {
+  const [info, setInfo] = useState(0);
+  useEffect(() => { 
+    fetch('http://localhost:8086/shop_info', {
+      credentials: 'include'
+    })
+      .then(resp => resp.json())
+      .then(info => {
+        setInfo(info);
+      })
+  });
+
+
   const greetNonAuth = (
     <div className="greeting">
       <h1>Welcome to the Toy market</h1>
@@ -31,7 +44,7 @@ export const Greeting = ({ user }) => {
   const greetAuth = (
     <>
       <h1>{`Good ${dayTime}, ${user}`}</h1>
-      <Infobar categories={5} products={35} published={23} />
+      <Infobar categories={info.categories} products={info.products} published={info.publishedCategories} />
     </>
   );
 

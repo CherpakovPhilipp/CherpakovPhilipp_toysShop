@@ -4,6 +4,7 @@ import { Greeting } from './greeting';
 import { NotFound } from './notFound';
 import { Products } from './products';
 import { ProductInfo } from './productInfo';
+import { Category } from './category';
 
 export const Private = ({ user }) => {
   return (
@@ -26,6 +27,11 @@ export const Private = ({ user }) => {
       <Redirect
         from="/login"
         to="/"
+      />
+      <Route
+        path="/categories/:id"
+        exact
+        component={Category}
       />
       <Route
         render={({ location }) => <NotFound location={location} />}

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { history } from 'react';
 
 export const Infobar = ({ categories, products, published }) => (
   <div className="info-bar">
@@ -6,6 +7,6 @@ export const Infobar = ({ categories, products, published }) => (
     </p>
     <p>You have <b>{products}</b> products</p>
     <br />
-    <Link to="/categories">Go to categories</Link>
+    <button onClick={() => {history.push('/categories')}}>Go to categories</button>
   </div>
 );

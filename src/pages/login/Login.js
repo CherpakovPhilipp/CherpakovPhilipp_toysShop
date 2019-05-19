@@ -1,4 +1,5 @@
 import { Loader } from '../../components/loader';
+import { server } from '../../services';
 const { useState } = React;
 
 export const Login = ({ onLogin }) => {
@@ -6,16 +7,18 @@ export const Login = ({ onLogin }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setSubmited(true);
+    //setSubmited(true);
 
     const data = {
       email: event.target.email.value,
       password: event.target.password.value,
     }
     
-    setTimeout(() => {
-      onLogin(data);
-    }, 2000)
+    server.post('public/login', data)
+      .then(user => {
+        onLogin(user);
+        setSubmited(true);
+      })
   }
 
   return (
@@ -25,13 +28,13 @@ export const Login = ({ onLogin }) => {
         type="text" 
         name="email" 
         required 
-        defaultValue="admin@admin.com"
+        defaultValue="admin@a.com"
       /><br/><br/>
       <input 
         type="password" 
         name="password" 
         required 
-        defaultValue="password"
+        defaultValue="admin"
       /><br/><br/>
 
       <input type="submit" value="Login" />

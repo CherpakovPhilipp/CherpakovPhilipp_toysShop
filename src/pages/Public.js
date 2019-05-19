@@ -5,6 +5,7 @@ import { Greeting } from './greeting';
 import { Login } from './login';
 import { NotFound } from './notFound';
 import { Registration } from './registration';
+import { Category } from './category';
 
 export const Public = ({ onLogin }) => {
   return (
@@ -28,6 +29,11 @@ export const Public = ({ onLogin }) => {
         path="/registration"
         exact
         component={(props) => <Registration exclude={[]} disabled={[]} { ...props } />}
+      />
+      <Route
+        path="/categories/:id"
+        exact
+        component={Category}
       />
       <Route
         render={({ location }) => <NotFound location={location} />}
