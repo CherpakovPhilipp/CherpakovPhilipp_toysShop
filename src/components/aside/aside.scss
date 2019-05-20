@@ -1,8 +1,0 @@
-@import '../../styles/mixins.scss';
-
-.aside{
-  @include components_common;
-
-  flex: 1;
-  margin-right: 25px;
-}
