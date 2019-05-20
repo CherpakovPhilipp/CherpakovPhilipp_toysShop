@@ -4,7 +4,8 @@ import { Greeting } from './greeting';
 import { NotFound } from './notFound';
 import { Products } from './products';
 import { ProductInfo } from './productInfo';
-import { Category } from './category';
+import { Categories } from './categories';
+import { Contacts } from './contacts';
 
 export const Private = ({ user }) => {
   return (
@@ -20,6 +21,11 @@ export const Private = ({ user }) => {
         component={ProductInfo}
       />
       <Route
+        path="/contacts"
+        exact
+        component={Contacts}
+      />
+      <Route
         path="/products"
         exact
         component={Products}
@@ -31,7 +37,7 @@ export const Private = ({ user }) => {
       <Route
         path="/categories/:id"
         exact
-        component={Category}
+        component={Categories}
       />
       <Route
         render={({ location }) => <NotFound location={location} />}
