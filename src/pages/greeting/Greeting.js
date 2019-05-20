@@ -2,6 +2,7 @@ import './greeting.scss';
 
 import { Infobar } from '../../components/infoBar';
 import { useState, useEffect } from 'react';
+import { server } from '../../services';
 
 const time = new Date().getHours();
 let dayTime;
@@ -13,16 +14,15 @@ else dayTime = 'night';
 
 export const Greeting = ({ user }) => {
   const [info, setInfo] = useState(0);
-  useEffect(() => { 
-    fetch('http://localhost:8086/shop_info', {
-      credentials: 'include'
-    })
-      .then(resp => resp.json())
-      .then(info => {
-        setInfo(info);
-      })
-  });
 
+  useEffect(() => {
+    if (user) {
+      server.get('shop_info')
+        .then(info => {
+          setInfo(info);
+        })
+    }
+  }, []);
 
   const greetNonAuth = (
     <div className="greeting">

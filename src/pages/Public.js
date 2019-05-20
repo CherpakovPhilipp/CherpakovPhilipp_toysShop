@@ -37,6 +37,11 @@ export const Public = ({ onLogin }) => {
         component={(props) => <Registration exclude={[]} disabled={[]} { ...props } />}
       />
       <Route
+        path="/categories"
+        exact
+        component={Categories}
+      />
+      <Route
         path="/categories/:id"
         exact
         component={Categories}

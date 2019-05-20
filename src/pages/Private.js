@@ -35,6 +35,11 @@ export const Private = ({ user }) => {
         to="/"
       />
       <Route
+        path="/categories"
+        exact
+        component={Categories}
+      />
+      <Route
         path="/categories/:id"
         exact
         component={Categories}

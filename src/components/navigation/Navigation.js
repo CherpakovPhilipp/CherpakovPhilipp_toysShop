@@ -1,10 +1,11 @@
 import './navigation.scss';
 
 import { Link, NavLink } from 'react-router-dom';
+import { server } from '../../services';
 
 const links = [
   { label: 'Home', path: '', icon: 'home', auth: false },
-  { label: 'Home-auth', path: '', icon: 'home', auth: true },
+  { label: 'Home', path: '', icon: 'home', auth: true },
   { label: 'Shop', path: 'categories', icon: 'list-alt', auth: false },
   { label: 'Categories', path: 'categories', icon: 'list-alt', auth: true },
   { label: 'Products', path: 'products', icon: 'shopping-bag', auth: true },
@@ -12,14 +13,19 @@ const links = [
 ];
 
 export const Navigation = ({ user, onLogout }) => {
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    server.get('logout').then(() => onLogout(null));
+  };
+
   let mainNavLinks = links.filter(item => {
     return user ? item.auth === true : item.auth === false || item.auth === undefined;
-  });  
+  });
 
   const userNavLinks = user ?
       <>
         <span>{user}</span>
-        <Link to='/' onClick={onLogout}>Logout</Link>
+        <Link to='/' onClick={logoutHandler}>Logout</Link>
       </>
     :
       <>
