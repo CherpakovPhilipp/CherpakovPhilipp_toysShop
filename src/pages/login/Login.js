@@ -17,7 +17,7 @@ export const Login = ({ onLogin }) => {
     server.post('public/login', data)
       .then(user => {
         onLogin(user);
-        setSubmited(true);
+        //setSubmited(true);
       })
   }
 
