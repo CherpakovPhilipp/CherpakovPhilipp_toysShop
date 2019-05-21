@@ -1,5 +1,4 @@
 import './navigation.scss';
-
 import { Link, NavLink } from 'react-router-dom';
 import { server } from '../../services';
 

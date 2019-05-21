@@ -5,7 +5,6 @@ export class Button extends Component {
     isActive: 'active'
   };
 
-
   toggleActive = () => {
     this.state.isActive ? this.setState({ isActive: '' }) : this.setState({ isActive: 'active' });
   }
