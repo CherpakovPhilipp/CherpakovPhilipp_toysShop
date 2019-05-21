@@ -5,7 +5,8 @@ import { Greeting } from './greeting';
 import { Login } from './login';
 import { NotFound } from './notFound';
 import { Registration } from './registration';
-import { Category } from './category';
+import { Categories } from './categories';
+import { Contacts } from './contacts';
 
 export const Public = ({ onLogin }) => {
   return (
@@ -21,6 +22,11 @@ export const Public = ({ onLogin }) => {
         component={ProductInfo}
       />
       <Route
+        path="/contacts"
+        exact
+        component={Contacts}
+      />
+      <Route
         path="/login"
         exact
         render={(props) =><Login onLogin={onLogin} { ...props } />}
@@ -31,9 +37,14 @@ export const Public = ({ onLogin }) => {
         component={(props) => <Registration exclude={[]} disabled={[]} { ...props } />}
       />
       <Route
+        path="/categories"
+        exact
+        component={Categories}
+      />
+      <Route
         path="/categories/:id"
         exact
-        component={Category}
+        component={Categories}
       />
       <Route
         render={({ location }) => <NotFound location={location} />}

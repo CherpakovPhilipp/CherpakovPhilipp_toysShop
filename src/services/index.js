@@ -6,7 +6,7 @@ const additioinalHeaders = {
   }
 };
 
-export const request = (url, method = 'get', data, settings = {}) => {
+export const request = (url, method = 'GET', data, settings = {}) => {
   const options = {
     method,
     credentials: 'include',
@@ -31,7 +31,7 @@ export const server = {
   },
 
   post(url, data) {
-    return request(url, 'post', data, additioinalHeaders);
+    return request(url, 'POST', data, additioinalHeaders);
   },
 
   put(url, data) {

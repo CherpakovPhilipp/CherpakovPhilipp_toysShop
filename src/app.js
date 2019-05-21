@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   onLogin = (user) => {
-    this.setState({ user: user.email });
+    this.setState({ user: user.firstName });
   }
 
   onLogout = () => {

@@ -1,36 +1,30 @@
 import './products.scss';
 import { Link } from 'react-router-dom';
-
-const products = ["Bicycle", "Car", "Super-hero", "Doll", "Teddy", "Lego", "Pistols", "Table-game"];
+import { server } from '../../services';
 
 export class Products extends Component {
   state = {
-    products,
+    products: [],
     inputVal: ''
   };
 
   componentDidMount() {
-    //this.getProducts();
+    this.getProducts();
   }
 
-  getProducts= () => {
-    fetch('/db/products.json', { method: 'GET' })
-      .then((response) => {
-        if (response.status !== 200) throw new Error('Problems with fetch!');
-
-        return response.json();
-      })
-      .then((data) => {
+  getProducts = () => {
+    server.get('public/products')
+      .then(data => {
         this.products = data;
         this.setState({ products: data });
-      });
+      })
   }
 
   setInputVal = ({ target }) => {
     this.setState({ inputVal: target.value });
   }
 
-  filterProducts = product => product.toLocaleLowerCase().includes(this.state.inputVal.toLocaleLowerCase())
+  filterProducts = product => product.title.toLocaleLowerCase().includes(this.state.inputVal.toLocaleLowerCase())
 
   render() {
     const { products, inputVal } = this.state;
@@ -48,16 +42,16 @@ export class Products extends Component {
           {products.filter(this.filterProducts)
             .map(product => (
               <li
-                key={product}
+                key={product.title}
               >
               <div className="product-box">
                 <div className="product-controls">
-                  <object type="image/svg+xml" data="/images/edit.svg" className="edit"></object>
-                  <object type="image/svg+xml" data="/images/cross.svg" className="remove"></object>
+                  <img src="/images/edit.svg" className="edit" />
+                  <img src="/images/cross.svg" className="remove" />
                 </div>
-                <img src="/images/product-stub.png" alt={product}/>
+                <img src={product.image ? product.image : "/images/product-stub.png"} alt={product.title}/>
               </div>
-              <span className="product-title">{product}</span>
+              <span className="product-title">{product.title}</span>
               </li>
             )
           )}
