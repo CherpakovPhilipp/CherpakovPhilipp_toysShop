@@ -7,7 +7,7 @@ export const Categories = () => {
 
   useEffect(() => {
     server.get('public/categories')
-      .then(categories => {setCategories(categories);console.log(categories)})
+      .then(categories => setCategories(categories))
   },[])
 
   return (

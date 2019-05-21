@@ -46,10 +46,10 @@ export class Products extends Component {
               >
               <div className="product-box">
                 <div className="product-controls">
-                  <object type="image/svg+xml" data="/images/edit.svg" className="edit"></object>
-                  <object type="image/svg+xml" data="/images/cross.svg" className="remove"></object>
+                  <img src="/images/edit.svg" className="edit" />
+                  <img src="/images/cross.svg" className="remove" />
                 </div>
-                <img src="/images/product-stub.png" alt={product.title}/>
+                <img src={product.image ? product.image : "/images/product-stub.png"} alt={product.title}/>
               </div>
               <span className="product-title">{product.title}</span>
               </li>
