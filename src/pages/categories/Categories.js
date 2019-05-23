@@ -1,4 +1,4 @@
-import { server } from '../../services';
+import { getCategoriesService } from '../../services/categoriesService';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ export const Categories = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    server.get('public/categories')
+    getCategoriesService()
       .then(categories => setCategories(categories))
   },[])
 

@@ -1,5 +1,5 @@
 import { Loader } from '../../components/loader';
-import { server } from '../../services';
+import { loginUserService } from '../../services/userService';
 const { useState } = React;
 
 export const Login = ({ onLogin }) => {
@@ -14,7 +14,7 @@ export const Login = ({ onLogin }) => {
       password: event.target.password.value,
     }
     
-    server.post('public/login', data)
+    loginUserService(data)
       .then(user => {
         onLogin(user);
         //setSubmited(true);
