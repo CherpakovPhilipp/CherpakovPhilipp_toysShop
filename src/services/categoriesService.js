@@ -6,8 +6,8 @@ export const getCategoryService = id => server.get(`public/categories/${id}`);
 
 export const getShopInfoService = () => server.get('shop_info');
 
-export const createCategoryService = (title = 'New category', products = []) => server.post('categories', { title, products });
+export const createCategoryService = data => server.post('categories', data);
 
-export const updateCategoryService = (id, title = 'New category', products = []) => server.put(`categories/${id}`, { title, products });
+export const updateCategoryService = (id, data) => server.put(`categories/${id}`, data);
 
 export const deleteCategoryService = id => server.delete(`categories/${id}`);
