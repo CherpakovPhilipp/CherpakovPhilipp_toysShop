@@ -1,9 +1,7 @@
 const BASE_URL = 'http://localhost:8086';
 
 const additioinalHeaders = {
-  headers:{
-    'Content-type': 'application/json; charset=utf-8'
-  }
+  headers:{ 'Content-type': 'application/json; charset=utf-8' }
 };
 
 export const request = (url, method = 'GET', data, settings = {}) => {

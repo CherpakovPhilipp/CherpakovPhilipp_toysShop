@@ -1,6 +1,6 @@
 import './products.scss';
 import { Link } from 'react-router-dom';
-import { server } from '../../services';
+import { getProductsService } from '../../services/productsService';
 
 export class Products extends Component {
   state = {
@@ -13,7 +13,7 @@ export class Products extends Component {
   }
 
   getProducts = () => {
-    server.get('public/products')
+    getProductsService()
       .then(data => {
         this.products = data;
         this.setState({ products: data });
