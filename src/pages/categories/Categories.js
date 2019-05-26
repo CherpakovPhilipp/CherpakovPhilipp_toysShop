@@ -1,14 +1,16 @@
-import { getCategoriesService } from '../../services/categoriesService';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export const Categories = () => {
-  const [categories, setCategories] = useState([]);
+import { getCategoriesService } from '../../services/categoriesService';
+import { setCategories } from '../../store/categories';
 
+
+export const CategoriesComponent = ({ categories = [] }) => {
   useEffect(() => {
     getCategoriesService()
-      .then(categories => setCategories(categories))
-  },[])
+      .then(data => {props.dispatch(setCategories(data));console.log(data);})
+  },[]);
 
   return (
     <>
@@ -19,3 +21,9 @@ export const Categories = () => {
     </>
   );
 };
+
+const mapStateToProps = state => ({
+  categories: state.categories
+});
+
+export const Categories = connect(mapStateToProps)(CategoriesComponent);
