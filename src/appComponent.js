@@ -5,10 +5,9 @@ import { Main } from './components/main';
 import { Pages } from './pages';
 import { Loader } from './components/loader';
 import { checkUserService } from './services/userService';
-//import {} from '../../store/user';
+import { setUser } from './store/user';
 
 import './styles/general.scss';
-
 
 export class AppComponent extends Component {
   state = {
@@ -49,7 +48,7 @@ export class AppComponent extends Component {
         <Header />
         <Main>
           {
-            isLoading 
+            isLoading
               ? <Loader shown={isLoading} />
               : <Pages />
           }

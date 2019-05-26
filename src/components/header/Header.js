@@ -17,8 +17,8 @@ export const HeaderComponent = ({ user, dispatch }) => {
   );
 };
 
-const mapToProps = state => ({
+const mapStateToProps  = state => ({
   user: state.user
 });
 
-export const Header = connect(mapToProps)(HeaderComponent);
+export const Header = connect(mapStateToProps)(HeaderComponent);
