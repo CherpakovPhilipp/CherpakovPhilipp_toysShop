@@ -1,8 +1,12 @@
+import { connect } from 'react-redux';
+
 import { Loader } from '../../components/loader';
 import { loginUserService } from '../../services/userService';
 const { useState } = React;
 
-export const Login = ({ onLogin }) => {
+import { setUser } from '../../store/user';
+
+export const LoginComponent = ({ dispatch }) => {
   const [submited, setSubmited] = useState(false);
 
   const onSubmit = (event) => {
@@ -16,7 +20,7 @@ export const Login = ({ onLogin }) => {
     
     loginUserService(data)
       .then(user => {
-        onLogin(user);
+        dispatch(setUser(user));
         //setSubmited(true);
       })
   }
@@ -41,3 +45,5 @@ export const Login = ({ onLogin }) => {
     </form>
   );
 }
+
+export const Login = connect()(LoginComponent);

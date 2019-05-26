@@ -23,7 +23,7 @@ export const Navigation = ({ user, onLogout }) => {
 
   const userNavLinks = user ?
       <>
-        <span>{user}</span>
+        <span>{user.firstName}</span>
         <Link to='/' onClick={logoutHandler}>Logout</Link>
       </>
     :
