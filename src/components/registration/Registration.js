@@ -8,7 +8,7 @@ export class Registration extends Component {
     { label: 'password', reg: /^[^ ]{6,20}$/, secure: true }
   ];
 
-  state = this.fields.reduce((acc, item, index) => ({ ...acc, [item.label]: { value: '', error: '' } }), {});
+  state = this.fields.reduce((acc, item) => ({ ...acc, [item.label]: { value: '', error: '' } }), {});
 
   changeField = ({ target }) => { // деструктурировали event
     const value = target.hasOwnProperty('checked') ? target.checked : target.value;
@@ -16,12 +16,12 @@ export class Registration extends Component {
     this.setState({ [target.name]: { value, error: '' } });
   }
 
-  validateField = ({ target }, index) => {
+  validateField = (index) => {
     const field = this.fields[index];
     const stateField = this.state[field.label];
 
     if (!field.reg.test(stateField.value)) {
-      this.setState({ [field.label]: { ...stateField, error: `${field.label} don\'t match` } });
+      this.setState({ [field.label]: { ...stateField, error: `${field.label} don't match` } });
     }
   }
 
@@ -46,8 +46,6 @@ export class Registration extends Component {
   }
 
   render() {
-    const { } = this.state;
-
     return (
       <>
         <form className="user-form" onSubmit={this.onSubmit}>
@@ -63,7 +61,7 @@ export class Registration extends Component {
                     placeholder={`Enter ${label}`}
                     onChange={this.changeField}
                     value={this.state[label].value}
-                    onBlur={e => this.validateField(e, index)}
+                    onBlur={() => this.validateField(index)}
                     className={this.state[label].error ? 'error' : 'correct'}
                     disabled={this.isDisabled(label)}
                   />

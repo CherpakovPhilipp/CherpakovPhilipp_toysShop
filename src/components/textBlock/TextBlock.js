@@ -28,17 +28,17 @@ export class TextBlock extends Component {
         <span className="output">
           {inputText}
         </span>
-      )
+      );
     } else {
       fieldHTML = (
         <input
-            type="text"
-            value={this.state.inputText}
-            onChange={this.changeField}
-            onBlur={this.onBlur}
-            autoFocus
-          />
-      )
+          type="text"
+          value={this.state.inputText}
+          onChange={this.changeField}
+          onBlur={this.onBlur}
+          autoFocus
+        />
+      );
     }
 
     return (

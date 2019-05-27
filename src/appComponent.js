@@ -31,13 +31,13 @@ export class AppComponent extends Component {
     this.setState({ isLoading: true });
 
     checkUserService()
-      .then(user => {
+      .then((user) => {
         this.props.dispatch(setUser(user));
-        this.setState({ isLoading: false })
+        this.setState({ isLoading: false });
       })
       .catch(() => {
         this.setState({ isLoading: false });
-      })
+      });
   }
 
   render() {

@@ -17,28 +17,30 @@ export const Navigation = ({ user, onLogout }) => {
     server.get('logout').then(() => onLogout());
   };
 
-  let mainNavLinks = links.filter(item => {
-    return user ? item.auth === true : item.auth === false || item.auth === undefined;
-  });
+  const mainNavLinks = links.filter(item => (
+    user ? item.auth === true : item.auth === false || item.auth === undefined));
 
-  const userNavLinks = user ?
+  const userNavLinks = user
+    ? (
       <>
         <span>{user.firstName}</span>
-        <Link to='/' onClick={logoutHandler}>Logout</Link>
+        <Link to="/" onClick={logoutHandler}>Logout</Link>
       </>
-    :
+    )
+    : (
       <>
         <Link to="/login">Log in </Link>
         <span>/</span>
         <Link to="/registration"> Register</Link>
       </>
+    );
 
   return (
     <div className="navigation">
       <nav className="main-nav">
         <ul>
           <li>
-            <Link to="/"><img src="/images/logo.png" alt="logo"/></Link>
+            <Link to="/"><img src="/images/logo.png" alt="logo" /></Link>
           </li>
           {
             mainNavLinks.map(item => (
@@ -53,5 +55,5 @@ export const Navigation = ({ user, onLogout }) => {
         {userNavLinks}
       </nav>
     </div>
-  )
+  );
 };

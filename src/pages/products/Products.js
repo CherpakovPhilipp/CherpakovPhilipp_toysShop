@@ -1,10 +1,13 @@
-import './products.scss';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { setProducts } from '../../store/products';
 import { getProductsService } from '../../services/productsService';
 
-export class Products extends Component {
+import './products.scss';
+
+export class ProductsComponent extends Component {
   state = {
-    products: [],
     inputVal: ''
   };
 
@@ -14,10 +17,10 @@ export class Products extends Component {
 
   getProducts = () => {
     getProductsService()
-      .then(data => {
+      .then((data) => {
         this.products = data;
-        this.setState({ products: data });
-      })
+        this.props.dispatch(setProducts(data));
+      });
   }
 
   setInputVal = ({ target }) => {
@@ -27,7 +30,8 @@ export class Products extends Component {
   filterProducts = product => product.title.toLocaleLowerCase().includes(this.state.inputVal.toLocaleLowerCase())
 
   render() {
-    const { products, inputVal } = this.state;
+    const { inputVal } = this.state;
+    const { products } = this.props;
 
     return (
       <>
@@ -44,20 +48,25 @@ export class Products extends Component {
               <li
                 key={product.title}
               >
-              <div className="product-box">
-                <div className="product-controls">
-                  <img src="/images/edit.svg" className="edit" />
-                  <img src="/images/cross.svg" className="remove" />
+                <div className="product-box">
+                  <div className="product-controls">
+                    <img src="/images/edit.svg" className="edit" alt="edit" />
+                    <img src="/images/cross.svg" className="remove" alt="remove" />
+                  </div>
+                  <img src={product.image ? product.image : '/images/product-stub.png'} alt={product.title} />
                 </div>
-                <img src={product.image ? product.image : "/images/product-stub.png"} alt={product.title}/>
-              </div>
-              <span className="product-title">{product.title}</span>
+                <span className="product-title">{product.title}</span>
               </li>
-            )
-          )}
+            ))}
         </ul>
         <Link to="/new-product">Add new</Link>
       </>
-    )
+    );
   }
 }
+
+const mapStateToProps = state => ({
+  products: state.products
+});
+
+export const Products = connect(mapStateToProps)(ProductsComponent);

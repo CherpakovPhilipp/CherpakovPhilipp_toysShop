@@ -1,21 +1,37 @@
-import { getCategoriesService } from '../../services/categoriesService';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export const Categories = () => {
-  const [categories, setCategories] = useState([]);
+import { getCategoriesService } from '../../services/categoriesService';
+import { setCategories } from '../../store/categories';
 
+
+export const CategoriesComponent = ({ categories, dispatch }) => {
   useEffect(() => {
     getCategoriesService()
-      .then(categories => setCategories(categories))
-  },[])
+      .then((data) => { dispatch(setCategories(data)); });
+  }, []);
 
   return (
     <>
       <h1>Categories</h1>
       <ul>
-        {categories.map(category => <li key={category.title}><Link to={`categories/${category.id}`}>{category.title}</Link></li>)}
+        {
+          categories.map(category => (
+            <li key={category.title}>
+              <Link to={`categories/${category.id}`}>
+                {category.title}
+              </Link>
+            </li>
+          ))
+        }
       </ul>
     </>
   );
 };
+
+const mapStateToProps = state => ({
+  categories: state.categories
+});
+
+export const Categories = connect(mapStateToProps)(CategoriesComponent);

@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import { NotFound } from './notFound';
 import { ProductInfo } from './productInfo';
-import { Categories } from './categories';
+import { Categories, Category } from './categories';
+
 import { Public } from './Public';
 import { Private } from './Private';
 
@@ -17,7 +18,7 @@ export const PagesComponent = ({ user }) => (
     <Route
       path="/categories/:id"
       exact
-      component={Categories}
+      component={Category}
     />
     <Route
       path="/products/:id"
