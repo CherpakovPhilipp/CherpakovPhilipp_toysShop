@@ -20,21 +20,20 @@ export const GreetingComponent = ({ user }) => {
   useEffect(() => {
     if (user) {
       server.get('shop_info')
-        .then(info => {
+        .then((info) => {
           setInfo(info);
-        })
+        });
     }
   }, []);
 
-  return user ?
-    (
+  return user
+    ? (
       <>
         <h1>{`Good ${dayTime}, ${user.firstName}`}</h1>
         <Infobar categories={info.categories} products={info.products} published={info.publishedCategories} />
       </>
     )
-  :
-    (
+    : (
       <div className="greeting">
         <h1>Welcome to the Toy market</h1>
         <p>We are pleased to announce the launch of our brand new website!</p>
@@ -52,7 +51,7 @@ export const GreetingComponent = ({ user }) => {
     );
 };
 
-const mapStateToProps  = state => ({
+const mapStateToProps = state => ({
   user: state.user
 });
 

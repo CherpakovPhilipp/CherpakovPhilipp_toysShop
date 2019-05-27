@@ -7,4 +7,4 @@ export const categories = (state = storeState.categories, action) => {
   }
 
   return state;
-}
+};

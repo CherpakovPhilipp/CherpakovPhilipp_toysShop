@@ -1,7 +1,7 @@
 const BASE_URL = 'http://localhost:8086';
 
 const additioinalHeaders = {
-  headers:{ 'Content-type': 'application/json; charset=utf-8' }
+  headers: { 'Content-type': 'application/json; charset=utf-8' }
 };
 
 export const request = (url, method = 'GET', data, settings = {}) => {
@@ -14,8 +14,8 @@ export const request = (url, method = 'GET', data, settings = {}) => {
   if (data) options.body = JSON.stringify(data);
 
   const promise = fetch(`${BASE_URL}/${url}`, options)
-    .then(r => {
-      if(r.status < 200 || r.status > 299){
+    .then((r) => {
+      if (r.status < 200 || r.status > 299) {
         throw new Error(r.status);
       }
 

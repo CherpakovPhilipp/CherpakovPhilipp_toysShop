@@ -9,14 +9,22 @@ import { setCategories } from '../../store/categories';
 export const CategoriesComponent = ({ categories, dispatch }) => {
   useEffect(() => {
     getCategoriesService()
-      .then(data => {dispatch(setCategories(data))})
+      .then((data) => { dispatch(setCategories(data)); });
   }, []);
 
   return (
     <>
       <h1>Categories</h1>
       <ul>
-        {categories.map(category => <li key={category.title}><Link to={`categories/${category.id}`}>{category.title}</Link></li>)}
+        {
+          categories.map(category => (
+            <li key={category.title}>
+              <Link to={`categories/${category.id}`}>
+                {category.title}
+              </Link>
+            </li>
+          ))
+        }
       </ul>
     </>
   );

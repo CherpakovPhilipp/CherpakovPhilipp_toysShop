@@ -27,8 +27,7 @@ export const Public = [
   <Route
     path="/registration"
     exact
-    render={(props) => <Registration exclude={[]} disabled={[]} { ...props } />}
+    render={props => <Registration exclude={[]} disabled={[]} {...props} />}
     key="registration"
   />,
 ];
-

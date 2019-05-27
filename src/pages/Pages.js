@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import { NotFound } from './notFound';
 import { ProductInfo } from './productInfo';
-import { Categories } from './categories';
-import { Category } from './categories';
+import { Categories, Category } from './categories';
+
 import { Public } from './Public';
 import { Private } from './Private';
 

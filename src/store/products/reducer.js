@@ -7,4 +7,4 @@ export const products = (state = storeState.products, action) => {
   }
 
   return state;
-}
+};

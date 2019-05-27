@@ -17,10 +17,10 @@ export class ProductsComponent extends Component {
 
   getProducts = () => {
     getProductsService()
-      .then(data => {
+      .then((data) => {
         this.products = data;
         this.props.dispatch(setProducts(data));
-      })
+      });
   }
 
   setInputVal = ({ target }) => {
@@ -48,25 +48,24 @@ export class ProductsComponent extends Component {
               <li
                 key={product.title}
               >
-              <div className="product-box">
-                <div className="product-controls">
-                  <img src="/images/edit.svg" className="edit" />
-                  <img src="/images/cross.svg" className="remove" />
+                <div className="product-box">
+                  <div className="product-controls">
+                    <img src="/images/edit.svg" className="edit" alt="edit" />
+                    <img src="/images/cross.svg" className="remove" alt="remove" />
+                  </div>
+                  <img src={product.image ? product.image : '/images/product-stub.png'} alt={product.title} />
                 </div>
-                <img src={product.image ? product.image : "/images/product-stub.png"} alt={product.title}/>
-              </div>
-              <span className="product-title">{product.title}</span>
+                <span className="product-title">{product.title}</span>
               </li>
-            )
-          )}
+            ))}
         </ul>
         <Link to="/new-product">Add new</Link>
       </>
-    )
+    );
   }
-};
+}
 
-const mapStateToProps  = state => ({
+const mapStateToProps = state => ({
   products: state.products
 });
 
