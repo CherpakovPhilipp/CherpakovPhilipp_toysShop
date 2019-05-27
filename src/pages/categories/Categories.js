@@ -6,17 +6,17 @@ import { getCategoriesService } from '../../services/categoriesService';
 import { setCategories } from '../../store/categories';
 
 
-export const CategoriesComponent = ({ categories = [] }) => {
+export const CategoriesComponent = (props) => {
   useEffect(() => {
     getCategoriesService()
-      .then(data => {props.dispatch(setCategories(data));console.log(data);})
-  },[]);
+      .then(data => {props.dispatch(setCategories(data))})
+  }, []);
 
   return (
     <>
       <h1>Categories</h1>
       <ul>
-        {categories.map(category => <li key={category.title}><Link to={`categories/${category.id}`}>{category.title}</Link></li>)}
+        {props.categories.map(category => <li key={category.title}><Link to={`categories/${category.id}`}>{category.title}</Link></li>)}
       </ul>
     </>
   );
