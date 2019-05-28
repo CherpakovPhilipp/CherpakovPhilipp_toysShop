@@ -5,7 +5,11 @@ import { Main } from './components/main';
 import { Pages } from './pages';
 import { Loader } from './components/loader';
 import { checkUserService } from './services/userService';
+import { getShopInfoService } from './services/categoriesService';
 import { setUser } from './store/user';
+import { setInfo } from './store/categories';
+import { ToastContainer } from "react-toastr";
+
 
 import './styles/general.scss';
 
@@ -19,11 +23,22 @@ export class AppComponent extends Component {
   }
 
   componentDidUpdate(prevProp, prevStates) {
-    const { user } = this.props;
+    const { history, user, status } = this.props;
 
     // делаем редирект на гл. страницу при логауте
-    if (prevStates.user && !user) {
-      this.props.history.push('/');
+    if (prevProp.user && !user) {
+      history.push('/');
+    }
+
+    if (!prevProp.user && user) {
+      this.getInfo();
+    }
+
+    if (!prevProp.status && user) {
+      this.container.error(
+        <em>{status}</em>,
+        <strong>Error</strong>
+      );
     }
   }
 
@@ -40,8 +55,13 @@ export class AppComponent extends Component {
       });
   }
 
+  getInfo = () => {
+    getShopInfoService().then(data => this.props.dispatch(setInfo(data)));
+  }
+
   render() {
     const { isLoading } = this.state;
+    const { user ={}, info = {} } = this.props;
 
     return (
       <>
@@ -50,12 +70,18 @@ export class AppComponent extends Component {
           {
             isLoading
               ? <Loader shown={isLoading} />
-              : <Pages />
+              : <Pages user={user} />
           }
         </Main>
+        <ToastContainer
+          ref={ref => this.container = ref}
+          className="toast-top-right"
+        />
       </>
     );
   }
 }
 
-export const App = connect()(AppComponent);
+const mapStateToProps = state => ({ user: state.user, info: state.info, status: state.status });
+
+export const App = connect(mapStateToProps)(AppComponent);

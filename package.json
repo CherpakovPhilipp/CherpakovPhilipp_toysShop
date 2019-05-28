@@ -24,9 +24,11 @@
     "jquery": "^3.4.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-icons": "^3.7.0",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "react-slick": "^0.24.0",
+    "react-toastr": "^3.0.0",
     "redux": "^4.0.1",
     "slick-carousel": "^1.8.1"
   },

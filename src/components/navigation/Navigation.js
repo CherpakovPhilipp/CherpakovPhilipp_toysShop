@@ -11,7 +11,7 @@ const links = [
   { label: 'Contacts', path: 'contacts', icon: 'map-signs' }
 ];
 
-export const Navigation = ({ user, onLogout }) => {
+export const Navigation = ({ user, onLogout, info }) => {
   const logoutHandler = (e) => {
     e.preventDefault();
     server.get('logout').then(() => onLogout());
@@ -24,6 +24,7 @@ export const Navigation = ({ user, onLogout }) => {
     ? (
       <>
         <span>{user.firstName}</span>
+          {info && <span>{info.categories}/{info.products}</span>}
         <Link to="/" onClick={logoutHandler}>Logout</Link>
       </>
     )

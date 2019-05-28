@@ -9,6 +9,7 @@ const { useState } = React;
 
 export const LoginComponent = ({ dispatch }) => {
   const [submited, setSubmited] = useState(false);
+  const [error, setError] = useState('');
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -23,6 +24,9 @@ export const LoginComponent = ({ dispatch }) => {
       .then((user) => {
         dispatch(setUser(user));
         // setSubmited(true);
+      })
+      .catch(er => {
+        setError(er);
       });
   };
 
@@ -48,6 +52,7 @@ export const LoginComponent = ({ dispatch }) => {
           <br />
 
           <input type="submit" value="Login" />
+          <span>{error}</span>
         </form>
       )
   );

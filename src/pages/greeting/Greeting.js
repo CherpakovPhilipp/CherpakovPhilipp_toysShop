@@ -14,23 +14,12 @@ else if (time > 12 && time < 18) dayTime = 'afternoon';
 else if (time >= 18 && time <= 22) dayTime = 'evening';
 else dayTime = 'night';
 
-export const GreetingComponent = ({ user }) => {
-  const [info, setInfo] = useState(0);
-
-  useEffect(() => {
-    if (user) {
-      server.get('shop_info')
-        .then((info) => {
-          setInfo(info);
-        });
-    }
-  }, []);
-
+export const GreetingComponent = ({ user, info }) => {
   return user
     ? (
       <>
         <h1>{`Good ${dayTime}, ${user.firstName}`}</h1>
-        <Infobar categories={info.categories} products={info.products} published={info.publishedCategories} />
+        {info && <Infobar categories={info.categories} products={info.products} published={info.publishedCategories} />}
       </>
     )
     : (
@@ -52,7 +41,8 @@ export const GreetingComponent = ({ user }) => {
 };
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  info: state.info,
 });
 
 export const Greeting = connect(mapStateToProps)(GreetingComponent);

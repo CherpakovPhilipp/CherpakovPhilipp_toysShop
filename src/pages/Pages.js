@@ -8,7 +8,7 @@ import { Categories, Category } from './categories';
 import { Public } from './Public';
 import { Private } from './Private';
 
-export const PagesComponent = ({ user }) => (
+export const Pages = ({ user }) => (
   <Switch>
     <Route
       path="/categories"
@@ -32,7 +32,3 @@ export const PagesComponent = ({ user }) => (
     />
   </Switch>
 );
-
-const mapStateToProps = state => ({ user: state.user });
-
-export const Pages = connect(mapStateToProps)(PagesComponent);

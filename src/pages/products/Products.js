@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 
 import { setProducts } from '../../store/products';
 import { getProductsService } from '../../services/productsService';
@@ -50,8 +51,8 @@ export class ProductsComponent extends Component {
               >
                 <div className="product-box">
                   <div className="product-controls">
-                    <img src="/images/edit.svg" className="edit" alt="edit" />
-                    <img src="/images/cross.svg" className="remove" alt="remove" />
+                    <FaEdit className="edit" />
+                    <FaTrashAlt className="remove" />
                   </div>
                   <img src={product.image ? product.image : '/images/product-stub.png'} alt={product.title} />
                 </div>
