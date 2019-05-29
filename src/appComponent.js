@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { ToastContainer } from "react-toastr";
 
 import { Header } from './components/header';
 import { Main } from './components/main';
@@ -8,8 +9,7 @@ import { checkUserService } from './services/userService';
 import { getShopInfoService } from './services/categoriesService';
 import { setUser } from './store/user';
 import { setInfo } from './store/categories';
-import { ToastContainer } from "react-toastr";
-
+import { setError } from './store/status';
 
 import './styles/general.scss';
 
@@ -23,7 +23,7 @@ export class AppComponent extends Component {
   }
 
   componentDidUpdate(prevProp, prevStates) {
-    const { history, user, status } = this.props;
+    const { history, user, status, dispatch  } = this.props;
 
     // делаем редирект на гл. страницу при логауте
     if (prevProp.user && !user) {
@@ -34,20 +34,23 @@ export class AppComponent extends Component {
       this.getInfo();
     }
 
-    if (!prevProp.status && user) {
+    if (!prevProp.status && status) {
       this.container.error(
         <em>{status}</em>,
         <strong>Error</strong>
       );
+
+      dispatch(setError(''));
     }
   }
 
   checkUser = () => {
+    const { dispatch } = this.props;
     this.setState({ isLoading: true });
 
     checkUserService()
       .then((user) => {
-        this.props.dispatch(setUser(user));
+        dispatch(setUser(user));
         this.setState({ isLoading: false });
       })
       .catch(() => {
@@ -56,12 +59,14 @@ export class AppComponent extends Component {
   }
 
   getInfo = () => {
-    getShopInfoService().then(data => this.props.dispatch(setInfo(data)));
+    const { dispatch } = this.props;
+
+    getShopInfoService().then(data => dispatch(setInfo(data)));
   }
 
   render() {
     const { isLoading } = this.state;
-    const { user ={}, info = {} } = this.props;
+    const { user ={} } = this.props;
 
     return (
       <>

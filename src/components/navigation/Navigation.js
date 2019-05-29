@@ -24,8 +24,11 @@ export const Navigation = ({ user, onLogout, info }) => {
     ? (
       <>
         <span>{user.firstName}</span>
-          {info && <span>{info.categories}/{info.products}</span>}
-        <Link to="/" onClick={logoutHandler}>Logout</Link>
+        {info && <span>({info.categories}/{info.products})</span>}
+        <ul className="drop_down">
+          <li><Link to="user">Profile</Link></li>
+          <li><Link to="/" onClick={logoutHandler}>Logout</Link></li>
+        </ul>
       </>
     )
     : (

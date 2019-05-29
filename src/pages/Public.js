@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom';
 
 import { Greeting } from './greeting';
 import { Login } from './login';
-import { Registration } from '../components/registration';
+import { UserForm } from '../components/userForm';
 import { Contacts } from './contacts';
 
 export const Public = [
@@ -27,7 +27,7 @@ export const Public = [
   <Route
     path="/registration"
     exact
-    render={props => <Registration exclude={[]} disabled={[]} {...props} />}
+    render={props => <UserForm exclude={[]} disabled={[]} {...props} />}
     key="registration"
   />,
 ];

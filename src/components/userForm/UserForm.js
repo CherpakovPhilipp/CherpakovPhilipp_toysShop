@@ -1,6 +1,6 @@
-import './registration.scss';
+import './userForm.scss';
 
-export class Registration extends Component {
+export class UserForm extends Component {
   fields = [
     { label: 'email', reg: /^\w+@\w+\.[a-z]{2,}$/ },
     { label: 'name', reg: /^[^ ]{3,20}$/ },

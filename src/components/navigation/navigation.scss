@@ -20,8 +20,10 @@
       }
     }
   }
+
   .user-nav{
     display: flex;
+    position: relative;
     align-items: center;
 
     a, span{
@@ -29,6 +31,26 @@
       color:#fff;
       text-transform: uppercase;
       padding: 0 5px;
+    }
+
+    .drop_down {
+      display: none;
+      overflow: hidden;
+      position: absolute;
+      top: 100%;
+      padding: 10px 20px;
+      background: #0B7ACB;
+      z-index: 1000;
+
+      li{
+        display: block;
+        
+        margin: 10px 0;
+      }
+    }
+
+    &:hover .drop_down {
+      display: block;
     }
   }
 }
