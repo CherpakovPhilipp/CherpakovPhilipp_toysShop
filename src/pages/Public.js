@@ -4,6 +4,7 @@ import { Greeting } from './greeting';
 import { Login } from './login';
 import { UserForm } from '../components/userForm';
 import { Contacts } from './contacts';
+import { Success } from './success';
 
 export const Public = [
   <Route
@@ -29,5 +30,11 @@ export const Public = [
     exact
     render={props => <UserForm exclude={[]} disabled={[]} {...props} />}
     key="registration"
+  />,
+  <Route
+    path="/success"
+    exact
+    component={Success}
+    key="success"
   />,
 ];

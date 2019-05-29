@@ -66,7 +66,7 @@ export class AppComponent extends Component {
 
   render() {
     const { isLoading } = this.state;
-    const { user ={} } = this.props;
+    const { user = {}, history } = this.props;
 
     return (
       <>
@@ -75,7 +75,7 @@ export class AppComponent extends Component {
           {
             isLoading
               ? <Loader shown={isLoading} />
-              : <Pages user={user} />
+              : <Pages user={user} history={history} />
           }
         </Main>
         <ToastContainer

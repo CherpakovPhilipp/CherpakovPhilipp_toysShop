@@ -7,7 +7,7 @@ import { Categories, Category } from './categories';
 import { Public } from './Public';
 import { Private } from './Private';
 
-export const Pages = ({ user }) => (
+export const Pages = ({ user, history }) => (
   <Switch>
     <Route
       path="/categories"
