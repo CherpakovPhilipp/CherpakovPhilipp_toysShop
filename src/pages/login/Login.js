@@ -8,7 +8,7 @@ import { setUser } from '../../store/user';
 const { useState } = React;
 
 export const LoginComponent = ({ dispatch }) => {
-  const [submited, setSubmited] = useState(false);
+  const [submited] = useState(false);
   const [error, setError] = useState('');
 
   const onSubmit = (event) => {
@@ -25,7 +25,7 @@ export const LoginComponent = ({ dispatch }) => {
         dispatch(setUser(user));
         // setSubmited(true);
       })
-      .catch(er => {
+      .catch((er) => {
         setError(er);
       });
   };

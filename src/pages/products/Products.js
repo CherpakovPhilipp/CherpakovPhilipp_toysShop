@@ -56,7 +56,7 @@ export class ProductsComponent extends Component {
                   </div>
                   <img src={product.image ? product.image : '/images/product-stub.png'} alt={product.title} />
                 </div>
-                <span className="product-title">{product.title}</span>
+                <Link to={`products/${product.id}`} className="product-title">{product.title}</Link>
               </li>
             ))}
         </ul>

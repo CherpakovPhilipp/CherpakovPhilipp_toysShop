@@ -17,18 +17,16 @@ export const request = (url, method = 'GET', data, settings = {}) => {
   if (data) options.body = JSON.stringify(data);
 
   const promise = fetch(`${BASE_URL}/${url}`, options)
-    .then((r) => {
-      return r.json();
-    })
-    .then(data => {
+    .then(r => r.json())
+    .then((data) => {
       if (!data.error) return data;
 
       throw data.error;
     })
-    .catch(error => {
+    .catch((error) => {
       store.dispatch(setError(String(error)));
       throw data.error;
-    })
+    });
 
   return promise;
 };

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { ToastContainer } from "react-toastr";
+import { ToastContainer } from 'react-toastr';
 
 import { Header } from './components/header';
 import { Main } from './components/main';
@@ -22,8 +22,8 @@ export class AppComponent extends Component {
     this.checkUser();
   }
 
-  componentDidUpdate(prevProp, prevStates) {
-    const { history, user, status, dispatch  } = this.props;
+  componentDidUpdate(prevProp) {
+    const { history, user, status, dispatch } = this.props;
 
     // делаем редирект на гл. страницу при логауте
     if (prevProp.user && !user) {
@@ -66,7 +66,7 @@ export class AppComponent extends Component {
 
   render() {
     const { isLoading } = this.state;
-    const { user = {}, history } = this.props;
+    const { user = {} } = this.props;
 
     return (
       <>
@@ -75,7 +75,7 @@ export class AppComponent extends Component {
           {
             isLoading
               ? <Loader shown={isLoading} />
-              : <Pages user={user} history={history} />
+              : <Pages user={user} />
           }
         </Main>
         <ToastContainer
