@@ -6,6 +6,17 @@ export class TextBlock extends Component {
     hidden: true
   };
 
+  componentDidMount() {
+    const { initialText } = this.props;
+
+    console.log(initialText);
+  }
+
+  componentDidUpdate(prevProp, prevState) {
+    const { initialText } = this.props;
+    if (!prevProp.initialText && initialText) this.setState({inputText: initialText});
+  }
+
   onClick = () => {
     this.setState({ hidden: false });
   };
