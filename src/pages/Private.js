@@ -1,6 +1,6 @@
 import { Route, Redirect } from 'react-router-dom';
 
-import { Greeting } from './greeting';
+import { HomeAuth } from './homeAuth';
 import { Products } from './products';
 import { UserForm } from '../components/userForm';
 
@@ -8,7 +8,7 @@ export const Private = [
   <Route
     path="/"
     exact
-    component={Greeting}
+    component={HomeAuth}
     key="homeAuth"
   />,
   <Route
@@ -20,7 +20,7 @@ export const Private = [
   <Route
     path="/user"
     exact
-    render={props => <UserForm exclude={[]} disabled={[]} {...props} />}
+    component={UserForm}
     key="user"
   />,
   <Redirect

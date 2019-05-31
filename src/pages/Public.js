@@ -1,6 +1,6 @@
 import { Route } from 'react-router-dom';
 
-import { Greeting } from './greeting';
+import { Home } from './home';
 import { Login } from './login';
 import { UserForm } from '../components/userForm';
 import { Contacts } from './contacts';
@@ -10,7 +10,7 @@ export const Public = [
   <Route
     path="/"
     exact
-    component={Greeting}
+    component={Home}
     key="home"
   />,
   <Route
@@ -28,7 +28,7 @@ export const Public = [
   <Route
     path="/registration"
     exact
-    render={props => <UserForm exclude={[]} disabled={[]} {...props} />}
+    component={UserForm}
     key="registration"
   />,
   <Route

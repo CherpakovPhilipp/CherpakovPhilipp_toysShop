@@ -8,12 +8,12 @@ import { setUser } from '../../store/user';
 const { useState } = React;
 
 export const LoginComponent = ({ dispatch }) => {
-  const [submited] = useState(false);
+  const [submited, setSubmited] = useState(false);
   const [error, setError] = useState('');
 
   const onSubmit = (event) => {
     event.preventDefault();
-    // setSubmited(true);
+    setSubmited(true);
 
     const data = {
       email: event.target.email.value,
@@ -22,10 +22,11 @@ export const LoginComponent = ({ dispatch }) => {
 
     loginUserService(data)
       .then((user) => {
+        setSubmited(false);
         dispatch(setUser(user));
-        // setSubmited(true);
       })
       .catch((er) => {
+        setSubmited(false);
         setError(er);
       });
   };
