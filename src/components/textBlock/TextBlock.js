@@ -6,6 +6,12 @@ export class TextBlock extends Component {
     hidden: true
   };
 
+  componentDidUpdate(prevProp) {
+    const { initialText } = this.props;
+
+    if (prevProp.initialText !== initialText) this.setState({inputText: initialText});
+  }
+
   onClick = () => {
     this.setState({ hidden: false });
   };

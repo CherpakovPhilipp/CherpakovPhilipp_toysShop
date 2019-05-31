@@ -34,13 +34,17 @@ export class UserForm extends Component {
   }
 
   isExcluded = (field) => {
-    const res = this.props.exclude.find(name => field === name);
+    const { exclude = [] } = this.props;
+
+    const res = exclude.find(name => field === name);
 
     return Boolean(res);
   }
 
   isDisabled = (field) => {
-    const res = this.props.disabled.find(name => field === name);
+    const { disabled = [] } = this.props;
+
+    const res = disabled.find(name => field === name);
 
     return Boolean(res);
   }

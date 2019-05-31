@@ -13,7 +13,7 @@ export const LoginComponent = ({ dispatch }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    // setSubmited(true);
+    setSubmited(true);
 
     const data = {
       email: event.target.email.value,
@@ -22,10 +22,11 @@ export const LoginComponent = ({ dispatch }) => {
 
     loginUserService(data)
       .then((user) => {
+        setSubmited(false);
         dispatch(setUser(user));
-        // setSubmited(true);
       })
-      .catch(er => {
+      .catch((er) => {
+        setSubmited(false);
         setError(er);
       });
   };

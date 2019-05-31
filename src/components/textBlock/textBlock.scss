@@ -2,19 +2,17 @@
 
 .input-block{
   @include text_block;
-
-  width: 300px;
+  display: inline-block;
   padding: 15px;
   margin-bottom: 25px;
 
   input{
     @include input-text;
+
     border:1px solid green;
+    background: rgba(0,130,15,0.1);
   }
   span{
     margin:5px 0;
-  }
-  .output{
-    color:green;
   }
 }
