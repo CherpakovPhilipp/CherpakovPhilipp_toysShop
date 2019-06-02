@@ -2,14 +2,17 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 
-import { setProducts } from '../../store/products';
+import { setProducts, removeProduct } from '../../store/products';
 import { getProductsService } from '../../services/productsService';
+import { TextBlock } from '../../components/textBlock';
+import { deleteProductService, updateProductService } from '../../services/productsService';
 
 import './products.scss';
 
 export class ProductsComponent extends Component {
   state = {
-    inputVal: ''
+    inputVal: '',
+    itemInEdit: null
   };
 
   componentDidMount() {
@@ -30,6 +33,34 @@ export class ProductsComponent extends Component {
 
   filterProducts = product => product.title.toLocaleLowerCase().includes(this.state.inputVal.toLocaleLowerCase())
 
+  onClickEdit = (id) => {
+    this.setState({ itemInEdit: id });
+  }
+
+  onClickDelete = (id) => {
+    deleteProductService(id)
+      .then(() => {
+        this.props.dispatch(removeProduct(id));
+      });
+  }
+
+  handleTileChange = (id, title) => {
+    const product = this.products.find(item => item.id === id);
+    product.title = title;
+
+    updateProductService(id, product)
+      .then(() => {
+        this.setState({ itemInEdit: null });
+        this.getProducts();
+      });
+  }
+
+  handleTitleClick = (id) => {
+    const { history } = this.props;
+
+    history.push(`/products/${id}`)
+  }
+
   render() {
     const { inputVal } = this.state;
     const { products } = this.props;
@@ -44,23 +75,34 @@ export class ProductsComponent extends Component {
           className="filter"
         />
         <ul className="products">
-          {products.filter(this.filterProducts)
+          {
+            products.filter(this.filterProducts)
             .map(product => (
-              <li
-                key={product.title}
-              >
+              <li key={product.title}>
                 <div className="product-box">
                   <div className="product-controls">
-                    <FaEdit className="edit" />
-                    <FaTrashAlt className="remove" />
+                    <FaEdit
+                      className="edit"
+                      onClick={() => this.onClickEdit(product.id)}
+                    />
+                    <FaTrashAlt
+                      className="remove"
+                      onClick={() => this.onClickDelete(product.id)}
+                    />
                   </div>
                   <img src={product.image ? product.image : '/images/product-stub.png'} alt={product.title} />
                 </div>
-                <Link to={`products/${product.id}`} className="product-title">{product.title}</Link>
+                <TextBlock
+                  initialText={product.title}
+                  onTextEdit={text => this.handleTileChange(product.id, text)}
+                  inEdit={this.state.itemInEdit === product.id ? true : false}
+                  onClick={() => this.handleTitleClick(product.id)}
+                />
               </li>
-            ))}
+            ))
+          }
         </ul>
-        <Link to="/new-product">Add new</Link>
+        <Link to="/products/new">Add new</Link>
       </>
     );
   }

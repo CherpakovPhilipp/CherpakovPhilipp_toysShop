@@ -4,6 +4,6 @@ export default {
   categories: [],
   category: null,
   products: [],
-  product: {},
+  product: null,
   status: ''
 };

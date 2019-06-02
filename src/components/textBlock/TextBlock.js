@@ -3,22 +3,28 @@ import './textBlock.scss';
 export class TextBlock extends Component {
   state = {
     inputText: this.props.initialText,
-    hidden: true
+    editable: this.props.inEdit || false
   };
 
   componentDidUpdate(prevProp) {
-    const { initialText } = this.props;
+    const { initialText, inEdit } = this.props;
 
     if (prevProp.initialText !== initialText) this.setState({inputText: initialText});
+
+    if (prevProp.inEdit !== inEdit) this.setState({ editable: inEdit });
   }
 
   onClick = () => {
-    this.setState({ hidden: false });
+    const { onClick } = this.props;
+
+    if (!this.state.editable && onClick) onClick(); // если в пропсах есть атрибут onClick - запускаем его
+
+    this.setState({ editable: true });
   };
 
   onBlur = () => {
-    this.setState({ hidden: true });
-    this.props.showInputText(this.state.inputText);
+    this.setState({ editable: false });
+    this.props.onTextEdit(this.state.inputText);
   }
 
   changeField = (event) => {
@@ -26,16 +32,10 @@ export class TextBlock extends Component {
   }
 
   render() {
-    const { inputText, hidden } = this.state;
+    const { inputText, editable } = this.state;
     let fieldHTML;
 
-    if (hidden) {
-      fieldHTML = (
-        <span className="output">
-          {inputText}
-        </span>
-      );
-    } else {
+    if (editable) {
       fieldHTML = (
         <input
           type="text"
@@ -44,6 +44,12 @@ export class TextBlock extends Component {
           onBlur={this.onBlur}
           autoFocus
         />
+      );
+    } else {
+      fieldHTML = (
+        <span className="output">
+          {inputText}
+        </span>
       );
     }
 

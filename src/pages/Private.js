@@ -2,6 +2,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 import { HomeAuth } from './homeAuth';
 import { Products } from './products';
+import { Product } from './products';
 import { UserForm } from '../components/userForm';
 
 export const Private = [
@@ -15,6 +16,12 @@ export const Private = [
     path="/products"
     exact
     component={Products}
+    key="products"
+  />,
+  <Route
+    path="/products/new"
+    exact
+    component={Product}
     key="products"
   />,
   <Route
