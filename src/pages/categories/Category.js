@@ -17,9 +17,9 @@ const CategoryComponent = ({ dispatch, match, category }) => {
 
   return (
     <>
-      {<h1>Category {category.title}</h1>}
+      {category && <h1>Category {category.title}</h1>}
       <ul className="category_products">
-        {category.products && category.products.map(product => (
+        {category && category.products && category.products.map(product => (
           <li key={product.id}>
             <Link to={`/products/${product.id}`}>
               {product.title}
