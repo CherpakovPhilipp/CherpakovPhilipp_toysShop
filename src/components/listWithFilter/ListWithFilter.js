@@ -1,5 +1,7 @@
 import { FaSearch } from 'react-icons/fa';
 
+import './listWithFilter.scss';
+
 export class ListWithFilter extends Component {
   state = {
     inputVal: ''

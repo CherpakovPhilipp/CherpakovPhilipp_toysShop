@@ -1,13 +1,15 @@
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import { TextBlock } from '../textBlock';
 
+import './listWithControls.scss';
+
 export class ListWithControls extends Component {
   state = {
     itemInEdit: null
   };
 
-  handleEditClick = (id) => {
-    this.setState({ itemInEdit: id });
+  handleEditClick = (itemInEdit) => {
+    this.setState({ itemInEdit });
   }
 
   handleDeleteClick = (id) => {
