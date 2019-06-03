@@ -9,7 +9,7 @@ export class TextBlock extends Component {
   componentDidUpdate(prevProp) {
     const { initialText, inEdit } = this.props;
 
-    if (prevProp.initialText !== initialText) this.setState({inputText: initialText});
+    if (prevProp.initialText !== initialText) this.setState({ inputText: initialText });
 
     if (prevProp.inEdit !== inEdit) this.setState({ editable: inEdit });
   }

@@ -1,17 +1,16 @@
-import { Loader } from '../loader';
-import { TextBlock } from '../textBlock';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import { TextBlock } from '../textBlock';
 
 export class ListWithControls extends Component {
   state = {
     itemInEdit: null
   };
 
-  onClickEdit = (id) => {
+  handleEditClick = (id) => {
     this.setState({ itemInEdit: id });
   }
 
-  onClickDelete = (id) => {
+  handleDeleteClick = (id) => {
     const { onDelete } = this.props;
 
     onDelete(id);
@@ -29,41 +28,36 @@ export class ListWithControls extends Component {
 
     onTitleClick(id);
   }
-  
-  render () {
+
+  render() {
     const { items, hideEdit } = this.props;
-  
+
     return (
-      <>
-        {
-          !items ? <Loader /> :
-          <>
-            <ul className="list_with_controls">
-              {items.map(item => (
-                <li key={item.id}>
-                  <TextBlock
-                    initialText={item.title}
-                    onTextEdit={text => this.handleTileChange(item.id, text)}
-                    inEdit={this.state.itemInEdit === item.id ? true : false}
-                    onClick={() => this.handleTitleClick(item.id)}
-                  />
-                  <FaEdit 
-                    className="edit" 
-                    onClick={() => this.onClickEdit(item.id)}
-                  />
-                  {
-                    hideEdit ? <></> :
-                    <FaTrashAlt 
-                      className="remove"
-                      onClick={() => this.onClickDelete(item.id)} 
-                    />
-                  }
-                </li>
-              ))}
-            </ul>
-          </>
-        }
-      </>
+      <ul className="controls-list">
+        {items.map(item => (
+          <li key={item.title}>
+            <TextBlock
+              initialText={item.title}
+              onTextEdit={text => this.handleTileChange(item.id, text)}
+              inEdit={this.state.itemInEdit === item.id}
+              onClick={() => this.handleTitleClick(item.id)}
+            />
+            <FaEdit
+              className="icon-edit"
+              onClick={() => this.handleEditClick(item.id)}
+            />
+            {
+              !hideEdit
+              && (
+              <FaTrashAlt
+                className="icon-remove"
+                onClick={() => this.handleDeleteClick(item.id)}
+              />
+              )
+            }
+          </li>
+        ))}
+      </ul>
     );
   }
-};
+}

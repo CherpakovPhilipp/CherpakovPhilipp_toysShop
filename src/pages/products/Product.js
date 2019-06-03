@@ -18,7 +18,7 @@ export class ProductComponent extends Component {
   componentWillUnmount() {
     const { dispatch } = this.props;
 
-    dispatch(cleanProduct())
+    dispatch(cleanProduct());
   }
 
   handleTextChange = (id, text, field) => {
@@ -40,33 +40,31 @@ export class ProductComponent extends Component {
 
     return (
       !product ? <Loader />
-      :
-      <div className="product-info">
-        <h1>
-          <span>Title </span>
-          <TextBlock
-            initialText={product.title}
-            showInputText={console.log}
-            onTextEdit={text => this.handleTextChange(product.id, text, 'title')}
-          />
-        </h1>
-        <div>
-          <span>$</span>
-          <TextBlock
-            initialText={product.price}
-            showInputText={console.log}
-            onTextEdit={text => this.handleTextChange(product.id, text, 'price')}
-        />
-        </div>
-        <div>
-          <TextBlock
-            initialText={product.description}
-            showInputText={console.log}
-            onTextEdit={text => this.handleTextChange(product.id, text, 'description')}
-          />
-        </div>
-        <input type="button" value="Save" />
-      </div>
+        : (
+          <div className="product-info">
+            <h1>
+              <span>Title </span>
+              <TextBlock
+                initialText={product.title}
+                onTextEdit={text => this.handleTextChange(product.id, text, 'title')}
+              />
+            </h1>
+            <div>
+              <span>$</span>
+              <TextBlock
+                initialText={product.price}
+                onTextEdit={text => this.handleTextChange(product.id, text, 'price')}
+              />
+            </div>
+            <div>
+              <TextBlock
+                initialText={product.description}
+                onTextEdit={text => this.handleTextChange(product.id, text, 'description')}
+              />
+            </div>
+            <input type="button" value="Save" />
+          </div>
+        )
     );
   }
 }
