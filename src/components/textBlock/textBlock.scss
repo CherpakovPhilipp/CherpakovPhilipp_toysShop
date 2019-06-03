@@ -4,7 +4,6 @@
   @include text_block;
   display: inline-block;
   padding: 15px;
-  margin-bottom: 25px;
 
   input{
     @include input-text;
