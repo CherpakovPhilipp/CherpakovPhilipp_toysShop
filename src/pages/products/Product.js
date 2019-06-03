@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
+import { getProductService, updateProductService } from '../../services/productsService';
 import { TextBlock } from '../../components/textBlock';
-import { getProductService } from '../../services/productsService';
 import { setProduct, cleanProduct } from '../../store/products';
 import { Loader } from '../../components/loader';
 
@@ -21,6 +21,20 @@ export class ProductComponent extends Component {
     dispatch(cleanProduct())
   }
 
+  handleTextChange = (id, text, field) => {
+    const { match, dispatch, product } = this.props;
+
+    product[field] = text;
+
+    updateProductService(id, product)
+      .then(() => {
+        getProductService(match.params.id)
+          .then((data) => {
+            dispatch(setProduct(data));
+          });
+      });
+  }
+
   render() {
     const { product } = this.props;
 
@@ -33,6 +47,7 @@ export class ProductComponent extends Component {
           <TextBlock
             initialText={product.title}
             showInputText={console.log}
+            onTextEdit={text => this.handleTextChange(product.id, text, 'title')}
           />
         </h1>
         <div>
@@ -40,12 +55,14 @@ export class ProductComponent extends Component {
           <TextBlock
             initialText={product.price}
             showInputText={console.log}
+            onTextEdit={text => this.handleTextChange(product.id, text, 'price')}
         />
         </div>
         <div>
           <TextBlock
             initialText={product.description}
             showInputText={console.log}
+            onTextEdit={text => this.handleTextChange(product.id, text, 'description')}
           />
         </div>
         <input type="button" value="Save" />

@@ -24,7 +24,7 @@ export class TextBlock extends Component {
 
   onBlur = () => {
     this.setState({ editable: false });
-    this.props.onTextEdit(this.state.inputText);
+    if (this.props.onTextEdit) this.props.onTextEdit(this.state.inputText);
   }
 
   changeField = (event) => {

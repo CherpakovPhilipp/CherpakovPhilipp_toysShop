@@ -1,33 +1,61 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { getCategoriesService } from '../../services/categoriesService';
+import { ListWithControls } from '../../components/listWithControls';
+import { getCategoriesService, updateCategoryService, deleteCategoryService } from '../../services/categoriesService';
 import { setCategories } from '../../store/categories';
 
+export class CategoriesComponent extends Component {
+  componentDidMount() {
+    this.getCategories()
+  }
 
-export const CategoriesComponent = ({ categories, dispatch }) => {
-  useEffect(() => {
+  getCategories = () => {
+    const { dispatch } = this.props;
+
     getCategoriesService()
-      .then((data) => { dispatch(setCategories(data)); });
-  }, []);
+      .then((data) => { dispatch(setCategories(data)) });
+  }
 
-  return (
-    <>
-      <h1>Categories</h1>
-      <ul>
-        {
-          categories.map(category => (
-            <li key={category.title}>
-              <Link to={`categories/${category.id}`}>
-                {category.title}
-              </Link>
-            </li>
-          ))
-        }
-      </ul>
-    </>
-  );
+  onEdit = (id, title) => {
+    const { categories } = this.props;
+
+    const category = categories.find(item => item.id === id);
+    category.title = title;
+
+    updateCategoryService(id, category)
+      .then(() => {
+        //this.setState({ itemInEdit: null });
+        this.getCategories();
+      });
+  }
+
+  onDelete = (id) => {
+    deleteCategoryService(id)
+      .then(() => this.getCategories());
+  }
+
+  onTitleClick = (id) => {
+    const { history } = this.props;
+
+    history.push(`/categories/${id}`);
+  }
+
+
+  render() {
+    const { categories } = this.props;
+
+    return (
+      <>
+        <h1>Categories</h1>
+        <ListWithControls 
+          items={categories} 
+          onEdit={this.onEdit} 
+          onDelete={this.onDelete}
+          onTitleClick={this.onTitleClick}
+        />
+      </>
+    );
+  }
 };
 
 const mapStateToProps = state => ({
