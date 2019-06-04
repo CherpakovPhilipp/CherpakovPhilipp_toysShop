@@ -10,12 +10,13 @@ import { getShopInfoService } from './services/categoriesService';
 import { setUser } from './store/user';
 import { setInfo } from './store/categories';
 import { setError } from './store/status';
+import { setUserAsync } from './store/user';
 
 import './styles/general.scss';
 
 export class AppComponent extends Component {
   state = {
-    isLoading: true
+    isLoading: false
   }
 
   componentDidMount() {
@@ -45,17 +46,18 @@ export class AppComponent extends Component {
   }
 
   checkUser = () => {
-    const { dispatch } = this.props;
-    this.setState({ isLoading: true });
+    // const { dispatch } = this.props;
+    // this.setState({ isLoading: true });
 
-    checkUserService()
-      .then((user) => {
-        dispatch(setUser(user));
-        this.setState({ isLoading: false });
-      })
-      .catch(() => {
-        this.setState({ isLoading: false });
-      });
+    // checkUserService()
+    //   .then((user) => {
+    //     dispatch(setUser(user));
+    //     this.setState({ isLoading: false });
+    //   })
+    //   .catch(() => {
+    //     this.setState({ isLoading: false });
+    //   });
+    this.props.dispatch(setUserAsync());
   }
 
   getInfo = () => {

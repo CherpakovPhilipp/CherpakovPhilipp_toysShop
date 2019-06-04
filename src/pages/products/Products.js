@@ -5,14 +5,16 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import { setProducts, removeProduct } from '../../store/products';
 import { getProductsService, deleteProductService, updateProductService } from '../../services/productsService';
 import { TextBlock } from '../../components/textBlock';
-
+import { Modal } from '../../components/modal';
 
 import './products.scss';
 
 export class ProductsComponent extends Component {
   state = {
     inputVal: '',
-    itemInEdit: null
+    itemInEdit: null,
+    modalWarning: '',
+    removalId: '',
   };
 
   componentDidMount() {
@@ -37,10 +39,12 @@ export class ProductsComponent extends Component {
     this.setState({ itemInEdit: id });
   }
 
-  onClickDelete = (id) => {
-    deleteProductService(id)
+  onClickDelete = () => {
+    const { removalId } = this.state;
+
+    deleteProductService(removalId)
       .then(() => {
-        this.props.dispatch(removeProduct(id));
+        this.props.dispatch(removeProduct(removalId));
       });
   }
 
@@ -61,8 +65,17 @@ export class ProductsComponent extends Component {
     history.push(`/products/${id}`);
   }
 
+  showModal = (removalId, title) => {
+    //this.onClickDelete(product.id);
+    this.setState({ modalWarning: `You are trying to remove ${title}`, removalId })
+  }
+
+  hideModal = () => {
+    this.setState({ modalWarning: '', removalId: '' })
+  }
+
   render() {
-    const { inputVal } = this.state;
+    const { inputVal, modalWarning } = this.state;
     const { products } = this.props;
 
     return (
@@ -87,7 +100,7 @@ export class ProductsComponent extends Component {
                       />
                       <FaTrashAlt
                         className="remove"
-                        onClick={() => this.onClickDelete(product.id)}
+                        onClick={() => this.showModal(product.id, product.title)}
                       />
                     </div>
                     <img src={product.image ? product.image : '/images/product-stub.png'} alt={product.title} />
@@ -103,6 +116,13 @@ export class ProductsComponent extends Component {
           }
         </ul>
         <Link to="/products/new">Add new</Link>
+        <Modal 
+          open={Boolean(modalWarning)}
+          close={this.hideModal}
+          onConfirm={this.onClickDelete}
+        >
+          {modalWarning}
+        </Modal>
       </>
     );
   }
