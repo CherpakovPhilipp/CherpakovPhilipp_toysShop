@@ -68,7 +68,7 @@ export class AppComponent extends Component {
 
   render() {
     const { isLoading } = this.state;
-    const { user = {} } = this.props;
+    const { user } = this.props;
 
     return (
       <>
