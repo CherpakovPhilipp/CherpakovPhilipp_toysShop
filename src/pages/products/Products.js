@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 
-import { setProducts, removeProduct } from '../../store/products';
+import { setProductsAsync, setProducts, removeProduct } from '../../store/products';
 import { getProductsService, deleteProductService, updateProductService } from '../../services/productsService';
 import { TextBlock } from '../../components/textBlock';
 import { Modal } from '../../components/modal';
@@ -22,11 +22,13 @@ export class ProductsComponent extends Component {
   }
 
   getProducts = () => {
-    getProductsService()
-      .then((data) => {
-        this.products = data;
-        this.props.dispatch(setProducts(data));
-      });
+    // getProductsService()
+    //   .then((data) => {
+    //     this.products = data;
+    //     this.props.dispatch(setProducts(data));
+    //   });
+    
+    this.props.dispatch(setProductsAsync());
   }
 
   setInputVal = ({ target }) => {
