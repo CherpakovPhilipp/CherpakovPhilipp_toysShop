@@ -2,9 +2,7 @@ import { connect } from 'react-redux';
 
 import { Loader } from '../../components/loader';
 import { loginUserService } from '../../services/userService';
-import { loginUserAsync } from '../../store/user';
-
-import { setUser } from '../../store/user';
+import { loginUserAsync, setUser } from '../../store/user';
 
 const { useState } = React;
 
@@ -21,15 +19,6 @@ export const LoginComponent = ({ dispatch }) => {
       password: event.target.password.value,
     };
 
-    // loginUserService(data)
-    //   .then((user) => {
-    //     setSubmited(false);
-    //     dispatch(setUser(user));
-    //   })
-    //   .catch((er) => {
-    //     setSubmited(false);
-    //     setError(er);
-    //   });
     dispatch(loginUserAsync(data));
   };
 

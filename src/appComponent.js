@@ -5,12 +5,10 @@ import { Header } from './components/header';
 import { Main } from './components/main';
 import { Pages } from './pages';
 import { Loader } from './components/loader';
-import { checkUserService } from './services/userService';
 import { getShopInfoService } from './services/categoriesService';
-import { setUser } from './store/user';
-import { setInfo } from './store/categories';
+import { setUser, setUserAsync } from './store/user';
+import { setInfo, setInfoAsync } from './store/categories';
 import { setError } from './store/status';
-import { setUserAsync } from './store/user';
 
 import './styles/general.scss';
 
@@ -46,24 +44,13 @@ export class AppComponent extends Component {
   }
 
   checkUser = () => {
-    // const { dispatch } = this.props;
-    // this.setState({ isLoading: true });
-
-    // checkUserService()
-    //   .then((user) => {
-    //     dispatch(setUser(user));
-    //     this.setState({ isLoading: false });
-    //   })
-    //   .catch(() => {
-    //     this.setState({ isLoading: false });
-    //   });
     this.props.dispatch(setUserAsync());
   }
 
   getInfo = () => {
     const { dispatch } = this.props;
 
-    getShopInfoService().then(data => dispatch(setInfo(data)));
+    dispatch(setInfoAsync());
   }
 
   render() {
@@ -89,6 +76,6 @@ export class AppComponent extends Component {
   }
 }
 
-const mapStateToProps = state => ({ user: state.user, info: state.info, status: state.status });
+const mapStateToProps = state => ({ user: state.user.data, info: state.info, status: state.status });
 
 export const App = connect(mapStateToProps)(AppComponent);

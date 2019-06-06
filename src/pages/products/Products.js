@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 
-import { setProductsAsync, setProducts, removeProductAsync } from '../../store/products';
-import { getProductsService, deleteProductService, updateProductService } from '../../services/productsService';
+import { setProductsAsync, removeProductAsync, updateProductAsync } from '../../store/products';
 import { TextBlock } from '../../components/textBlock';
 import { Modal } from '../../components/modal';
 
@@ -22,12 +21,6 @@ export class ProductsComponent extends Component {
   }
 
   getProducts = () => {
-    // getProductsService()
-    //   .then((data) => {
-    //     this.products = data;
-    //     this.props.dispatch(setProducts(data));
-    //   });
-    
     this.props.dispatch(setProductsAsync());
   }
 
@@ -44,23 +37,15 @@ export class ProductsComponent extends Component {
   onClickDelete = () => {
     const { removalId } = this.state;
 
-    // deleteProductService(removalId)
-    //   .then(() => {
-    //     this.props.dispatch(removeProduct(removalId));
-    //   });
-
     this.props.dispatch(removeProductAsync(removalId));
   }
 
   handleTileChange = (id, title) => {
-    const product = this.products.find(item => item.id === id);
+    const { dispatch } = this.props;
+    const product = this.props.products.find(item => item.id === id);
     product.title = title;
 
-    updateProductService(id, product)
-      .then(() => {
-        this.setState({ itemInEdit: null });
-        this.getProducts();
-      });
+    dispatch(updateProductAsync([id, product]));
   }
 
   handleTitleClick = (id) => {
@@ -70,12 +55,11 @@ export class ProductsComponent extends Component {
   }
 
   showModal = (removalId, title) => {
-    //this.onClickDelete(product.id);
-    this.setState({ modalWarning: `You are trying to remove ${title}`, removalId })
+    this.setState({ modalWarning: `You are trying to remove ${title}`, removalId });
   }
 
   hideModal = () => {
-    this.setState({ modalWarning: '', removalId: '' })
+    this.setState({ modalWarning: '', removalId: '' });
   }
 
   render() {
@@ -120,7 +104,7 @@ export class ProductsComponent extends Component {
           }
         </ul>
         <Link to="/products/new">Add new</Link>
-        <Modal 
+        <Modal
           open={Boolean(modalWarning)}
           close={this.hideModal}
           onConfirm={this.onClickDelete}

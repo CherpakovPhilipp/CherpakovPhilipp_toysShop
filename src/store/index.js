@@ -22,7 +22,6 @@
 // second argument is used to add redux dev tool (should be pre-installed in browser)
 
 
-
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 

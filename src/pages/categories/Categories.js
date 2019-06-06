@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { ListWithControls } from '../../components/listWithControls';
 import { ListWithFilter } from '../../components/listWithFilter';
 import { Loader } from '../../components/loader';
-import { getCategoriesService, updateCategoryService, deleteCategoryService } from '../../services/categoriesService';
-import { setCategories } from '../../store/categories';
+import { setCategoriesAsync, updateCategoryAsync, deleteCategoryAsync } from '../../store/categories';
 
 import './categories.scss';
 
@@ -16,23 +15,20 @@ export class CategoriesComponent extends Component {
   getCategories = () => {
     const { dispatch } = this.props;
 
-    getCategoriesService()
-      .then((data) => { dispatch(setCategories(data)); });
+    dispatch(setCategoriesAsync());
   }
 
   onEdit = (id, title) => {
-    const { categories } = this.props;
+    const { categories, dispatch } = this.props;
     const category = categories.find(item => item.id === id);
 
     category.title = title;
 
-    updateCategoryService(id, category)
-      .then(() => this.getCategories());
+    dispatch(updateCategoryAsync([id, category]));
   }
 
   onDelete = (id) => {
-    deleteCategoryService(id)
-      .then(() => this.getCategories());
+    dispatch(deleteCategoryAsync(id));
   }
 
   onTitleClick = (id) => {
@@ -42,13 +38,12 @@ export class CategoriesComponent extends Component {
   }
 
   changePublishedStatus = (id, published) => {
-    const { categories } = this.props;
+    const { categories, dispatch } = this.props;
     const category = categories.find(item => item.id === id);
 
     category.published = published;
 
-    updateCategoryService(id, category)
-      .then(() => this.getCategories());
+    dispatch(updateCategoryAsync([id, category]));
   }
 
   filterPublished = () => {
