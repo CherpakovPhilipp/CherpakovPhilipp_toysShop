@@ -10,8 +10,11 @@ function* fetchProducts(action) {
   } catch (err) {}
 }
 
-function* fetchProducts(action) {
+function* deleteProduct(action) {
   try {
+    const product = yield deleteProductService(action.data);
+    yield put(removeProduct(product));
+
     const products = yield getProductsService(action.data);
     yield put(setProducts(products));
   } catch (err) {}
@@ -20,5 +23,6 @@ function* fetchProducts(action) {
 export function* productWatcher() {
   yield all ([
     yield takeEvery(SET_PRODUCTS_ASYNC, fetchProducts),
+    yield takeEvery(REMOVE_PRODUCT_ASYNC, deleteProduct),
   ])
 }

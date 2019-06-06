@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 
-import { setProductsAsync, setProducts, removeProduct } from '../../store/products';
+import { setProductsAsync, setProducts, removeProductAsync } from '../../store/products';
 import { getProductsService, deleteProductService, updateProductService } from '../../services/productsService';
 import { TextBlock } from '../../components/textBlock';
 import { Modal } from '../../components/modal';
@@ -44,10 +44,12 @@ export class ProductsComponent extends Component {
   onClickDelete = () => {
     const { removalId } = this.state;
 
-    deleteProductService(removalId)
-      .then(() => {
-        this.props.dispatch(removeProduct(removalId));
-      });
+    // deleteProductService(removalId)
+    //   .then(() => {
+    //     this.props.dispatch(removeProduct(removalId));
+    //   });
+
+    this.props.dispatch(removeProductAsync(removalId));
   }
 
   handleTileChange = (id, title) => {
