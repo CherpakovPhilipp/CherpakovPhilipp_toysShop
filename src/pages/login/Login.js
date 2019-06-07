@@ -1,41 +1,24 @@
 import { connect } from 'react-redux';
 
 import { Loader } from '../../components/loader';
-import { loginUserService } from '../../services/userService';
 import { loginUserAsync } from '../../store/user';
 
-import { setUser } from '../../store/user';
-
-const { useState } = React;
-
-export const LoginComponent = ({ dispatch }) => {
-  const [submited, setSubmited] = useState(false);
-  const [error, setError] = useState('');
+export const LoginComponent = ({ dispatch, user }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setSubmited(true);
 
     const data = {
       email: event.target.email.value,
       password: event.target.password.value,
     };
 
-    // loginUserService(data)
-    //   .then((user) => {
-    //     setSubmited(false);
-    //     dispatch(setUser(user));
-    //   })
-    //   .catch((er) => {
-    //     setSubmited(false);
-    //     setError(er);
-    //   });
     dispatch(loginUserAsync(data));
   };
 
   return (
-    submited ? <Loader />
-      : (
+      user.status.loading ? <Loader /> :
+      (
         <form action="#" onSubmit={onSubmit}>
           <input
             type="text"
@@ -52,13 +35,14 @@ export const LoginComponent = ({ dispatch }) => {
             defaultValue="admin"
           />
           <br />
+          <div>{user.status.error}</div>
           <br />
-
           <input type="submit" value="Login" />
-          <span>{error}</span>
         </form>
       )
   );
 };
 
-export const Login = connect()(LoginComponent);
+const mapStateToProps = state => ({ user: state.user });
+
+export const Login = connect(mapStateToProps)(LoginComponent);

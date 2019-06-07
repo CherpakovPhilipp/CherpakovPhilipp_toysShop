@@ -18,7 +18,7 @@ export const HeaderComponent = ({ user, dispatch, info }) => {
 };
 
 const mapStateToProps = state => ({
-  user: state.user,
+  user: state.user.data,
   info: state.info
 });
 

@@ -2,17 +2,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaTrashAlt } from 'react-icons/fa';
 
-import { getCategoryService } from '../../services/categoriesService';
-import { setCategory } from '../../store/categories';
+import { setCategoryAsync } from '../../store/categories';
 
 const { useEffect } = React;
 
 const CategoryComponent = ({ dispatch, match, category }) => {
   useEffect(() => {
-    getCategoryService(match.params.id)
-      .then((data) => {
-        dispatch(setCategory(data));
-      });
+    dispatch(setCategoryAsync(match.params.id));
   }, []);
 
   return (

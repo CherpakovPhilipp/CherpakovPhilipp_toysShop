@@ -1,6 +1,7 @@
 import { all } from 'redux-saga/effects';
-import { userWatcher, userWatcherLogin } from './user';
+import { userWatcher } from './user';
 import { productWatcher } from './products';
+import { categoryWatcher } from './categories';
 
 export function* rootSaga() {
   console.log('saga testing');
@@ -8,5 +9,6 @@ export function* rootSaga() {
   yield all([
     userWatcher(),
     productWatcher(),
-  ])
+    categoryWatcher(),
+  ]);
 }

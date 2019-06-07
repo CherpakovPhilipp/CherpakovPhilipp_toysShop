@@ -20,7 +20,7 @@ export const HomeAuthComponent = ({ user, info }) => (
 );
 
 const mapStateToProps = state => ({
-  user: state.user,
+  user: state.user.data,
   info: state.info,
 });
 

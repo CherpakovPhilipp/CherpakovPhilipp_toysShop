@@ -1,18 +1,14 @@
 import { connect } from 'react-redux';
 
-import { getProductService, updateProductService } from '../../services/productsService';
+import { setProductAsync, updateProductAsync, cleanProduct } from '../../store/products';
 import { TextBlock } from '../../components/textBlock';
-import { setProduct, cleanProduct } from '../../store/products';
 import { Loader } from '../../components/loader';
 
 export class ProductComponent extends Component {
   componentDidMount() {
     const { match, dispatch } = this.props;
 
-    getProductService(match.params.id)
-      .then((data) => {
-        dispatch(setProduct(data));
-      });
+    dispatch(setProductAsync(match.params.id));
   }
 
   componentWillUnmount() {
@@ -22,17 +18,10 @@ export class ProductComponent extends Component {
   }
 
   handleTextChange = (id, text, field) => {
-    const { match, dispatch, product } = this.props;
+    const { dispatch, product } = this.props;
 
     product[field] = text;
-
-    updateProductService(id, product)
-      .then(() => {
-        getProductService(match.params.id)
-          .then((data) => {
-            dispatch(setProduct(data));
-          });
-      });
+    dispatch(updateProductAsync([id, product]));
   }
 
   render() {
