@@ -44,10 +44,9 @@ export const LoginComponent = ({ dispatch, user }) => {
             defaultValue="admin"
           />
           <br />
-          <br />
-
-          <input type="submit" value="Login" />
           <div>{error}</div>
+          <br />
+          <input type="submit" value="Login" />
         </form>
       )
   );
