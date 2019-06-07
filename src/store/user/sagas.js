@@ -8,7 +8,9 @@ function* fetchUser() {
   try {
     const user = yield checkUserService();
     yield put(setUser(user));
-  } catch (err) {}
+  } catch (err) {
+    yield put(errorUser(`${err}: User fetch error`));
+  }
 }
 
 function* loginUser(action) {

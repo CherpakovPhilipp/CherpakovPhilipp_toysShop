@@ -22,7 +22,8 @@ export const LoginComponent = ({ dispatch, user }) => {
   };
 
   return (
-     (
+      user.status.loading ? <Loader /> :
+      (
         <form action="#" onSubmit={onSubmit}>
           <input
             type="text"
