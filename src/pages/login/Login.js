@@ -8,11 +8,6 @@ const { useState, useEffect } = React;
 
 export const LoginComponent = ({ dispatch, user }) => {
   const [submited, setSubmited] = useState(false);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    if (user && user.status.error) setError(user.status.error);
-  }, [user]);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -44,7 +39,7 @@ export const LoginComponent = ({ dispatch, user }) => {
             defaultValue="admin"
           />
           <br />
-          <div>{error}</div>
+          <div>{user.status.error}</div>
           <br />
           <input type="submit" value="Login" />
         </form>
