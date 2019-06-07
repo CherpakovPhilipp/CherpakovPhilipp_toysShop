@@ -1,17 +1,12 @@
 import { connect } from 'react-redux';
 
 import { Loader } from '../../components/loader';
-import { loginUserService } from '../../services/userService';
-import { loginUserAsync, setUser } from '../../store/user';
-
-const { useState, useEffect } = React;
+import { loginUserAsync } from '../../store/user';
 
 export const LoginComponent = ({ dispatch, user }) => {
-  const [submited, setSubmited] = useState(false);
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setSubmited(true);
 
     const data = {
       email: event.target.email.value,
