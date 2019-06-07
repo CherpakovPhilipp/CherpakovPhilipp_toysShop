@@ -10,4 +10,4 @@ export const setUserBegin = () => ({ type: SET_USER_BEGIN });
 export const setUserAsync = () => ({ type: SET_USER_ASYNC });
 export const loginUserAsync = data => ({ type: LOGIN_USER_ASYNC, data });
 export const removeUser = () => ({ type: REMOVE_USER });
-export const errorUser = () => ({ type: ERROR_USER });
+export const errorUser = data => ({ type: ERROR_USER, data });

@@ -4,11 +4,15 @@ import { Loader } from '../../components/loader';
 import { loginUserService } from '../../services/userService';
 import { loginUserAsync, setUser } from '../../store/user';
 
-const { useState } = React;
+const { useState, useEffect } = React;
 
-export const LoginComponent = ({ dispatch }) => {
+export const LoginComponent = ({ dispatch, user }) => {
   const [submited, setSubmited] = useState(false);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (user && user.status.error) setError(user.status.error);
+  }, [user]);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -23,8 +27,7 @@ export const LoginComponent = ({ dispatch }) => {
   };
 
   return (
-    submited ? <Loader />
-      : (
+     (
         <form action="#" onSubmit={onSubmit}>
           <input
             type="text"
@@ -44,10 +47,12 @@ export const LoginComponent = ({ dispatch }) => {
           <br />
 
           <input type="submit" value="Login" />
-          <span>{error}</span>
+          <div>{error}</div>
         </form>
       )
   );
 };
 
-export const Login = connect()(LoginComponent);
+const mapStateToProps = state => ({ user: state.user });
+
+export const Login = connect(mapStateToProps)(LoginComponent);

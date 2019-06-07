@@ -1,7 +1,7 @@
 export const SET_PRODUCTS = 'Set products';
 export const SET_PRODUCTS_ASYNC = 'Set products async';
 export const SET_PRODUCT = 'Set product';
-export const SET_PRODUCT_ASYNC = 'Set product';
+export const SET_PRODUCT_ASYNC = 'Set product async';
 export const UPDATE_PRODUCT_ASYNC = 'Update products async';
 export const CLEAN_PRODUCT = 'Clean product';
 export const REMOVE_PRODUCT = 'Remove product';

@@ -1,7 +1,20 @@
 import { takeEvery, put, all } from 'redux-saga/effects';
 
-import { setProducts, setProduct, removeProduct, SET_PRODUCTS_ASYNC, SET_PRODUCT_ASYNC, UPDATE_PRODUCT_ASYNC, REMOVE_PRODUCT_ASYNC } from './actions';
-import { getProductsService, getProductService, deleteProductService, updateProductService } from '../../services/productsService';
+import { 
+  setProducts, 
+  setProduct, 
+  removeProduct, 
+  SET_PRODUCTS_ASYNC, 
+  SET_PRODUCT_ASYNC, 
+  UPDATE_PRODUCT_ASYNC, 
+  REMOVE_PRODUCT_ASYNC 
+} from './actions';
+import { 
+  getProductsService, 
+  getProductService, 
+  deleteProductService, 
+  updateProductService 
+} from '../../services/productsService';
 
 function* setProductsSaga(action) {
   try {

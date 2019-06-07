@@ -1,7 +1,22 @@
 import { takeEvery, put, all } from 'redux-saga/effects';
 
-import { setCategories, setCategory, setInfo, SET_CATEGORIES_ASYNC, SET_CATEGORY_ASYNC, SET_INFO_ASYNC, UPDATE_CATEGORY_ASYNC, DELETE_CATEGORY_ASYNC } from './actions';
-import { getCategoriesService, updateCategoryService, deleteCategoryService, getCategoryService, getShopInfoService } from '../../services/categoriesService';
+import { 
+  setCategories, 
+  setCategory, 
+  setInfo, 
+  SET_CATEGORIES_ASYNC, 
+  SET_CATEGORY_ASYNC, 
+  SET_INFO_ASYNC, 
+  UPDATE_CATEGORY_ASYNC, 
+  DELETE_CATEGORY_ASYNC 
+} from './actions';
+import { 
+  getCategoriesService, 
+  updateCategoryService, 
+  deleteCategoryService, 
+  getCategoryService, 
+  getShopInfoService 
+} from '../../services/categoriesService';
 
 function* setCategoriesSaga() {
   try {

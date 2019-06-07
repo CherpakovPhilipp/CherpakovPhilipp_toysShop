@@ -15,7 +15,9 @@ function* loginUser(action) {
   try {
     const user = yield loginUserService(action.data);
     yield put(setUser(user));
-  } catch (err) {}
+  } catch (err) {
+    yield put(errorUser(`${err}: Wrong login/password`));
+  }
 }
 
 export function* userWatcher() {
