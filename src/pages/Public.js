@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom';
 
 import { Home } from './home';
 import { Login } from './login';
-import { UserForm } from '../components/userForm';
+import { NewUser } from './newUser';
 import { Contacts } from './contacts';
 import { Success } from './success';
 
@@ -28,7 +28,7 @@ export const Public = [
   <Route
     path="/registration"
     exact
-    component={UserForm}
+    component={NewUser}
     key="registration"
   />,
   <Route

@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { HomeAuth } from './homeAuth';
 import { Products, Product } from './products';
 
-import { UserForm } from '../components/userForm';
+import { UpdateUser } from './updateUser';
 
 export const Private = [
   <Route
@@ -27,7 +27,7 @@ export const Private = [
   <Route
     path="/user"
     exact
-    component={UserForm}
+    component={UpdateUser}
     key="user"
   />,
   <Redirect

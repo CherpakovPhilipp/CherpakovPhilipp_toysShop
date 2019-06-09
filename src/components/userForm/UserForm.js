@@ -1,14 +1,22 @@
 import './userForm.scss';
 
 export class UserForm extends Component {
+  static defaultProps = { 
+    data: {},
+    disabled: [],
+    exclude: []
+  }
+
   fields = [
     { label: 'email', reg: /^\w+@\w+\.[a-z]{2,}$/ },
-    { label: 'name', reg: /^[^ ]{3,20}$/ },
-    { label: 'surname', reg: /^[^ ]{3,20}$/ },
+    { label: 'firstname', reg: /^[^ ]{3,20}$/ },
+    { label: 'lastname', reg: /^[^ ]{3,20}$/ },
     { label: 'password', reg: /^[^ ]{6,20}$/, secure: true }
   ];
 
-  state = this.fields.reduce((acc, item) => ({ ...acc, [item.label]: { value: '', error: '' } }), {});
+  state = this.fields.reduce((acc, item) => ({ 
+    ...acc, 
+    [item.label]: { value: this.props.data[item.label] || '', error: '' } }), {});
 
   changeField = ({ target }) => { // деструктурировали event
     const value = target.hasOwnProperty('checked') ? target.checked : target.value;
@@ -26,15 +34,27 @@ export class UserForm extends Component {
   }
 
   onSubmit = (event) => {
+    const { handleSubmit } = this.props;
+
+    const data = Object
+      .entries(this.state)
+      .reduce((acc, [key, item]) => ({ ...acc, [key]: item.value }), {});
+
     event.preventDefault();
+    handleSubmit(data);
   }
 
   getDisabledState() {
-    return Object.values(this.state).some(state => !state.value || state.error);
+    const { exclude } = this.props;
+
+    return Object.entries(this.state)
+      .filter(([key, item]) => item.value && !exclude.includes(key))
+      .some(([key, item]) => !item.value || item.error);
+    //return Object.values(this.state).some(state => !state.value || state.error);
   }
 
   isExcluded = (field) => {
-    const { exclude = [] } = this.props;
+    const { exclude } = this.props;
 
     const res = exclude.find(name => field === name);
 
@@ -42,7 +62,7 @@ export class UserForm extends Component {
   }
 
   isDisabled = (field) => {
-    const { disabled = [] } = this.props;
+    const { disabled } = this.props;
 
     const res = disabled.find(name => field === name);
 
