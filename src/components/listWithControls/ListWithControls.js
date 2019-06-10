@@ -36,7 +36,7 @@ export class ListWithControls extends Component {
 
     return (
       <ul className="controls-list">
-        {items.map(item => (
+        {items && items.map(item => (
           <li key={item.title}>
             <TextBlock
               initialText={item.title}
