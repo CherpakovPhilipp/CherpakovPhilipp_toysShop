@@ -3,12 +3,17 @@ import { connect } from 'react-redux';
 import { ListWithControls } from '../../components/listWithControls';
 import { ListWithFilter } from '../../components/listWithFilter';
 import { Loader } from '../../components/loader';
+import { Modal } from '../../components/modal';
 import { setCategoryAsync, updateCategoryAsync } from '../../store/categories';
 import { setProductsAsync, updateProductAsync } from '../../store/products';
 
-const { useEffect } = React;
+const { useEffect, useState } = React;
 
 const CategoryComponent = ({ dispatch, match, history, category, products }) => {
+  const [modalWarning, setModalWarning] = useState('');
+  const [removalId, setRemovalId] = useState('');
+  const [published, setPublished] = useState(false);
+  
   useEffect(() => {
     getInitialData();
   }, []);
@@ -29,17 +34,22 @@ const CategoryComponent = ({ dispatch, match, history, category, products }) => 
     history.push(`/products/${id}`);
   }
 
-  const changePublishedStatus = (id, published) => {
-    if (!category.products) category.products = [];
+  const changePublishedStatus = () => {
+    const id = removalId;
 
-    const product = products.find(item => item.id === id);
-    let poductIndex;
+    if (published) {
+      const product = products.find(item => item.id === id);
 
-    category.products.forEach((item, index) => {
-      if (item.id === id) poductIndex = index;
-    })
+      if (!category.products) category.products = [];
+      category.products.push({ title: product.title, id: product.id,  })
+    } else {
+      let poductIndex;
 
-    published ? category.products.push({ title: product.title, id: product.id,  }) : category.products.splice(poductIndex, 1);
+      category.products.forEach((item, index) => {
+        if (item.id === id) poductIndex = index;
+      });
+      category.products.splice(poductIndex, 1);
+    }
 
     dispatch(updateCategoryAsync([category.id, category]));
     dispatch(setProductsAsync());
@@ -56,6 +66,18 @@ const CategoryComponent = ({ dispatch, match, history, category, products }) => 
     return products.filter(item => !titlesArr.includes(item.title));
   }
 
+  const showModal = (removalId, title, publish) => {
+    setModalWarning(`You are trying to remove ${title}`);
+    setRemovalId(removalId);
+    setPublished(publish);
+  }
+
+  const hideModal = () => {
+    setModalWarning('');
+    setRemovalId('');
+    setPublished(false);
+  }
+
   return (
     category && products ?
     <>
@@ -66,7 +88,7 @@ const CategoryComponent = ({ dispatch, match, history, category, products }) => 
           <ListWithControls
             items={filterPublished()}
             onEdit={onEdit}
-            onDelete={id => changePublishedStatus(id, false)}
+            onDelete={(id, title) => showModal(id, title, false)}
             onTitleClick={onTitleClick}
           />
         </div>
@@ -74,10 +96,17 @@ const CategoryComponent = ({ dispatch, match, history, category, products }) => 
           <h2>Products</h2>
           <ListWithFilter
             items={filterUnpublished()}
-            onSelect={id => changePublishedStatus(id, true)}
+            onSelect={(id, title) => showModal(id, title, true)}
           />
         </div>
       </div>
+      <Modal
+        open={Boolean(modalWarning)}
+        close={hideModal}
+        onConfirm={changePublishedStatus}
+      >
+        {modalWarning}
+      </Modal>
     </>
     : <Loader />
   )
