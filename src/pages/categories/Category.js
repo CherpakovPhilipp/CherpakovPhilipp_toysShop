@@ -13,7 +13,7 @@ const CategoryComponent = ({ dispatch, match, history, category, products }) => 
   const [modalWarning, setModalWarning] = useState('');
   const [removalId, setRemovalId] = useState('');
   const [published, setPublished] = useState(false);
-  
+
   useEffect(() => {
     getInitialData();
   }, []);
