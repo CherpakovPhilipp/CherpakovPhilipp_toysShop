@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { ListWithControls } from '../../components/listWithControls';
 import { ListWithFilter } from '../../components/listWithFilter';
@@ -87,6 +88,7 @@ export const CategoriesComponent = ({ dispatch, history, categories }) => {
               />
             </div>
           </div>
+          <Link to="/new-category">New category</Link>
           <Modal
             open={Boolean(modalWarning)}
             close={hideModal}
