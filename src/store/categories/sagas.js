@@ -3,18 +3,21 @@ import { takeEvery, put, all } from 'redux-saga/effects';
 import { 
   setCategories, 
   setCategory, 
+  createCategory,
   setInfo, 
   SET_CATEGORIES_ASYNC, 
   SET_CATEGORY_ASYNC, 
   SET_INFO_ASYNC, 
   UPDATE_CATEGORY_ASYNC, 
-  DELETE_CATEGORY_ASYNC 
+  DELETE_CATEGORY_ASYNC,
+  CREATE_CATEGORY_ASYNC 
 } from './actions';
 import { 
   getCategoriesService, 
   updateCategoryService, 
   deleteCategoryService, 
   getCategoryService, 
+  createCategoryService,
   getShopInfoService 
 } from '../../services/categoriesService';
 
@@ -41,6 +44,13 @@ function* updateCategorySaga(action) {
   } catch (err) {}
 }
 
+function* createCategorySaga(action) {
+  try {
+    const category = yield createCategoryService(action.data);
+    yield put(createCategory(category));
+  } catch (err) {}
+}
+
 function* deleteCategorySaga(action) {
   try {
     const category = yield deleteCategoryService(action.data);
@@ -61,6 +71,7 @@ export function* categoryWatcher() {
     yield takeEvery(SET_CATEGORY_ASYNC, setCategorySaga),
     yield takeEvery(UPDATE_CATEGORY_ASYNC, updateCategorySaga),
     yield takeEvery(DELETE_CATEGORY_ASYNC, deleteCategorySaga),
+    yield takeEvery(CREATE_CATEGORY_ASYNC, createCategorySaga),
     yield takeEvery(SET_INFO_ASYNC, setInfoSaga),
   ]);
 }
