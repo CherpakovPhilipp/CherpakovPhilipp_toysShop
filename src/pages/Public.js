@@ -18,6 +18,7 @@ export const Public = [
     path="/shop"
     exact
     component={Shop}
+    key="shop"
   />,
   <Route
     path="/contacts"

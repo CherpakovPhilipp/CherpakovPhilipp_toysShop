@@ -20,21 +20,18 @@ export const ShopComponent = ({ dispatch, categories }) => {
   }
 
   return (
-    !categories ? <Loader />
-      : (
-        <>
-          <h1>Shop</h1>
-          {filterPublished().map(item => {
-            return (
-              <li>
-                <Link to={`/categories/${item.id}`}>
-                  {item.title}
-                </Link>
-              </li>
-            )
-          })}
-        </>
-      )
+    <>
+      <h1>Shop</h1>
+      {filterPublished().map(item => {
+        return (
+          <li key={item.title}>
+            <Link to={`/categories/${item.id}`}>
+              {item.title}
+            </Link>
+          </li>
+        )
+      })}
+    </>
   );
 }
 

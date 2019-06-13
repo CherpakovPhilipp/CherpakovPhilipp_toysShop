@@ -13,6 +13,7 @@ export const Pages = ({ user }) => (
       path="/categories/:id"
       exact
       component={Category}
+      key="сategory"
     />
     <Route
       path="/products/:id"
