@@ -43,6 +43,12 @@ module.exports = {
     },
     mode: isProduction ? 'production' : 'development',
 
+    resolve: {
+        alias: {
+            components: path.resolve(__dirname, '../src/components') // (https://webpack.js.org/configuration/resolve/)
+        }
+    },
+
     module: {
         rules: [
             {
