@@ -38,7 +38,7 @@ export class ListWithFilter extends Component {
             .map(item => (
               <li
                 key={item.title}
-                onDoubleClick={() => this.handleDoubleClick(item.id)}
+                onDoubleClick={() => this.handleDoubleClick(item.id, item.title)}
               >
                 {item.title}
               </li>

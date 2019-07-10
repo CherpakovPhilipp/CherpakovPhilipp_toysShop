@@ -5,7 +5,7 @@ import { server } from '../../services';
 const links = [
   { label: 'Home', path: '', icon: 'home', auth: false },
   { label: 'Home', path: '', icon: 'home', auth: true },
-  { label: 'Shop', path: 'categories', icon: 'list-alt', auth: false },
+  { label: 'Shop', path: 'shop', icon: 'list-alt', auth: false },
   { label: 'Categories', path: 'categories', icon: 'list-alt', auth: true },
   { label: 'Products', path: 'products', icon: 'shopping-bag', auth: true },
   { label: 'Contacts', path: 'contacts', icon: 'map-signs' }

@@ -4,22 +4,28 @@ import { ListWithControls } from '../../components/listWithControls';
 import { ListWithFilter } from '../../components/listWithFilter';
 import { Loader } from '../../components/loader';
 import { Modal } from '../../components/modal';
-import { setCategoryAsync, updateCategoryAsync } from '../../store/categories';
+import { updateCategoryAsync } from '../../store/categories';
 import { setProductsAsync, updateProductAsync } from '../../store/products';
 
-const { useEffect, useState } = React;
+const { useEffect, useState, useRef } = React;
 
-const CategoryComponent = ({ dispatch, match, history, category, products }) => {
+const NewCategoryComponent = ({ dispatch, match, history, category, products }) => {
   const [modalWarning, setModalWarning] = useState('');
   const [removalId, setRemovalId] = useState('');
   const [published, setPublished] = useState(false);
+  const [productsCur, setProductsCur] = useState([]);
+  const [categoryProducts, setCategoryProducts] = useState([]);
+  const [categoryTitle, setCategoryTitle] = useState('New category');
 
   useEffect(() => {
     getInitialData();
   }, []);
 
+  useEffect(() => {
+    setProductsCur(products);
+  }, [products]);
+
   const getInitialData = () => {
-    dispatch(setCategoryAsync(match.params.id));
     dispatch(setProductsAsync());
   }
 
@@ -38,32 +44,36 @@ const CategoryComponent = ({ dispatch, match, history, category, products }) => 
     const id = removalId;
 
     if (published) {
-      const product = products.find(item => item.id === id);
+      let productIndex;
+      const product = productsCur.find(item => item.id === id);
 
-      if (!category.products) category.products = [];
-      category.products.push({ title: product.title, id: product.id,  })
-    } else {
-      let poductIndex;
-
-      category.products.forEach((item, index) => {
-        if (item.id === id) poductIndex = index;
+      productsCur.forEach((item, index) => {
+        if (item.id === id) productIndex = index;
       });
-      category.products.splice(poductIndex, 1);
+
+      const productsCurCopy = productsCur.slice();
+      productsCurCopy.splice(productIndex, 1);
+
+      setCategoryProducts([...categoryProducts, { id: products.length, title: product.title }]);
+      setProductsCur(productsCurCopy);
+    } else {
+      let productIndex;
+
+      categoryProducts.forEach((item, index) => {
+        if (item.id === id) productIndex = index;
+      });
+
+      const categoryProductsCopy = categoryProducts.slice();
+      categoryProductsCopy.splice(productIndex, 1);
+      setCategoryProducts(categoryProductsCopy);
     }
-
-    dispatch(updateCategoryAsync([category.id, category]));
-    dispatch(setProductsAsync());
-  }
-
-  const filterPublished = () => {
-    return category.products;
   }
 
   const filterUnpublished = () => {
-    if (!category.products) return products;
-    const titlesArr = category.products.map(item => item.title);
+    if (!categoryProducts.length) return products;
 
-    return products.filter(item => !titlesArr.includes(item.title));
+    //setProductsCur(productsCur);
+    return productsCur.filter(item => !categoryProducts.includes(item.title));
   }
 
   const showModal = (removalId, title, publish) => {
@@ -79,14 +89,15 @@ const CategoryComponent = ({ dispatch, match, history, category, products }) => 
   }
 
   return (
-    category && products ?
+    products ?
     <>
-      <h1>Category {category.title}</h1>
+      <h1>Category {categoryTitle}</h1>
       <div className="products">
         <div className="published">
-          <h2>Published products</h2>
+          <h2>Products added to category</h2>
+          {!categoryProducts.length && <i>There are no products in category</i>}
           <ListWithControls
-            items={filterPublished()}
+            items={categoryProducts}
             onEdit={onEdit}
             onDelete={(id, title) => showModal(id, title, false)}
             onTitleClick={onTitleClick}
@@ -95,7 +106,7 @@ const CategoryComponent = ({ dispatch, match, history, category, products }) => 
         <div className="unpublished">
           <h2>Products</h2>
           <ListWithFilter
-            items={filterUnpublished()}
+            items={productsCur}
             onSelect={(id, title) => showModal(id, title, true)}
           />
         </div>
@@ -114,4 +125,4 @@ const CategoryComponent = ({ dispatch, match, history, category, products }) => 
 
 const mapStateToProps = state => ({ category: state.category, products: state.products });
 
-export const Category = connect(mapStateToProps)(CategoryComponent);
+export const NewCategory = connect(mapStateToProps)(NewCategoryComponent);

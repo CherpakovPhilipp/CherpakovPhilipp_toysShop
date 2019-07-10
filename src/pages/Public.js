@@ -5,6 +5,7 @@ import { Login } from './login';
 import { NewUser } from './newUser';
 import { Contacts } from './contacts';
 import { Success } from './success';
+import { Shop } from './shop';
 
 export const Public = [
   <Route
@@ -12,6 +13,12 @@ export const Public = [
     exact
     component={Home}
     key="home"
+  />,
+  <Route
+    path="/shop"
+    exact
+    component={Shop}
+    key="shop"
   />,
   <Route
     path="/contacts"

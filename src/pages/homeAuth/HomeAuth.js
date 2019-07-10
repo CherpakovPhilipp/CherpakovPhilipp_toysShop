@@ -12,10 +12,10 @@ else if (time > 12 && time < 18) dayTime = 'afternoon';
 else if (time >= 18 && time <= 22) dayTime = 'evening';
 else dayTime = 'night';
 
-export const HomeAuthComponent = ({ user, info }) => (
+export const HomeAuthComponent = ({ user, info, history }) => (
   <>
     <h1>{`Good ${dayTime}, ${user.firstName}`}</h1>
-    {info && <Infobar categories={info.categories} products={info.products} published={info.publishedCategories} />}
+    {info && <Infobar history={history} categories={info.categories} products={info.products} published={info.publishedCategories} />}
   </>
 );
 

@@ -2,7 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import { NotFound } from './notFound';
 import { Product } from './products';
-import { Categories, Category } from './categories';
+import { Category } from './categories';
 
 import { Public } from './Public';
 import { Private } from './Private';
@@ -10,14 +10,10 @@ import { Private } from './Private';
 export const Pages = ({ user }) => (
   <Switch>
     <Route
-      path="/categories"
-      exact
-      component={Categories}
-    />
-    <Route
       path="/categories/:id"
       exact
       component={Category}
+      key="сategory"
     />
     <Route
       path="/products/:id"

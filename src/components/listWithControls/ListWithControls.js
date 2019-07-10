@@ -12,10 +12,10 @@ export class ListWithControls extends Component {
     this.setState({ itemInEdit });
   }
 
-  handleDeleteClick = (id) => {
+  handleDeleteClick = (id, title) => {
     const { onDelete } = this.props;
 
-    onDelete(id);
+    onDelete(id, title);
   }
 
   handleTileChange = (id, title) => {
@@ -36,7 +36,7 @@ export class ListWithControls extends Component {
 
     return (
       <ul className="controls-list">
-        {items.map(item => (
+        {items && items.map(item => (
           <li key={item.title}>
             <TextBlock
               initialText={item.title}
@@ -53,7 +53,7 @@ export class ListWithControls extends Component {
               && (
               <FaTrashAlt
                 className="icon-remove"
-                onClick={() => this.handleDeleteClick(item.id)}
+                onClick={() => this.handleDeleteClick(item.id, item.title)}
               />
               )
             }

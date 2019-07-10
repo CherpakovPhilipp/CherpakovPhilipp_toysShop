@@ -2,6 +2,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 import { HomeAuth } from './homeAuth';
 import { Products, Product } from './products';
+import { Categories, NewCategory } from './categories';
 
 import { UpdateUser } from './updateUser';
 
@@ -11,6 +12,18 @@ export const Private = [
     exact
     component={HomeAuth}
     key="homeAuth"
+  />,
+  <Route
+    path="/categories"
+    exact
+    component={Categories}
+    key="categories"
+  />,
+  <Route
+    path="/new-category"
+    exact
+    component={NewCategory}
+    key="new-category"
   />,
   <Route
     path="/products"
